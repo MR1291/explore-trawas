@@ -1,12 +1,13 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import {
-  Plus, Edit2, Trash2, MapPin, Search, LogOut,
+  Plus, Edit2, Trash2, Search, LogOut,
   Mountain, Home, Compass, Building2, RefreshCw, X, Save,
   ExternalLink, Eye, CheckCircle, ShieldCheck
 } from 'lucide-react';
 import AdminLogin from './AdminLogin';
+import trawasHeroBg from '../assets/trawas-hero.jpg';
 
 const AdminDashboard = () => {
   const {
@@ -15,7 +16,6 @@ const AdminDashboard = () => {
     resetToDefaultData
   } = useContext(AppContext);
 
-  const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return localStorage.getItem('explore_trawas_admin_auth') === 'true';
   });
@@ -207,7 +207,17 @@ const AdminDashboard = () => {
   );
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col md:flex-row text-slate-100 font-sans">
+    <div className="min-h-screen bg-slate-950 flex flex-col md:flex-row text-slate-100 font-sans relative overflow-hidden">
+      {/* Background Panorama Image with 50% Opacity */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <img
+          src={trawasHeroBg}
+          alt="Panorama Trawas Background"
+          className="w-full h-full object-cover opacity-50 scale-105"
+        />
+        <div className="absolute inset-0 bg-slate-950/75 backdrop-blur-[2px]"></div>
+      </div>
+
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 bg-emerald-600 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center space-x-2 text-sm font-bold animate-slideUp">
@@ -217,7 +227,7 @@ const AdminDashboard = () => {
       )}
 
       {/* Admin Sidebar */}
-      <aside className="w-full md:w-64 bg-slate-900 border-r border-slate-800 p-5 flex flex-col justify-between shrink-0">
+      <aside className="w-full md:w-64 bg-slate-900/90 backdrop-blur-xl border-r border-slate-800/80 p-5 flex flex-col justify-between shrink-0 relative z-10">
         <div className="space-y-6">
           {/* Logo & Portal title */}
           <div className="flex items-center space-x-3 px-2">
@@ -237,7 +247,7 @@ const AdminDashboard = () => {
             <button
               onClick={() => { setActiveTab('overview'); setShowVillageForm(false); setShowDestForm(false); }}
               className={`w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'overview' ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white'
+                activeTab === 'overview' ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30' : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
               }`}
             >
               <Home className="h-4 w-4" />
@@ -247,7 +257,7 @@ const AdminDashboard = () => {
             <button
               onClick={() => { setActiveTab('destinasi'); setShowVillageForm(false); setShowDestForm(false); }}
               className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'destinasi' ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white'
+                activeTab === 'destinasi' ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30' : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
               }`}
             >
               <div className="flex items-center space-x-3">
@@ -262,7 +272,7 @@ const AdminDashboard = () => {
             <button
               onClick={() => { setActiveTab('desa'); setShowVillageForm(false); setShowDestForm(false); }}
               className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'desa' ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/20' : 'text-slate-400 hover:bg-slate-800 hover:text-white'
+                activeTab === 'desa' ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30' : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
               }`}
             >
               <div className="flex items-center space-x-3">
@@ -277,22 +287,22 @@ const AdminDashboard = () => {
         </div>
 
         {/* Bottom Sidebar Action: Website Link & Logout */}
-        <div className="pt-6 border-t border-slate-800 space-y-2 mt-6">
+        <div className="pt-6 border-t border-slate-800/80 space-y-2 mt-6">
           <Link
             to="/"
             target="_blank"
-            className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-300 bg-slate-800/60 hover:bg-slate-800 hover:text-emerald-400 border border-slate-700/60 transition-all"
+            className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-300 bg-slate-800/70 hover:bg-slate-800 hover:text-emerald-400 border border-slate-700/60 transition-all"
           >
             <span className="flex items-center">
               <Eye className="h-4 w-4 mr-2" />
               Lihat Web Publik
             </span>
-            <ExternalLink className="h-3.5 w-3.5 text-slate-500" />
+            <ExternalLink className="h-3.5 w-3.5 text-slate-400" />
           </Link>
 
           <button
             onClick={handleLogout}
-            className="w-full flex items-center space-x-2 px-3.5 py-2.5 rounded-xl text-xs font-bold text-rose-400 hover:bg-rose-500/10 border border-transparent hover:border-rose-500/20 transition-all cursor-pointer"
+            className="w-full flex items-center space-x-2 px-3.5 py-2.5 rounded-xl text-xs font-bold text-rose-400 hover:bg-rose-500/15 border border-transparent hover:border-rose-500/30 transition-all cursor-pointer"
           >
             <LogOut className="h-4 w-4" />
             <span>Keluar (Logout)</span>
@@ -301,16 +311,16 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main Admin Content */}
-      <main className="flex-grow p-4 md:p-8 space-y-8 overflow-y-auto bg-slate-950">
+      <main className="flex-grow p-4 md:p-8 space-y-8 overflow-y-auto relative z-10">
         {/* Top Header Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800/80 pb-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800/80 pb-6 bg-slate-900/40 p-4 rounded-2xl backdrop-blur-md">
           <div>
-            <h1 className="text-2xl md:text-3xl font-black text-white">
+            <h1 className="text-2xl md:text-3xl font-black text-white drop-shadow">
               {activeTab === 'overview' && 'Overview Statistik Pariwisata Trawas'}
               {activeTab === 'destinasi' && 'Manajemen Destinasi Pariwisata'}
               {activeTab === 'desa' && 'Manajemen 12 Desa Wisata'}
             </h1>
-            <p className="text-xs md:text-sm text-slate-400 mt-1">
+            <p className="text-xs md:text-sm text-slate-300 mt-1">
               Kelola, edit, tambah, dan pantau seluruh data informasi pariwisata Kecamatan Trawas.
             </p>
           </div>
@@ -324,7 +334,7 @@ const AdminDashboard = () => {
                   showToast('Data berhasil direset ke default!');
                 }
               }}
-              className="inline-flex items-center px-3.5 py-2 rounded-xl text-xs font-bold text-slate-300 bg-slate-900 border border-slate-800 hover:bg-slate-800 transition-all cursor-pointer"
+              className="inline-flex items-center px-3.5 py-2 rounded-xl text-xs font-bold text-slate-300 bg-slate-900/90 border border-slate-700 hover:bg-slate-800 transition-all cursor-pointer shadow-md"
               title="Reset ke data awal"
             >
               <RefreshCw className="h-3.5 w-3.5 mr-1.5 text-slate-400" />
@@ -334,7 +344,7 @@ const AdminDashboard = () => {
             {activeTab === 'destinasi' && (
               <button
                 onClick={() => handleOpenDestForm()}
-                className="inline-flex items-center px-4 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-600/20 transition-all cursor-pointer"
+                className="inline-flex items-center px-4 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-600/30 transition-all cursor-pointer"
               >
                 <Plus className="h-4 w-4 mr-1.5" />
                 Tambah Destinasi
@@ -344,7 +354,7 @@ const AdminDashboard = () => {
             {activeTab === 'desa' && (
               <button
                 onClick={() => handleOpenVillageForm()}
-                className="inline-flex items-center px-4 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-600/20 transition-all cursor-pointer"
+                className="inline-flex items-center px-4 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-600/30 transition-all cursor-pointer"
               >
                 <Plus className="h-4 w-4 mr-1.5" />
                 Tambah Desa
@@ -358,37 +368,37 @@ const AdminDashboard = () => {
           <div className="space-y-8 animate-fadeIn">
             {/* KPI Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-2">
+              <div className="bg-slate-900/85 backdrop-blur-md border border-slate-800 p-5 rounded-2xl space-y-2 shadow-xl">
                 <div className="text-xs text-slate-400 font-bold uppercase">Total Desa Wisata</div>
                 <div className="text-3xl font-black text-white">{villages.length} <span className="text-xs text-emerald-400 font-semibold">Desa</span></div>
-                <div className="text-[11px] text-slate-500">Mencakup seluruh area Trawas</div>
+                <div className="text-[11px] text-slate-400">Mencakup seluruh area Trawas</div>
               </div>
-              <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-2">
+              <div className="bg-slate-900/85 backdrop-blur-md border border-slate-800 p-5 rounded-2xl space-y-2 shadow-xl">
                 <div className="text-xs text-slate-400 font-bold uppercase">Total Objek Destinasi</div>
                 <div className="text-3xl font-black text-emerald-400">{destinations.length} <span className="text-xs text-slate-400 font-semibold">Lokasi</span></div>
-                <div className="text-[11px] text-slate-500">Wisata alam, kafe, & kuliner</div>
+                <div className="text-[11px] text-slate-400">Wisata alam, kafe, & kuliner</div>
               </div>
-              <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-2">
+              <div className="bg-slate-900/85 backdrop-blur-md border border-slate-800 p-5 rounded-2xl space-y-2 shadow-xl">
                 <div className="text-xs text-slate-400 font-bold uppercase">Kafe & Kedai Kopi</div>
                 <div className="text-3xl font-black text-amber-400">
                   {destinations.filter(d => d.category === 'kafe').length}
                 </div>
-                <div className="text-[11px] text-slate-500">Spot nongkrong & roastery</div>
+                <div className="text-[11px] text-slate-400">Spot nongkrong & roastery</div>
               </div>
-              <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-2">
+              <div className="bg-slate-900/85 backdrop-blur-md border border-slate-800 p-5 rounded-2xl space-y-2 shadow-xl">
                 <div className="text-xs text-slate-400 font-bold uppercase">Resto & Kuliner Khas</div>
                 <div className="text-3xl font-black text-rose-400">
                   {destinations.filter(d => d.category === 'kuliner').length}
                 </div>
-                <div className="text-[11px] text-slate-500">Ikan bakar, sate, & lesehan</div>
+                <div className="text-[11px] text-slate-400">Ikan bakar, sate, & lesehan</div>
               </div>
             </div>
 
             {/* Quick Links Table */}
-            <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6 space-y-4">
+            <div className="bg-slate-900/85 backdrop-blur-md rounded-2xl border border-slate-800 p-6 space-y-4 shadow-xl">
               <div className="flex justify-between items-center">
                 <h3 className="font-bold text-white text-base">Sebaran Destinasi per Desa</h3>
-                <button onClick={() => setActiveTab('destinasi')} className="text-xs text-emerald-400 hover:underline font-bold">
+                <button onClick={() => setActiveTab('destinasi')} className="text-xs text-emerald-400 hover:underline font-bold cursor-pointer">
                   Lihat Semua Destinasi &rarr;
                 </button>
               </div>
@@ -396,7 +406,7 @@ const AdminDashboard = () => {
                 {villages.map(v => {
                   const count = destinations.filter(d => d.village_id === v.id).length;
                   return (
-                    <div key={v.id} className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <div key={v.id} className="p-3 bg-slate-950/80 rounded-xl border border-slate-800 flex justify-between items-center">
                       <span className="text-xs font-bold text-slate-300">Desa {v.name}</span>
                       <span className="text-xs font-black text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/40">
                         {count}
@@ -411,27 +421,27 @@ const AdminDashboard = () => {
 
         {/* Destination & Village Tables */}
         {activeTab !== 'overview' && !showVillageForm && !showDestForm && (
-          <div className="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl space-y-4 animate-fadeIn">
+          <div className="bg-slate-900/85 backdrop-blur-md rounded-2xl border border-slate-800 overflow-hidden shadow-2xl space-y-4 animate-fadeIn">
             {/* Search & Filter Bar */}
             <div className="p-4 border-b border-slate-800 flex flex-col md:flex-row justify-between gap-3">
               <div className="relative flex-grow max-w-md">
-                <Search className="absolute left-3.5 top-3 h-4 w-4 text-slate-500" />
+                <Search className="absolute left-3.5 top-3 h-4 w-4 text-slate-400" />
                 <input
                   type="text"
                   placeholder={activeTab === 'destinasi' ? "Cari nama destinasi, subkategori..." : "Cari nama desa..."}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full pl-10 pr-4 py-2 bg-slate-950/90 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 placeholder-slate-500"
                 />
               </div>
 
               {activeTab === 'destinasi' && (
                 <div className="flex items-center space-x-2">
-                  <span className="text-xs text-slate-400 font-semibold">Filter Desa:</span>
+                  <span className="text-xs text-slate-300 font-semibold">Filter Desa:</span>
                   <select
                     value={selectedVillageFilter}
                     onChange={(e) => setSelectedVillageFilter(e.target.value)}
-                    className="bg-slate-950 border border-slate-800 rounded-xl text-xs text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="bg-slate-950/90 border border-slate-800 rounded-xl text-xs text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   >
                     <option value="semua">Semua Desa ({destinations.length})</option>
                     {villages.map(v => (
@@ -446,7 +456,7 @@ const AdminDashboard = () => {
             <div className="overflow-x-auto">
               {activeTab === 'destinasi' ? (
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-950/80 text-slate-400 uppercase font-bold tracking-wider border-b border-slate-800">
+                  <thead className="bg-slate-950/90 text-slate-400 uppercase font-bold tracking-wider border-b border-slate-800">
                     <tr>
                       <th className="px-6 py-3.5">Nama Destinasi</th>
                       <th className="px-6 py-3.5">Desa</th>
@@ -460,15 +470,15 @@ const AdminDashboard = () => {
                     {filteredDestinations.map((d) => {
                       const v = villages.find(vil => vil.id === d.village_id);
                       return (
-                        <tr key={d.id} className="hover:bg-slate-800/40 transition-colors">
+                        <tr key={d.id} className="hover:bg-slate-800/50 transition-colors">
                           <td className="px-6 py-4 font-bold text-white">{d.name}</td>
-                          <td className="px-6 py-4 text-slate-400">Desa {v ? v.name : '-'}</td>
+                          <td className="px-6 py-4 text-slate-300">Desa {v ? v.name : '-'}</td>
                           <td className="px-6 py-4">
                             <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-950 text-emerald-400 border border-emerald-800/40 capitalize">
                               {d.category}
                             </span>
                           </td>
-                          <td className="px-6 py-4 text-slate-400">{d.subcategory}</td>
+                          <td className="px-6 py-4 text-slate-300">{d.subcategory}</td>
                           <td className="px-6 py-4 font-bold text-emerald-400">
                             {d.price === 0 ? 'Gratis' : `Rp ${d.price.toLocaleString('id-ID')}`}
                           </td>
@@ -477,14 +487,14 @@ const AdminDashboard = () => {
                               <Link
                                 to={`/destinasi/${d.slug}`}
                                 target="_blank"
-                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white"
+                                className="p-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white"
                                 title="Lihat Halaman Publik"
                               >
                                 <ExternalLink className="h-3.5 w-3.5" />
                               </Link>
                               <button
                                 onClick={() => handleOpenDestForm(d)}
-                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-emerald-600 text-slate-300 hover:text-white cursor-pointer"
+                                className="p-1.5 rounded-lg bg-slate-800/80 hover:bg-emerald-600 text-slate-300 hover:text-white cursor-pointer"
                                 title="Edit"
                               >
                                 <Edit2 className="h-3.5 w-3.5" />
@@ -496,7 +506,7 @@ const AdminDashboard = () => {
                                     showToast(`Destinasi ${d.name} dihapus.`);
                                   }
                                 }}
-                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white cursor-pointer"
+                                className="p-1.5 rounded-lg bg-slate-800/80 hover:bg-rose-600 text-slate-300 hover:text-white cursor-pointer"
                                 title="Hapus"
                               >
                                 <Trash2 className="h-3.5 w-3.5" />
@@ -510,7 +520,7 @@ const AdminDashboard = () => {
                 </table>
               ) : (
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-950/80 text-slate-400 uppercase font-bold tracking-wider border-b border-slate-800">
+                  <thead className="bg-slate-950/90 text-slate-400 uppercase font-bold tracking-wider border-b border-slate-800">
                     <tr>
                       <th className="px-6 py-3.5">Nama Desa</th>
                       <th className="px-6 py-3.5">Lokasi</th>
@@ -523,24 +533,24 @@ const AdminDashboard = () => {
                     {filteredVillages.map((v) => {
                       const count = destinations.filter(d => d.village_id === v.id).length;
                       return (
-                        <tr key={v.id} className="hover:bg-slate-800/40 transition-colors">
+                        <tr key={v.id} className="hover:bg-slate-800/50 transition-colors">
                           <td className="px-6 py-4 font-bold text-white">Desa {v.name}</td>
-                          <td className="px-6 py-4 text-slate-400">{v.location}</td>
+                          <td className="px-6 py-4 text-slate-300">{v.location}</td>
                           <td className="px-6 py-4 font-bold text-emerald-400">{count} Destinasi</td>
-                          <td className="px-6 py-4 text-slate-400 max-w-xs truncate">{v.description}</td>
+                          <td className="px-6 py-4 text-slate-300 max-w-xs truncate">{v.description}</td>
                           <td className="px-6 py-4 text-center">
                             <div className="flex items-center justify-center space-x-2">
                               <Link
                                 to={`/desa/${v.slug}`}
                                 target="_blank"
-                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white"
+                                className="p-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white"
                                 title="Lihat Halaman Publik"
                               >
                                 <ExternalLink className="h-3.5 w-3.5" />
                               </Link>
                               <button
                                 onClick={() => handleOpenVillageForm(v)}
-                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-emerald-600 text-slate-300 hover:text-white cursor-pointer"
+                                className="p-1.5 rounded-lg bg-slate-800/80 hover:bg-emerald-600 text-slate-300 hover:text-white cursor-pointer"
                                 title="Edit"
                               >
                                 <Edit2 className="h-3.5 w-3.5" />
@@ -552,7 +562,7 @@ const AdminDashboard = () => {
                                     showToast(`Desa ${v.name} dihapus.`);
                                   }
                                 }}
-                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white cursor-pointer"
+                                className="p-1.5 rounded-lg bg-slate-800/80 hover:bg-rose-600 text-slate-300 hover:text-white cursor-pointer"
                                 title="Hapus"
                               >
                                 <Trash2 className="h-3.5 w-3.5" />
@@ -571,7 +581,7 @@ const AdminDashboard = () => {
 
         {/* Modal / Form Village */}
         {showVillageForm && (
-          <form onSubmit={handleSaveVillage} className="bg-slate-900 rounded-2xl border border-slate-800 p-6 md:p-8 shadow-2xl space-y-6 animate-slideUp text-xs">
+          <form onSubmit={handleSaveVillage} className="bg-slate-900/90 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 md:p-8 shadow-2xl space-y-6 animate-slideUp text-xs">
             <div className="flex justify-between items-center border-b border-slate-800 pb-4">
               <h2 className="text-lg font-bold text-white">
                 {editingVillage ? `Edit Desa ${editingVillage.name}` : 'Tambah Desa Wisata Baru'}
@@ -590,7 +600,7 @@ const AdminDashboard = () => {
                   value={villageName}
                   onChange={(e) => setVillageName(e.target.value)}
                   placeholder="e.g. Ketapanrame"
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -602,7 +612,7 @@ const AdminDashboard = () => {
                   value={villageLocation}
                   onChange={(e) => setVillageLocation(e.target.value)}
                   placeholder="Kecamatan Trawas, Kabupaten Mojokerto"
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -614,7 +624,7 @@ const AdminDashboard = () => {
                   value={villageDescription}
                   onChange={(e) => setVillageDescription(e.target.value)}
                   placeholder="Jelaskan karakteristik, keunikan, dan potensi desa..."
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 ></textarea>
               </div>
 
@@ -625,7 +635,7 @@ const AdminDashboard = () => {
                   required
                   value={villageImage}
                   onChange={(e) => setVillageImage(e.target.value)}
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -636,7 +646,7 @@ const AdminDashboard = () => {
                   value={villageAccess}
                   onChange={(e) => setVillageAccess(e.target.value)}
                   placeholder="Akses motor & mobil pribadi lancar..."
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
             </div>
@@ -645,13 +655,13 @@ const AdminDashboard = () => {
               <button
                 type="button"
                 onClick={() => setShowVillageForm(false)}
-                className="px-4 py-2 border border-slate-700 rounded-xl text-slate-400 hover:text-white"
+                className="px-4 py-2 border border-slate-700 rounded-xl text-slate-400 hover:text-white cursor-pointer"
               >
                 Batal
               </button>
               <button
                 type="submit"
-                className="inline-flex items-center px-5 py-2 rounded-xl text-white bg-emerald-600 hover:bg-emerald-500 font-bold"
+                className="inline-flex items-center px-5 py-2 rounded-xl text-white bg-emerald-600 hover:bg-emerald-500 font-bold cursor-pointer"
               >
                 <Save className="h-4 w-4 mr-1.5" />
                 Simpan Desa
@@ -662,7 +672,7 @@ const AdminDashboard = () => {
 
         {/* Modal / Form Destination */}
         {showDestForm && (
-          <form onSubmit={handleSaveDest} className="bg-slate-900 rounded-2xl border border-slate-800 p-6 md:p-8 shadow-2xl space-y-6 animate-slideUp text-xs">
+          <form onSubmit={handleSaveDest} className="bg-slate-900/90 backdrop-blur-xl rounded-2xl border border-slate-800 p-6 md:p-8 shadow-2xl space-y-6 animate-slideUp text-xs">
             <div className="flex justify-between items-center border-b border-slate-800 pb-4">
               <h2 className="text-lg font-bold text-white">
                 {editingDest ? `Edit Destinasi ${editingDest.name}` : 'Tambah Destinasi Baru'}
@@ -681,7 +691,7 @@ const AdminDashboard = () => {
                   value={destName}
                   onChange={(e) => setDestName(e.target.value)}
                   placeholder="e.g. Air Terjun Dlundung"
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -690,7 +700,7 @@ const AdminDashboard = () => {
                 <select
                   value={destVillageId}
                   onChange={(e) => setDestVillageId(e.target.value)}
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 >
                   {villages.map(v => (
                     <option key={v.id} value={v.id}>Desa {v.name}</option>
@@ -703,7 +713,7 @@ const AdminDashboard = () => {
                 <select
                   value={destCategory}
                   onChange={(e) => setDestCategory(e.target.value)}
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 >
                   <option value="wisata">Wisata Alam & Rekreasi</option>
                   <option value="kafe">Kafe & Nongkrong</option>
@@ -720,7 +730,7 @@ const AdminDashboard = () => {
                   value={destSubcategory}
                   onChange={(e) => setDestSubcategory(e.target.value)}
                   placeholder="Air Terjun, Coffee Shop, Outbound..."
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -732,7 +742,7 @@ const AdminDashboard = () => {
                   value={destOpeningHours}
                   onChange={(e) => setDestOpeningHours(e.target.value)}
                   placeholder="08:00 - 17:00 WIB"
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -744,7 +754,7 @@ const AdminDashboard = () => {
                   value={destPrice}
                   onChange={(e) => setDestPrice(e.target.value)}
                   placeholder="15000 (0 jika gratis)"
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -756,7 +766,7 @@ const AdminDashboard = () => {
                   value={destAddress}
                   onChange={(e) => setDestAddress(e.target.value)}
                   placeholder="Dusun..., Desa..., Kec. Trawas, Kabupaten Mojokerto"
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -767,7 +777,7 @@ const AdminDashboard = () => {
                   required
                   value={destLatitude}
                   onChange={(e) => setDestLatitude(e.target.value)}
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -778,7 +788,7 @@ const AdminDashboard = () => {
                   required
                   value={destLongitude}
                   onChange={(e) => setDestLongitude(e.target.value)}
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -789,7 +799,7 @@ const AdminDashboard = () => {
                   value={destContact}
                   onChange={(e) => setDestContact(e.target.value)}
                   placeholder="0812-xxxx-xxxx"
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -801,7 +811,7 @@ const AdminDashboard = () => {
                   value={destDescription}
                   onChange={(e) => setDestDescription(e.target.value)}
                   placeholder="Jelaskan fasilitas, daya tarik, keunikan tempat ini..."
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 ></textarea>
               </div>
 
@@ -812,7 +822,7 @@ const AdminDashboard = () => {
                   required
                   value={destImage}
                   onChange={(e) => setDestImage(e.target.value)}
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -823,7 +833,7 @@ const AdminDashboard = () => {
                   value={destFacilities}
                   onChange={(e) => setDestFacilities(e.target.value)}
                   placeholder="Toilet, Mushola, Parkir, WiFi"
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -834,7 +844,7 @@ const AdminDashboard = () => {
                   value={destTags}
                   onChange={(e) => setDestTags(e.target.value)}
                   placeholder="Wisata Alam, Hiking, Kopi"
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -845,7 +855,7 @@ const AdminDashboard = () => {
                   value={destSuitable}
                   onChange={(e) => setDestSuitable(e.target.value)}
                   placeholder="Keluarga, Teman, Pasangan"
-                  className="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  className="w-full p-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
             </div>
@@ -854,13 +864,13 @@ const AdminDashboard = () => {
               <button
                 type="button"
                 onClick={() => setShowDestForm(false)}
-                className="px-4 py-2 border border-slate-700 rounded-xl text-slate-400 hover:text-white"
+                className="px-4 py-2 border border-slate-700 rounded-xl text-slate-400 hover:text-white cursor-pointer"
               >
                 Batal
               </button>
               <button
                 type="submit"
-                className="inline-flex items-center px-5 py-2 rounded-xl text-white bg-emerald-600 hover:bg-emerald-500 font-bold"
+                className="inline-flex items-center px-5 py-2 rounded-xl text-white bg-emerald-600 hover:bg-emerald-500 font-bold cursor-pointer"
               >
                 <Save className="h-4 w-4 mr-1.5" />
                 Simpan Destinasi
