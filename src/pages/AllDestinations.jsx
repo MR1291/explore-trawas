@@ -14,6 +14,7 @@ const AllDestinations = () => {
   const [selectedFacilities, setSelectedFacilities] = useState([]);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [showFacilitiesDropdown, setShowFacilitiesDropdown] = useState(false);
+  const [facilitySearchQuery, setFacilitySearchQuery] = useState('');
   const facilitiesDropdownRef = useRef(null);
 
   // Close dropdown when clicking outside
@@ -225,41 +226,82 @@ const AllDestinations = () => {
 
             {/* Dropdown Panel */}
             {showFacilitiesDropdown && (
-              <div className="absolute z-30 w-full bg-white border border-slate-200 rounded-xl shadow-xl max-h-64 overflow-y-auto animate-slideDown" style={{ left: 0, right: 0 }}>
+              <div className="absolute z-30 w-full bg-white border border-slate-200 rounded-xl shadow-xl max-h-72 flex flex-col overflow-hidden animate-slideDown" style={{ left: 0, right: 0 }}>
+                {/* Search Input Box */}
+                <div className="p-2 border-b border-slate-100 bg-slate-50 sticky top-0 z-10">
+                  <div className="relative flex items-center">
+                    <Search className="absolute left-2.5 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
+                    <input
+                      type="text"
+                      value={facilitySearchQuery}
+                      onChange={(e) => setFacilitySearchQuery(e.target.value)}
+                      placeholder="Cari nama fasilitas..."
+                      className="w-full pl-8 pr-7 py-1.5 bg-white border border-slate-200 rounded-lg text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                      autoFocus
+                    />
+                    {facilitySearchQuery && (
+                      <button
+                        type="button"
+                        onClick={() => setFacilitySearchQuery('')}
+                        className="absolute right-2 text-slate-400 hover:text-slate-600 text-xs font-bold px-1"
+                      >
+                        ×
+                      </button>
+                    )}
+                  </div>
+                </div>
+
                 {/* Select All / Clear All */}
-                <div className="flex items-center justify-between px-3 py-2 border-b border-slate-100 sticky top-0 bg-white">
+                <div className="flex items-center justify-between px-3 py-2 border-b border-slate-100 bg-white shrink-0">
                   <button
+                    type="button"
                     onClick={() => setSelectedFacilities(allFacilities)}
                     className="text-[11px] font-bold text-emerald-600 hover:underline cursor-pointer"
                   >
                     Pilih Semua
                   </button>
                   <button
+                    type="button"
                     onClick={() => setSelectedFacilities([])}
                     className="text-[11px] font-bold text-slate-400 hover:text-rose-500 hover:underline cursor-pointer"
                   >
                     Hapus Semua
                   </button>
                 </div>
-                {allFacilities.map((fac) => {
-                  const checked = selectedFacilities.includes(fac);
-                  return (
-                    <button
-                      key={fac}
-                      onClick={() => toggleFacility(fac)}
-                      className={`flex items-center text-left text-xs text-slate-600 hover:bg-emerald-50 cursor-pointer w-full px-3 py-2.5 transition-colors ${
-                        checked ? 'bg-emerald-50/70 text-emerald-800 font-semibold' : ''
-                      }`}
-                    >
-                      <div className={`h-4 w-4 rounded border mr-2.5 flex items-center justify-center shrink-0 transition-colors ${
-                        checked ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-300'
-                      }`}>
-                        {checked && <Check className="h-3 w-3" />}
-                      </div>
-                      <span className="leading-tight">{fac}</span>
-                    </button>
-                  );
-                })}
+
+                {/* Facilities List */}
+                <div className="overflow-y-auto max-h-48 divide-y divide-slate-50">
+                  {allFacilities
+                    .filter(fac => fac.toLowerCase().includes(facilitySearchQuery.toLowerCase()))
+                    .length > 0 ? (
+                    allFacilities
+                      .filter(fac => fac.toLowerCase().includes(facilitySearchQuery.toLowerCase()))
+                      .map((fac) => {
+                        const checked = selectedFacilities.includes(fac);
+                        return (
+                          <button
+                            key={fac}
+                            type="button"
+                            onClick={() => toggleFacility(fac)}
+                            className={`flex items-center text-left text-xs text-slate-600 hover:bg-emerald-50 cursor-pointer w-full px-3 py-2 transition-colors ${
+                              checked ? 'bg-emerald-50/70 text-emerald-800 font-semibold' : ''
+                            }`}
+                          >
+                            <div className={`h-4 w-4 rounded border mr-2.5 flex items-center justify-center shrink-0 transition-colors ${
+                              checked ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-300'
+                            }`}>
+                              {checked && <Check className="h-3 w-3" />}
+                            </div>
+                            <span className="leading-tight">{fac}</span>
+                          </button>
+                        );
+                      })
+                  ) : (
+                    <div className="p-4 text-center text-xs text-slate-400">
+                      Fasilitas tidak ditemukan
+                    </div>
+                  )}
+                </div>
               </div>
             )}
           </div>
