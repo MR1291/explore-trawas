@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { MapPin, Star, Compass, Coffee, Utensils, Sparkles, ArrowLeft, Eye, ShieldCheck } from 'lucide-react';
 import TravelEstimatesCard from '../components/TravelEstimatesCard';
+import PopIn from '../components/PopIn';
 
 const VillageDetail = () => {
   const { slug } = useParams();
@@ -162,10 +163,12 @@ const VillageDetail = () => {
         {/* Destination Grid */}
         {filteredDestinations.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredDestinations.map((dest) => (
-              <div
+            {filteredDestinations.map((dest, idx) => (
+              <PopIn
                 key={dest.id}
+                delay={(idx % 6) * 90}
                 className="group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm fluid-card flex flex-col h-full"
+                as="div"
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
@@ -216,7 +219,7 @@ const VillageDetail = () => {
                     Lihat Detail
                   </Link>
                 </div>
-              </div>
+              </PopIn>
             ))}
           </div>
         ) : (

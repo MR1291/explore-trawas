@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { Search, MapPin, Star, Filter, Coffee, Utensils, Compass, Sparkles, SlidersHorizontal, Check } from 'lucide-react';
+import PopIn from '../components/PopIn';
 
 const AllDestinations = () => {
   const { destinations, villages } = useContext(AppContext);
@@ -219,12 +220,14 @@ const AllDestinations = () => {
 
           {filteredDestinations.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredDestinations.map((dest) => {
+              {filteredDestinations.map((dest, idx) => {
                 const destVillage = villages.find(v => v.id === dest.village_id);
                 return (
-                  <div
+                  <PopIn
                     key={dest.id}
+                    delay={(idx % 6) * 90}
                     className="group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm fluid-card flex flex-col h-full"
+                    as="div"
                   >
                     {/* Image */}
                     <div className="relative h-44 overflow-hidden bg-slate-100 shrink-0">
@@ -264,7 +267,7 @@ const AllDestinations = () => {
                         Detail Destinasi &rarr;
                       </Link>
                     </div>
-                  </div>
+                  </PopIn>
                 );
               })}
             </div>
