@@ -46,8 +46,8 @@ const Home = () => {
     <div className="space-y-16 pb-16">
       {/* Hero Section */}
       <div className="relative bg-slate-900 min-h-[620px] flex items-center justify-center text-white overflow-hidden py-16">
-        {/* Background Image Overlay */}
-        <div className="absolute inset-0 opacity-40">
+        {/* Background Image Overlay with smooth scale */}
+        <div className="absolute inset-0 opacity-40 transition-transform duration-1000 ease-out hover:scale-110">
           <img
             src={heroImg}
             alt="Panorama Trawas"
@@ -57,31 +57,31 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-8">
-          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 backdrop-blur-md">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-8 animate-slideUp">
+          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 backdrop-blur-md animate-float">
             ⛰️ Portal Wisata Resmi 12 Desa Trawas, Mojokerto
           </span>
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight">
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight drop-shadow-lg">
             Jelajahi Pesona Keindahan Trawas
           </h1>
-          <p className="text-base md:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-light">
+          <p className="text-base md:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-light drop-shadow">
             Temukan keajaiban alam pegunungan, jalur pendakian bersejarah Majapahit, pesona sawah terasering, spot camping pinus, serta deretan kafe estetik di 12 desa wisata Trawas.
           </p>
 
           {/* Live Search Bar */}
           <div className="max-w-xl mx-auto relative">
-            <div className="flex items-center bg-white rounded-full shadow-2xl p-1.5 border border-slate-200 focus-within:ring-2 focus-within:ring-emerald-500 focus-within:border-emerald-500 transition-all">
-              <Search className="h-5 w-5 text-slate-400 ml-4 shrink-0" />
+            <div className="flex items-center bg-white/95 backdrop-blur-md rounded-full shadow-2xl p-1.5 border border-slate-200 focus-within:ring-4 focus-within:ring-emerald-500/30 focus-within:border-emerald-500 transition-all duration-300 transform focus-within:-translate-y-0.5">
+              <Search className="h-5 w-5 text-slate-400 ml-4 shrink-0 transition-colors" />
               <input
                 type="text"
                 placeholder="Cari desa, air terjun, camping, kopi, kuliner..."
                 value={searchQuery}
                 onChange={handleSearch}
-                className="w-full px-3 py-2 text-slate-800 focus:outline-none placeholder-slate-400 rounded-full text-sm"
+                className="w-full px-3 py-2 text-slate-800 focus:outline-none placeholder-slate-400 rounded-full text-sm bg-transparent"
               />
               <button
                 onClick={() => navigate('/destinasi')}
-                className="px-6 py-2.5 rounded-full text-white bg-emerald-600 hover:bg-emerald-700 font-semibold text-xs transition-colors cursor-pointer"
+                className="px-6 py-2.5 rounded-full text-white bg-emerald-600 hover:bg-emerald-700 font-semibold text-xs transition-all duration-300 fluid-btn cursor-pointer shadow-md"
               >
                 Cari
               </button>
@@ -89,14 +89,14 @@ const Home = () => {
 
             {/* Live Search Results */}
             {searchResults.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden text-left z-50 text-slate-800 animate-fadeIn">
+              <div className="absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-100 overflow-hidden text-left z-50 text-slate-800 animate-slideDown">
                 {searchResults.map((result) => (
                   <Link
                     key={result.id + '-' + result.type}
                     to={result.type === 'village' ? `/desa/${result.slug}` : `/destinasi/${result.slug}`}
-                    className="flex items-center px-5 py-3.5 hover:bg-slate-50 border-b border-slate-100 last:border-0 transition-colors"
+                    className="flex items-center px-5 py-3.5 hover:bg-emerald-50/60 border-b border-slate-100 last:border-0 transition-all duration-200"
                   >
-                    <div className="p-2 rounded-lg bg-slate-100 text-emerald-600 mr-4 shrink-0">
+                    <div className="p-2 rounded-lg bg-slate-100 text-emerald-600 mr-4 shrink-0 transition-transform group-hover:scale-110">
                       {result.type === 'village' ? <MapPin className="h-5 w-5" /> : (
                         result.category === 'kafe' ? <Coffee className="h-5 w-5" /> :
                         result.category === 'kuliner' ? <Utensils className="h-5 w-5" /> :
@@ -120,13 +120,13 @@ const Home = () => {
           <div className="flex flex-wrap justify-center gap-4 pt-2">
             <a
               href="#desa-wisata"
-              className="px-6 py-2.5 rounded-full text-sm font-bold bg-white text-emerald-800 hover:bg-slate-50 shadow-md transition-all"
+              className="px-6 py-2.5 rounded-full text-sm font-bold bg-white text-emerald-800 hover:bg-slate-50 shadow-lg transition-all duration-300 fluid-btn"
             >
               Jelajahi 12 Desa
             </a>
             <a
               href="#estimasi-rute"
-              className="px-6 py-2.5 rounded-full text-sm font-semibold bg-emerald-600/40 hover:bg-emerald-600/60 text-white border border-emerald-400/30 backdrop-blur-sm transition-all flex items-center"
+              className="px-6 py-2.5 rounded-full text-sm font-semibold bg-emerald-600/40 hover:bg-emerald-600/60 text-white border border-emerald-400/30 backdrop-blur-sm transition-all duration-300 fluid-btn flex items-center"
             >
               <Navigation className="h-4 w-4 mr-1.5" />
               Panduan Rute Perjalanan
@@ -162,7 +162,7 @@ const Home = () => {
               { label: 'Kafe & Spot Nongkrong', value: totalKafe, icon: Coffee, color: 'text-amber-600 bg-amber-50 border-amber-100' },
               { label: 'Restoran & Kuliner Lokal', value: totalKuliner, icon: Utensils, color: 'text-rose-600 bg-rose-50 border-rose-100' }
             ].map((stat, i) => (
-              <div key={i} className={`bg-white p-6 rounded-2xl border shadow-sm space-y-3 hover:shadow-md transition-shadow ${stat.color.split(' ')[2]}`}>
+              <div key={i} className={`bg-white p-6 rounded-2xl border shadow-sm space-y-3 fluid-card ${stat.color.split(' ')[2]}`}>
                 <div className={`p-3 rounded-xl w-fit ${stat.color.split(' ')[0]} ${stat.color.split(' ')[1]}`}>
                   <stat.icon className="h-6 w-6" />
                 </div>
@@ -197,16 +197,16 @@ const Home = () => {
             return (
               <div
                 key={village.id}
-                className="group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col"
+                className="group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm fluid-card flex flex-col"
               >
                 {/* Image Section */}
                 <div className="relative h-52 overflow-hidden bg-slate-100 shrink-0">
                   <img
                     src={village.image}
                     alt={village.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute top-4 right-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                  <div className="absolute top-4 right-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                     🏞️ {count} Destinasi
                   </div>
                   <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
@@ -229,10 +229,10 @@ const Home = () => {
 
                   <Link
                     to={`/desa/${village.slug}`}
-                    className="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 text-xs font-bold text-slate-700 hover:text-emerald-700 border border-slate-200/80 hover:border-emerald-200 transition-all pt-2"
+                    className="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 text-xs font-bold text-slate-700 hover:text-emerald-700 border border-slate-200/80 hover:border-emerald-200 transition-all pt-2 fluid-btn"
                   >
                     <span>Lihat Destinasi Desa</span>
-                    <ChevronRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
+                    <ChevronRight className="h-4 w-4 ml-1 transition-transform duration-300 group-hover:translate-x-1.5" />
                   </Link>
                 </div>
               </div>

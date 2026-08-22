@@ -224,20 +224,20 @@ const AllDestinations = () => {
                 return (
                   <div
                     key={dest.id}
-                    className="group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col h-full"
+                    className="group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm fluid-card flex flex-col h-full"
                   >
                     {/* Image */}
                     <div className="relative h-44 overflow-hidden bg-slate-100 shrink-0">
                       <img
                         src={dest.image}
                         alt={dest.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                       />
                       <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-2 py-0.5 rounded-full flex items-center text-amber-500 text-xs font-bold shadow-sm">
                         <Star className="h-3 w-3 fill-amber-500 mr-0.5" />
                         <span>{dest.rating.toFixed(1)}</span>
                       </div>
-                      <div className="absolute bottom-3 left-3 bg-emerald-600 text-white text-[10px] font-semibold px-2 py-0.5 rounded uppercase tracking-wider">
+                      <div className="absolute bottom-3 left-3 bg-emerald-600 text-white text-[10px] font-semibold px-2 py-0.5 rounded uppercase tracking-wider shadow-sm">
                         {dest.category}
                       </div>
                     </div>
@@ -249,7 +249,7 @@ const AllDestinations = () => {
                           {dest.name}
                         </h3>
                         <div className="flex items-center text-[10px] text-slate-400 font-medium">
-                          <MapPin className="h-3 w-3 mr-1" />
+                          <MapPin className="h-3 w-3 mr-1 text-emerald-600" />
                           <span className="line-clamp-1">Desa {destVillage ? destVillage.name : 'Trawas'}</span>
                         </div>
                         <p className="text-xs text-slate-500 line-clamp-3 leading-relaxed mt-1">
@@ -259,7 +259,7 @@ const AllDestinations = () => {
 
                       <Link
                         to={`/destinasi/${dest.slug}`}
-                        className="w-full inline-flex items-center justify-center px-4 py-2 border border-slate-200 hover:border-emerald-600 rounded-full shadow-sm text-xs font-bold text-slate-700 hover:text-emerald-600 transition-all pt-2 mt-auto"
+                        className="w-full inline-flex items-center justify-center px-4 py-2.5 border border-slate-200 hover:border-emerald-600 rounded-full shadow-sm text-xs font-bold text-slate-700 hover:text-emerald-600 hover:bg-emerald-50/30 transition-all pt-2 mt-auto fluid-btn cursor-pointer"
                       >
                         Detail Destinasi &rarr;
                       </Link>
