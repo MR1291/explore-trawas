@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { Search, MapPin, Compass, Utensils, Coffee, Leaf, ChevronRight, Activity, Navigation } from 'lucide-react';
 import TravelEstimatesCard from '../components/TravelEstimatesCard';
-import heroImg from '../assets/hero.png';
+import heroImg from '../assets/trawas-hero.jpg';
 
 const Home = () => {
   const { villages, destinations } = useContext(AppContext);
