@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import { Search, MapPin, Compass, Utensils, Coffee, Leaf, ChevronRight, Activity, Navigation, Sparkles } from 'lucide-react';
+import { Search, MapPin, Compass, Utensils, Coffee, Leaf, ChevronRight, Activity, Navigation } from 'lucide-react';
 import TravelEstimatesCard from '../components/TravelEstimatesCard';
+import heroImg from '../assets/hero.png';
 
 const Home = () => {
   const { villages, destinations } = useContext(AppContext);
@@ -48,7 +49,7 @@ const Home = () => {
         {/* Background Image Overlay */}
         <div className="absolute inset-0 opacity-40">
           <img
-            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"
+            src={heroImg}
             alt="Panorama Trawas"
             className="w-full h-full object-cover scale-105"
           />
