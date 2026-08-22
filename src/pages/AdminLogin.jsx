@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mountain, Lock, Mail, Eye, EyeOff, ArrowLeft, ShieldCheck, AlertCircle, KeyRound } from 'lucide-react';
+import { Mountain, Lock, Mail, Eye, EyeOff, ArrowLeft, ShieldCheck, AlertCircle } from 'lucide-react';
 import trawasHeroBg from '../assets/trawas-hero.jpg';
 
 const AdminLogin = ({ onLoginSuccess }) => {
-  const [username, setUsername] = useState('admin');
-  const [password, setPassword] = useState('admin123');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +17,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
     setIsLoading(true);
 
     setTimeout(() => {
-      // Demo authentication logic
+      // Authentication check
       if ((username.trim() === 'admin' || username.trim() === 'admin@exploretrawas.id') && password === 'admin123') {
         localStorage.setItem('explore_trawas_admin_auth', 'true');
         localStorage.setItem('explore_trawas_admin_user', username.trim());
@@ -32,12 +32,6 @@ const AdminLogin = ({ onLoginSuccess }) => {
         setError('Username atau kata sandi yang Anda masukkan salah!');
       }
     }, 400);
-  };
-
-  const handleQuickFill = () => {
-    setUsername('admin');
-    setPassword('admin123');
-    setError('');
   };
 
   return (
@@ -106,7 +100,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
                     required
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    placeholder="admin atau email"
+                    placeholder="Masukkan username atau email"
                     className="block w-full pl-10 pr-3.5 py-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm transition-all"
                   />
                 </div>
@@ -161,27 +155,6 @@ const AdminLogin = ({ onLoginSuccess }) => {
                 )}
               </button>
             </form>
-
-            {/* Quick Demo Info Box */}
-            <div className="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 text-xs space-y-2">
-              <div className="flex items-center justify-between text-slate-400 font-medium">
-                <span className="flex items-center text-emerald-400 font-bold">
-                  <KeyRound className="h-3.5 w-3.5 mr-1" />
-                  Kredensial Demo:
-                </span>
-                <button
-                  type="button"
-                  onClick={handleQuickFill}
-                  className="text-emerald-400 hover:text-emerald-300 font-bold hover:underline cursor-pointer"
-                >
-                  Gunakan Akun Demo
-                </button>
-              </div>
-              <div className="text-slate-400 font-mono text-[11px] bg-slate-900 p-2 rounded-lg border border-slate-800/80">
-                <div>User: <span className="text-white font-bold">admin</span></div>
-                <div>Pass: <span className="text-white font-bold">admin123</span></div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
