@@ -162,10 +162,10 @@ const AllDestinations = () => {
               className="w-full p-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm font-medium text-slate-700"
             >
               <option value="semua">Semua Kategori</option>
-              <option value="wisata">🏞️ Wisata</option>
-              <option value="kafe">☕ Kafe</option>
-              <option value="kuliner">🍽️ Kuliner</option>
-              <option value="hidden-gem">🌿 Hidden Gem</option>
+              <option value="wisata">Wisata</option>
+              <option value="kafe">Kafe</option>
+              <option value="kuliner">Kuliner</option>
+              <option value="hidden-gem">Hidden Gem</option>
             </select>
           </div>
 
@@ -194,9 +194,9 @@ const AllDestinations = () => {
               className="w-full p-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm font-medium text-slate-700"
             >
               <option value="semua">Semua Rating</option>
-              <option value="4.7">⭐ 4.7 ke atas</option>
-              <option value="4.5">⭐ 4.5 ke atas</option>
-              <option value="4.0">⭐ 4.0 ke atas</option>
+              <option value="4.7">Rating 4.7 ke atas</option>
+              <option value="4.5">Rating 4.5 ke atas</option>
+              <option value="4.0">Rating 4.0 ke atas</option>
             </select>
           </div>
 
