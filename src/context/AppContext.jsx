@@ -1,9 +1,20 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { initialVillages, initialDestinations, travelEstimatesData } from '../data/mockData';
+import { db, isFirebaseConfigured } from '../lib/firebase';
+import { 
+  collection, 
+  onSnapshot, 
+  addDoc, 
+  deleteDoc, 
+  doc, 
+  setDoc,
+  query, 
+  orderBy 
+} from 'firebase/firestore';
 
 export const AppContext = createContext();
 
-const DATA_VERSION = '2.1.0_trawas_auth_and_maps';
+const DATA_VERSION = '2.2.0_trawas_firebase_sync';
 
 // Initial real-like reviews for destinations
 const initialReviews = [
@@ -127,7 +138,78 @@ export const AppProvider = ({ children }) => {
     return initialReviews;
   });
 
-  // Persist to local storage & track version
+  // ----------------------------------------------------
+  // REAL-TIME CLOUD DATABASE SYNCHRONIZATION (FIREBASE)
+  // ----------------------------------------------------
+  useEffect(() => {
+    if (!isFirebaseConfigured || !db) return;
+
+    // Listen to real-time reviews collection from Firestore
+    try {
+      const reviewsCol = collection(db, 'reviews');
+      const q = query(reviewsCol);
+
+      const unsubscribe = onSnapshot(q, (snapshot) => {
+        if (!snapshot.empty) {
+          const cloudReviews = snapshot.docs.map((docSnap) => ({
+            id: docSnap.id,
+            ...docSnap.data()
+          }));
+          // Sort newest first
+          cloudReviews.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+          setReviews(cloudReviews);
+        } else {
+          // If Firestore collection is brand new and empty, seed with initialReviews
+          initialReviews.forEach((r) => {
+            addDoc(reviewsCol, {
+              destinationId: r.destinationId,
+              userId: r.userId,
+              userName: r.userName,
+              userEmail: r.userEmail,
+              userAvatar: r.userAvatar,
+              rating: r.rating,
+              comment: r.comment,
+              createdAt: r.createdAt
+            }).catch(() => {});
+          });
+        }
+      }, (error) => {
+        console.warn('Firestore reviews listener error:', error);
+      });
+
+      return () => unsubscribe();
+    } catch (err) {
+      console.warn('Error setting up Firestore listener:', err);
+    }
+  }, []);
+
+  // Sync user profile favorites & visited state with Firestore
+  useEffect(() => {
+    if (!isFirebaseConfigured || !db || !currentUser?.id) return;
+
+    try {
+      const userDocRef = doc(db, 'users', currentUser.id);
+      const unsubscribe = onSnapshot(userDocRef, (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (Array.isArray(data.favorites)) {
+            setFavorites(data.favorites);
+          }
+          if (Array.isArray(data.visitedDestinations)) {
+            setVisitedDestinations(data.visitedDestinations);
+          }
+        }
+      }, (err) => {
+        console.warn('Firestore user profile listener error:', err);
+      });
+
+      return () => unsubscribe();
+    } catch (err) {
+      console.warn('Error listening to user doc:', err);
+    }
+  }, [currentUser?.id]);
+
+  // Persist to local storage & track version (as offline fallback)
   useEffect(() => {
     localStorage.setItem('explore_trawas_data_version', DATA_VERSION);
     localStorage.setItem('explore_trawas_villages', JSON.stringify(villages));
@@ -176,6 +258,20 @@ export const AppProvider = ({ children }) => {
     const userVis = localStorage.getItem(`explore_trawas_vis_${user.id}`);
     if (userVis) {
       try { setVisitedDestinations(JSON.parse(userVis)); } catch (e) { console.error(e); }
+    }
+
+    // Also sync user info to Firestore if available
+    if (isFirebaseConfigured && db) {
+      try {
+        setDoc(doc(db, 'users', user.id), {
+          name: user.name,
+          email: user.email,
+          avatar: user.avatar,
+          lastLogin: new Date().toISOString()
+        }, { merge: true }).catch(console.error);
+      } catch (err) {
+        console.error(err);
+      }
     }
 
     return user;
@@ -247,10 +343,16 @@ export const AppProvider = ({ children }) => {
 
   // Favorite actions
   const toggleFavorite = (id) => {
+    let nextFavorites;
     if (favorites.includes(id)) {
-      setFavorites(favorites.filter(favId => favId !== id));
+      nextFavorites = favorites.filter(favId => favId !== id);
     } else {
-      setFavorites([...favorites, id]);
+      nextFavorites = [...favorites, id];
+    }
+    setFavorites(nextFavorites);
+
+    if (isFirebaseConfigured && db && currentUser?.id) {
+      setDoc(doc(db, 'users', currentUser.id), { favorites: nextFavorites }, { merge: true }).catch(console.error);
     }
   };
 
@@ -258,19 +360,24 @@ export const AppProvider = ({ children }) => {
 
   // Visited actions
   const toggleVisited = (id) => {
+    let nextVisited;
     if (visitedDestinations.includes(id)) {
-      setVisitedDestinations(visitedDestinations.filter(visId => visId !== id));
+      nextVisited = visitedDestinations.filter(visId => visId !== id);
     } else {
-      setVisitedDestinations([...visitedDestinations, id]);
+      nextVisited = [...visitedDestinations, id];
+    }
+    setVisitedDestinations(nextVisited);
+
+    if (isFirebaseConfigured && db && currentUser?.id) {
+      setDoc(doc(db, 'users', currentUser.id), { visitedDestinations: nextVisited }, { merge: true }).catch(console.error);
     }
   };
 
   const isVisited = (id) => visitedDestinations.includes(id);
 
-  // Review actions
-  const addReview = (reviewData) => {
+  // Review actions (Connected to Firestore Real-time)
+  const addReview = async (reviewData) => {
     const newReview = {
-      id: `rev-${Date.now()}`,
       destinationId: parseInt(reviewData.destinationId),
       userId: currentUser?.id || 'guest-user',
       userName: currentUser?.name || 'Pengunjung Trawas',
@@ -280,11 +387,30 @@ export const AppProvider = ({ children }) => {
       comment: reviewData.comment,
       createdAt: new Date().toISOString()
     };
-    setReviews([newReview, ...reviews]);
-    return newReview;
+
+    if (isFirebaseConfigured && db) {
+      try {
+        const docRef = await addDoc(collection(db, 'reviews'), newReview);
+        return { id: docRef.id, ...newReview };
+      } catch (error) {
+        console.error('Error saving review to Firestore:', error);
+      }
+    }
+
+    // Fallback if Firebase not configured
+    const localReview = { id: `rev-${Date.now()}`, ...newReview };
+    setReviews([localReview, ...reviews]);
+    return localReview;
   };
 
-  const deleteReview = (reviewId) => {
+  const deleteReview = async (reviewId) => {
+    if (isFirebaseConfigured && db) {
+      try {
+        await deleteDoc(doc(db, 'reviews', reviewId));
+      } catch (error) {
+        console.error('Error deleting review from Firestore:', error);
+      }
+    }
     setReviews(reviews.filter(r => r.id !== reviewId));
   };
 
@@ -299,6 +425,7 @@ export const AppProvider = ({ children }) => {
       visitedDestinations,
       reviews,
       travelEstimatesData,
+      isFirebaseConnected: isFirebaseConfigured,
       addVillage,
       updateVillage,
       deleteVillage,
