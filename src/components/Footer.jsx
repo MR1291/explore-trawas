@@ -54,7 +54,7 @@ const Footer = () => {
                 <Link to="/favorit" className="hover:text-emerald-400 transition-colors">Favorit Saya</Link>
               </li>
               <li>
-                <Link to="/admin" className="hover:text-emerald-400 transition-colors">Dashboard Admin</Link>
+                <Link to="/profil" className="hover:text-emerald-400 transition-colors">Profil & Aktivitas Saya</Link>
               </li>
             </ul>
           </div>

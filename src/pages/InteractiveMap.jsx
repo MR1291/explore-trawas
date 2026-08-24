@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { Compass, Coffee, Utensils, Sparkles, Filter, Navigation, Star } from 'lucide-react';
+import { Compass, Coffee, Utensils, Sparkles, Navigation, Star } from 'lucide-react';
 import L from 'leaflet';
 
 const InteractiveMap = () => {
@@ -121,13 +121,23 @@ const InteractiveMap = () => {
                     </div>
                     <p className="text-[10px] text-slate-500 line-clamp-2 mt-1 leading-normal">{dest.description}</p>
                   </div>
-                  <button
-                    onClick={() => navigate(`/destinasi/${dest.slug}`)}
-                    className="w-full inline-flex items-center justify-center py-1.5 bg-slate-900 text-white rounded text-[10px] font-bold hover:bg-emerald-600 transition-colors cursor-pointer"
-                  >
-                    <Navigation className="h-3 w-3 mr-1" />
-                    Lihat Detail &rarr;
-                  </button>
+                  <div className="flex gap-1.5 pt-1">
+                    <button
+                      onClick={() => navigate(`/destinasi/${dest.slug}`)}
+                      className="flex-1 inline-flex items-center justify-center py-1.5 bg-slate-900 text-white rounded-lg text-[10px] font-bold hover:bg-emerald-600 transition-colors cursor-pointer"
+                    >
+                      <Navigation className="h-3 w-3 mr-1" />
+                      Detail
+                    </button>
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(dest.name + ', ' + (dest.address || 'Trawas, Mojokerto'))}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center py-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg text-[10px] font-bold hover:bg-emerald-600 hover:text-white transition-colors cursor-pointer"
+                    >
+                      Maps ↗
+                    </a>
+                  </div>
                 </div>
               </Popup>
             </Marker>

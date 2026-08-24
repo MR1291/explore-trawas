@@ -11,6 +11,8 @@ import DestinationDetail from './pages/DestinationDetail';
 import AllDestinations from './pages/AllDestinations';
 import InteractiveMap from './pages/InteractiveMap';
 import Favorites from './pages/Favorites';
+import Login from './pages/Login';
+import UserProfile from './pages/UserProfile';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminLogin from './pages/AdminLogin';
 
@@ -42,9 +44,11 @@ function App() {
             <Route path="/destinasi" element={<AllDestinations />} />
             <Route path="/peta" element={<InteractiveMap />} />
             <Route path="/favorit" element={<Favorites />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profil" element={<UserProfile />} />
           </Route>
 
-          {/* Dedicated Separate Admin Routes */}
+          {/* Dedicated Separate Admin Routes (Protected from public navigation) */}
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/login" element={<AdminLogin />} />
         </Routes>
