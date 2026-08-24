@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-
 import { AppProvider } from './context/AppContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 // Pages
 import Home from './pages/Home';
@@ -34,6 +35,7 @@ function App() {
   return (
     <AppProvider>
       <Router>
+        <ScrollToTop />
         <Routes>
           {/* Public Website Routes */}
           <Route element={<PublicLayout />}>
