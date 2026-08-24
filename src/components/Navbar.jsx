@@ -61,22 +61,6 @@ const Navbar = () => {
               </Link>
             ))}
 
-            {/* Favorites Icon */}
-            <Link
-              to="/favorit"
-              className={`relative p-2 rounded-full transition-colors hover:bg-slate-100 hover:text-rose-600 ${
-                isActive('/favorit') ? 'text-rose-600 bg-rose-50' : 'text-slate-600'
-              }`}
-              title="Favorit Saya"
-            >
-              <Heart className={`h-5 w-5 ${isActive('/favorit') ? 'fill-rose-600' : ''}`} />
-              {favorites.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center border-2 border-white animate-pulse">
-                  {favorites.length}
-                </span>
-              )}
-            </Link>
-
             {/* Google User Authentication Dropdown or Login Button */}
             {currentUser ? (
               <div className="relative" ref={userMenuRef}>
@@ -116,7 +100,7 @@ const Navbar = () => {
                     </Link>
 
                     <Link
-                      to="/favorit"
+                      to="/profil"
                       onClick={() => setShowUserMenu(false)}
                       className="flex items-center px-4 py-2 text-xs font-medium text-slate-700 hover:bg-rose-50 hover:text-rose-700 transition-colors"
                     >
@@ -179,18 +163,6 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <div className="flex md:hidden items-center space-x-2">
-            <Link
-              to="/favorit"
-              className="relative p-2 text-slate-600 hover:text-rose-600 rounded-full"
-            >
-              <Heart className="h-5 w-5" />
-              {favorites.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">
-                  {favorites.length}
-                </span>
-              )}
-            </Link>
-
             {currentUser ? (
               <Link to="/profil" className="p-1">
                 <img

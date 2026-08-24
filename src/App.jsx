@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -10,7 +10,6 @@ import VillageDetail from './pages/VillageDetail';
 import DestinationDetail from './pages/DestinationDetail';
 import AllDestinations from './pages/AllDestinations';
 import InteractiveMap from './pages/InteractiveMap';
-import Favorites from './pages/Favorites';
 import Login from './pages/Login';
 import UserProfile from './pages/UserProfile';
 import AdminDashboard from './pages/AdminDashboard';
@@ -43,7 +42,7 @@ function App() {
             <Route path="/destinasi/:slug" element={<DestinationDetail />} />
             <Route path="/destinasi" element={<AllDestinations />} />
             <Route path="/peta" element={<InteractiveMap />} />
-            <Route path="/favorit" element={<Favorites />} />
+            <Route path="/favorit" element={<Navigate to="/profil" replace />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profil" element={<UserProfile />} />
           </Route>
