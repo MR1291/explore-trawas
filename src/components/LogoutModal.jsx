@@ -1,12 +1,13 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { LogOut, X } from 'lucide-react';
 
 const LogoutModal = ({ isOpen, onClose, onConfirm, userName }) => {
   if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fadeIn font-sans">
-      <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-100 text-center space-y-6 animate-scaleUp relative">
+  const modalContent = (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md font-sans">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-100 text-center space-y-6 relative animate-scaleUp my-auto">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -51,6 +52,12 @@ const LogoutModal = ({ isOpen, onClose, onConfirm, userName }) => {
       </div>
     </div>
   );
+
+  if (typeof document !== 'undefined') {
+    return ReactDOM.createPortal(modalContent, document.body);
+  }
+
+  return modalContent;
 };
 
 export default LogoutModal;
