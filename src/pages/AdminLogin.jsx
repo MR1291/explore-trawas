@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mountain, Lock, Mail, Eye, EyeOff, ArrowLeft, ShieldCheck, AlertCircle } from 'lucide-react';
+import { Mountain, Lock, Mail, Eye, EyeOff, ArrowLeft, ShieldCheck, AlertCircle, ShieldAlert } from 'lucide-react';
+import { AppContext } from '../context/AppContext';
 import trawasHeroBg from '../assets/trawas-hero.jpg';
 
 const AdminLogin = ({ onLoginSuccess }) => {
+  const { recordLoginLog } = useContext(AppContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [failedAttempts, setFailedAttempts] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -17,21 +20,50 @@ const AdminLogin = ({ onLoginSuccess }) => {
     setIsLoading(true);
 
     setTimeout(() => {
+      const trimmedUser = username.trim();
       // Authentication check
-      if ((username.trim() === 'admin' || username.trim() === 'admin@exploretrawas.id') && password === 'admin123') {
+      if ((trimmedUser === 'admin' || trimmedUser === 'admin@exploretrawas.id') && password === 'admin123') {
+        // Record successful admin login
+        if (recordLoginLog) {
+          recordLoginLog({
+            type: 'admin_portal',
+            role: 'Super Administrator',
+            userName: 'Admin Utama Trawas',
+            userEmail: trimmedUser.includes('@') ? trimmedUser : `${trimmedUser}@exploretrawas.id`,
+            status: 'success',
+            reason: 'Autentikasi Master Admin Berhasil'
+          });
+        }
+
         localStorage.setItem('explore_trawas_admin_auth', 'true');
-        localStorage.setItem('explore_trawas_admin_user', username.trim());
+        localStorage.setItem('explore_trawas_admin_user', trimmedUser);
         setIsLoading(false);
+
         if (onLoginSuccess) {
           onLoginSuccess();
         } else {
           navigate('/admin');
         }
       } else {
+        // Record failed attempt to audit log for security monitoring
+        const currentFailed = failedAttempts + 1;
+        setFailedAttempts(currentFailed);
+
+        if (recordLoginLog) {
+          recordLoginLog({
+            type: 'admin_portal',
+            role: 'Percobaan Akses Tidak Sah',
+            userName: trimmedUser || 'Tamu Tidak Dikenal',
+            userEmail: trimmedUser || 'unknown@visitor.local',
+            status: 'failed',
+            reason: `Kata sandi atau username salah pada Portal Admin (Percobaan #${currentFailed})`
+          });
+        }
+
         setIsLoading(false);
         setError('Username atau kata sandi yang Anda masukkan salah!');
       }
-    }, 400);
+    }, 450);
   };
 
   return (
@@ -43,7 +75,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
           alt="Panorama Trawas"
           className="w-full h-full object-cover opacity-50 scale-105"
         />
-        <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-slate-950/75 backdrop-blur-[2px]"></div>
       </div>
 
       {/* Decorative Blur Spheres */}
@@ -71,7 +103,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
             Portal Administrator
           </h2>
           <p className="text-xs md:text-sm text-slate-300 max-w-xs mx-auto drop-shadow">
-            Masuk untuk mengelola data desa wisata, destinasi, dan informasi pariwisata Trawas.
+            Masuk dengan kredensial pengelola untuk mengelola destinasi, memantau pengunjung, dan audit sistem.
           </p>
         </div>
 
@@ -79,9 +111,14 @@ const AdminLogin = ({ onLoginSuccess }) => {
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4 sm:px-0">
           <div className="bg-slate-900/90 backdrop-blur-xl py-8 px-6 sm:px-10 shadow-2xl rounded-3xl border border-slate-800/80 space-y-6">
             {error && (
-              <div className="bg-rose-500/15 border border-rose-500/30 rounded-xl p-3.5 flex items-center space-x-3 text-rose-300 text-xs animate-shake">
-                <AlertCircle className="h-4 w-4 shrink-0 text-rose-400" />
-                <span>{error}</span>
+              <div className="bg-rose-500/15 border border-rose-500/30 rounded-xl p-3.5 flex flex-col space-y-1.5 text-rose-300 text-xs animate-shake">
+                <div className="flex items-center space-x-2 font-bold">
+                  <AlertCircle className="h-4 w-4 shrink-0 text-rose-400" />
+                  <span>Akses Ditolak!</span>
+                </div>
+                <p className="text-rose-200/90 pl-6 leading-relaxed">
+                  {error} Percobaan login gagal telah <strong>dicatat ke dalam riwayat audit keamanan</strong> dashboard admin.
+                </p>
               </div>
             )}
 
@@ -89,7 +126,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
               {/* Username Input */}
               <div className="space-y-1.5">
                 <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
-                  Username / Email
+                  Username / Email Admin
                 </label>
                 <div className="relative rounded-xl shadow-sm">
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
@@ -100,7 +137,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
                     required
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Masukkan username atau email"
+                    placeholder="admin atau admin@exploretrawas.id"
                     className="block w-full pl-10 pr-3.5 py-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm transition-all"
                   />
                 </div>
@@ -133,6 +170,14 @@ const AdminLogin = ({ onLoginSuccess }) => {
                 </div>
               </div>
 
+              {/* Security Audit Badge Notice */}
+              <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800/80 flex items-start space-x-2 text-[11px] text-slate-400">
+                <ShieldAlert className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span>
+                  Portal ini dilindungi sistem <strong>Audit Keamanan Real-Time</strong>. Seluruh aktivitas login dipantau dan disimpan dalam histori pengelola.
+                </span>
+              </div>
+
               {/* Submit Button */}
               <button
                 type="submit"
@@ -145,12 +190,12 @@ const AdminLogin = ({ onLoginSuccess }) => {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
                     </svg>
-                    Memverifikasi...
+                    Memverifikasi Hak Akses...
                   </span>
                 ) : (
                   <span className="flex items-center">
                     <ShieldCheck className="h-4 w-4 mr-2" />
-                    Masuk ke Dashboard
+                    Masuk ke Dashboard Admin
                   </span>
                 )}
               </button>

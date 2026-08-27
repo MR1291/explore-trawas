@@ -7,16 +7,43 @@ import {
   addDoc, 
   deleteDoc, 
   doc, 
-  setDoc,
-  query, 
-  orderBy 
+  setDoc, 
+  query 
 } from 'firebase/firestore';
 
 export const AppContext = createContext();
 
-const DATA_VERSION = '2.2.0_trawas_firebase_sync';
+const DATA_VERSION = '2.4.0_trawas_real_users_live';
 
-// Initial real-like reviews for destinations
+// Device and Browser detection helper
+export const getDeviceInfo = () => {
+  if (typeof window === 'undefined' || !window.navigator) {
+    return { browser: 'Web Browser', os: 'Desktop', deviceType: 'Desktop', summary: 'Web Browser • Desktop' };
+  }
+  const ua = window.navigator.userAgent;
+  let browser = 'Chrome';
+  let os = 'Windows';
+  let deviceType = 'Desktop';
+
+  if (/mobile/i.test(ua)) deviceType = 'Mobile';
+  else if (/tablet|ipad/i.test(ua)) deviceType = 'Tablet';
+
+  if (/windows/i.test(ua)) os = 'Windows';
+  else if (/macintosh|mac os x/i.test(ua)) os = 'macOS';
+  else if (/android/i.test(ua)) os = 'Android';
+  else if (/iphone|ipad|ipod/i.test(ua)) os = 'iOS';
+  else if (/linux/i.test(ua)) os = 'Linux';
+
+  if (/edg/i.test(ua)) browser = 'Microsoft Edge';
+  else if (/chrome|crios/i.test(ua)) browser = 'Google Chrome';
+  else if (/firefox|fxios/i.test(ua)) browser = 'Mozilla Firefox';
+  else if (/safari/i.test(ua)) browser = 'Apple Safari';
+  else if (/opr\//i.test(ua)) browser = 'Opera';
+
+  return { browser, os, deviceType, summary: `${browser} • ${os}` };
+};
+
+// Initial reviews for destinations
 const initialReviews = [
   {
     id: 'rev-1',
@@ -54,7 +81,7 @@ const initialReviews = [
 ];
 
 export const AppProvider = ({ children }) => {
-  // Current Logged-in Google User
+  // Current Logged-in User
   const [currentUser, setCurrentUser] = useState(() => {
     const saved = localStorage.getItem('explore_trawas_current_user');
     if (saved) {
@@ -65,6 +92,34 @@ export const AppProvider = ({ children }) => {
       }
     }
     return null;
+  });
+
+  // Real registered users only (empty initially, populated on actual logins)
+  const [registeredUsers, setRegisteredUsers] = useState(() => {
+    const savedVersion = localStorage.getItem('explore_trawas_data_version');
+    const saved = localStorage.getItem('explore_trawas_registered_users');
+    if (savedVersion === DATA_VERSION && saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error('Error parsing registered users from localStorage', e);
+      }
+    }
+    return [];
+  });
+
+  // Real login audit logs only (empty initially, recorded on actual login attempts)
+  const [loginLogs, setLoginLogs] = useState(() => {
+    const savedVersion = localStorage.getItem('explore_trawas_data_version');
+    const saved = localStorage.getItem('explore_trawas_login_history');
+    if (savedVersion === DATA_VERSION && saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error('Error parsing login history from localStorage', e);
+      }
+    }
+    return [];
   });
 
   const [villages, setVillages] = useState(() => {
@@ -139,12 +194,53 @@ export const AppProvider = ({ children }) => {
   });
 
   // ----------------------------------------------------
+  // RECORD LOGIN LOG & AUDIT FUNCTION (REAL ATTEMPTS)
+  // ----------------------------------------------------
+  const recordLoginLog = (entry) => {
+    const dev = getDeviceInfo();
+    const newLog = {
+      id: `log-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+      type: entry.type || 'user_web', // 'admin_portal' | 'user_web'
+      role: entry.role || (entry.type === 'admin_portal' ? 'Super Administrator' : 'Pengunjung Web'),
+      userName: entry.userName || 'Pengguna',
+      userEmail: entry.userEmail || 'user@exploretrawas.id',
+      status: entry.status || 'success', // 'success' | 'failed'
+      reason: entry.reason || (entry.status === 'failed' ? 'Gagal autentikasi' : 'Berhasil masuk sistem'),
+      device: entry.device || dev.summary,
+      ip: entry.ip || (typeof window !== 'undefined' ? `${window.location.hostname} (Lokal/Web)` : 'Web Client'),
+      timestamp: entry.timestamp || new Date().toISOString()
+    };
+
+    setLoginLogs(prev => [newLog, ...prev]);
+
+    // Also sync to Firestore if configured
+    if (isFirebaseConfigured && db) {
+      try {
+        addDoc(collection(db, 'login_history'), newLog).catch(console.warn);
+      } catch (e) {
+        console.warn('Firestore login log error:', e);
+      }
+    }
+
+    return newLog;
+  };
+
+  const clearLoginHistory = () => {
+    setLoginLogs([]);
+    localStorage.removeItem('explore_trawas_login_history');
+  };
+
+  const deleteLoginLog = (logId) => {
+    setLoginLogs(prev => prev.filter(item => item.id !== logId));
+  };
+
+  // ----------------------------------------------------
   // REAL-TIME CLOUD DATABASE SYNCHRONIZATION (FIREBASE)
   // ----------------------------------------------------
   useEffect(() => {
     if (!isFirebaseConfigured || !db) return;
 
-    // Listen to real-time reviews collection from Firestore
+    // Listen to reviews
     try {
       const reviewsCol = collection(db, 'reviews');
       const q = query(reviewsCol);
@@ -155,23 +251,8 @@ export const AppProvider = ({ children }) => {
             id: docSnap.id,
             ...docSnap.data()
           }));
-          // Sort newest first
           cloudReviews.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
           setReviews(cloudReviews);
-        } else {
-          // If Firestore collection is brand new and empty, seed with initialReviews
-          initialReviews.forEach((r) => {
-            addDoc(reviewsCol, {
-              destinationId: r.destinationId,
-              userId: r.userId,
-              userName: r.userName,
-              userEmail: r.userEmail,
-              userAvatar: r.userAvatar,
-              rating: r.rating,
-              comment: r.comment,
-              createdAt: r.createdAt
-            }).catch(() => {});
-          });
         }
       }, (error) => {
         console.warn('Firestore reviews listener error:', error);
@@ -180,6 +261,28 @@ export const AppProvider = ({ children }) => {
       return () => unsubscribe();
     } catch (err) {
       console.warn('Error setting up Firestore listener:', err);
+    }
+  }, []);
+
+  // Listen to users collection in Firestore
+  useEffect(() => {
+    if (!isFirebaseConfigured || !db) return;
+
+    try {
+      const usersCol = collection(db, 'users');
+      const unsubscribe = onSnapshot(usersCol, (snapshot) => {
+        if (!snapshot.empty) {
+          const cloudUsers = snapshot.docs.map((docSnap) => ({
+            id: docSnap.id,
+            ...docSnap.data()
+          }));
+          setRegisteredUsers(cloudUsers);
+        }
+      }, (err) => console.warn('Firestore users listener error:', err));
+
+      return () => unsubscribe();
+    } catch (err) {
+      console.warn(err);
     }
   }, []);
 
@@ -209,7 +312,7 @@ export const AppProvider = ({ children }) => {
     }
   }, [currentUser?.id]);
 
-  // Persist to local storage & track version (as offline fallback)
+  // Persist to local storage & track version
   useEffect(() => {
     localStorage.setItem('explore_trawas_data_version', DATA_VERSION);
     localStorage.setItem('explore_trawas_villages', JSON.stringify(villages));
@@ -238,18 +341,65 @@ export const AppProvider = ({ children }) => {
     localStorage.setItem('explore_trawas_reviews', JSON.stringify(reviews));
   }, [reviews]);
 
-  // Google Login actions
+  useEffect(() => {
+    localStorage.setItem('explore_trawas_registered_users', JSON.stringify(registeredUsers));
+  }, [registeredUsers]);
+
+  useEffect(() => {
+    localStorage.setItem('explore_trawas_login_history', JSON.stringify(loginLogs));
+  }, [loginLogs]);
+
+  // Google / Web User Login action (Actual Real Account)
   const loginWithGoogle = (userData) => {
+    const nowISO = new Date().toISOString();
     const user = {
-      id: userData.id || `google-${Date.now()}`,
-      name: userData.name || 'Pengguna Google',
+      id: userData.id || `user-${Date.now()}`,
+      name: userData.name || 'Pengguna Trawas',
       email: userData.email || 'user@gmail.com',
       avatar: userData.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(userData.name || 'User')}`,
-      provider: 'google',
-      joinedAt: userData.joinedAt || new Date().toISOString()
+      provider: userData.provider || 'google',
+      joinedAt: userData.joinedAt || nowISO,
+      lastActiveAt: nowISO,
+      role: 'Pengunjung Web'
     };
+
     setCurrentUser(user);
     localStorage.setItem('explore_trawas_current_user', JSON.stringify(user));
+
+    // Update or add in real registered users list
+    setRegisteredUsers(prev => {
+      const existingIdx = prev.findIndex(u => u.email === user.email || u.id === user.id);
+      if (existingIdx >= 0) {
+        const updated = [...prev];
+        updated[existingIdx] = {
+          ...updated[existingIdx],
+          name: user.name,
+          avatar: user.avatar,
+          lastActiveAt: nowISO,
+          totalFavorites: favorites.length
+        };
+        return updated;
+      } else {
+        return [
+          {
+            ...user,
+            totalFavorites: favorites.length,
+            totalReviews: 0
+          },
+          ...prev
+        ];
+      }
+    });
+
+    // Record in Security Audit / Login Log
+    recordLoginLog({
+      type: 'user_web',
+      role: 'Pengunjung Web',
+      userName: user.name,
+      userEmail: user.email,
+      status: 'success',
+      reason: user.provider === 'google' ? 'Login Akun Google Berhasil' : 'Login Email Manual Berhasil'
+    });
 
     const userFavs = localStorage.getItem(`explore_trawas_fav_${user.id}`);
     if (userFavs) {
@@ -260,14 +410,15 @@ export const AppProvider = ({ children }) => {
       try { setVisitedDestinations(JSON.parse(userVis)); } catch (e) { console.error(e); }
     }
 
-    // Also sync user info to Firestore if available
+    // Also sync real user info to Firestore if available
     if (isFirebaseConfigured && db) {
       try {
         setDoc(doc(db, 'users', user.id), {
           name: user.name,
           email: user.email,
           avatar: user.avatar,
-          lastLogin: new Date().toISOString()
+          provider: user.provider,
+          lastLogin: nowISO
         }, { merge: true }).catch(console.error);
       } catch (err) {
         console.error(err);
@@ -339,6 +490,8 @@ export const AppProvider = ({ children }) => {
     setVillages(initialVillages);
     setDestinations(initialDestinations);
     setReviews(initialReviews);
+    setRegisteredUsers([]);
+    setLoginLogs([]);
   };
 
   // Favorite actions
@@ -417,6 +570,11 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider value={{
       currentUser,
+      registeredUsers,
+      loginLogs,
+      recordLoginLog,
+      clearLoginHistory,
+      deleteLoginLog,
       loginWithGoogle,
       logoutUser,
       villages,

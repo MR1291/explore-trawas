@@ -44,10 +44,11 @@ const Login = () => {
     setIsLoading(true);
     setTimeout(() => {
       loginWithGoogle({
-        id: `google-${Date.now()}`,
+        id: `custom-${Date.now()}`,
         name: customName.trim(),
         email: customEmail.trim(),
-        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(customName.trim())}`
+        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(customName.trim())}`,
+        provider: 'email'
       });
       setIsLoading(false);
       navigate(redirectPath, { replace: true });
