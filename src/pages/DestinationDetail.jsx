@@ -246,44 +246,69 @@ const DestinationDetail = () => {
               </div>
             </div>
 
-            {/* No. HP / WhatsApp */}
-            <div className="flex items-start">
-              <Phone className="h-5 w-5 text-emerald-600 mr-3 shrink-0 mt-0.5" />
-              <div>
-                <div className="text-xs text-slate-400 font-semibold uppercase">No. HP / WhatsApp Pengelola</div>
-                <div className="text-sm text-slate-800 font-bold mt-0.5">
-                  {dest.contact && dest.contact !== '-' ? (
-                    <a
-                      href={dest.contact.includes('08') ? `https://wa.me/62${dest.contact.replace(/^0/, '').replace(/[^0-9]/g, '')}` : '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-emerald-600 hover:text-emerald-700 transition-colors inline-flex items-center gap-1"
-                    >
-                      {dest.contact}
-                    </a>
-                  ) : (
-                    <span className="text-slate-700">0857-3000-8890 (Pengelola Desa {village ? village.name : 'Trawas'})</span>
-                  )}
-                </div>
-              </div>
-            </div>
+            {/* Direct Action Contacts: WhatsApp & Gmail */}
+            {(() => {
+              const displayPhone = dest.contact && dest.contact !== '-' ? dest.contact : '0857-3000-8890';
+              const cleanPhoneDigits = displayPhone.replace(/^0/, '').replace(/[^0-9]/g, '');
+              const waUrl = `https://wa.me/62${cleanPhoneDigits}?text=${encodeURIComponent(`Halo Pengelola ${dest.name}, saya ingin bertanya informasi wisata dan reservasi.`)}`;
 
-            {/* Email Pengelola */}
-            <div className="flex items-start">
-              <Mail className="h-5 w-5 text-emerald-600 mr-3 shrink-0 mt-0.5" />
-              <div>
-                <div className="text-xs text-slate-400 font-semibold uppercase">Email Pengelola / Reservasi</div>
-                <div className="text-sm text-slate-800 font-bold mt-0.5">
-                  {dest.email ? (
-                    <a href={`mailto:${dest.email}`} className="text-emerald-600 hover:text-emerald-700 transition-colors">
-                      {dest.email}
-                    </a>
-                  ) : (
-                    <span className="text-slate-700">{`info@wisata-${village ? village.slug : 'trawas'}.id`}</span>
-                  )}
+              const displayEmail = dest.email || `reservasi.${village ? village.slug : 'trawas'}@gmail.com`;
+              const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(displayEmail)}&su=${encodeURIComponent(`Tanya Informasi & Reservasi - ${dest.name}`)}`;
+
+              return (
+                <div className="border-t pt-4 space-y-3">
+                  <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                    Kontak & Reservasi Pengelola
+                  </div>
+
+                  {/* WhatsApp Direct Action Button */}
+                  <a
+                    href={waUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-between p-3 rounded-2xl bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-200/80 transition-all cursor-pointer group shadow-sm"
+                  >
+                    <div className="flex items-center space-x-3 min-w-0">
+                      <div className="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                        <Phone className="w-4.5 h-4.5" />
+                      </div>
+                      <div className="text-left truncate">
+                        <div className="text-[10px] font-bold text-emerald-700 uppercase tracking-tight">No. HP / WhatsApp</div>
+                        <div className="text-xs font-black text-emerald-950 truncate">
+                          {displayPhone}
+                        </div>
+                      </div>
+                    </div>
+                    <span className="text-[11px] font-bold bg-emerald-600 text-white px-3 py-1.5 rounded-xl shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                      Chat WA &rarr;
+                    </span>
+                  </a>
+
+                  {/* Gmail Direct Action Button */}
+                  <a
+                    href={gmailUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-between p-3 rounded-2xl bg-rose-50 hover:bg-rose-100/90 border border-rose-200/80 transition-all cursor-pointer group shadow-sm"
+                  >
+                    <div className="flex items-center space-x-3 min-w-0">
+                      <div className="w-9 h-9 rounded-xl bg-rose-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+                        <Mail className="w-4.5 h-4.5" />
+                      </div>
+                      <div className="text-left truncate">
+                        <div className="text-[10px] font-bold text-rose-700 uppercase tracking-tight">Email Reservasi (Gmail)</div>
+                        <div className="text-xs font-black text-rose-950 truncate">
+                          {displayEmail}
+                        </div>
+                      </div>
+                    </div>
+                    <span className="text-[11px] font-bold bg-rose-500 text-white px-3 py-1.5 rounded-xl shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                      Kirim Email &rarr;
+                    </span>
+                  </a>
                 </div>
-              </div>
-            </div>
+              );
+            })()}
           </div>
 
           {/* Direct Google Maps Action Buttons */}
