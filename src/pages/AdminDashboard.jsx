@@ -19,9 +19,13 @@ const AdminDashboard = () => {
     resetToDefaultData
   } = useContext(AppContext);
 
-  const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    return localStorage.getItem('explore_trawas_admin_auth') === 'true';
-  });
+  // Admin authentication is strictly session-based and resets to logged out on page reload/reset
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Clear any persistent storage on mount
+  React.useEffect(() => {
+    localStorage.removeItem('explore_trawas_admin_auth');
+  }, []);
 
   // Tab State: 'overview' | 'destinasi' | 'desa' | 'pengguna' | 'riwayat'
   const [activeTab, setActiveTab] = useState('overview');
@@ -463,7 +467,8 @@ const AdminDashboard = () => {
               onClick={() => {
                 if (confirm('Kembalikan semua data desa, destinasi, dan riwayat login ke data default?')) {
                   resetToDefaultData();
-                  showToast('Data berhasil direset ke default!');
+                  setIsAuthenticated(false);
+                  showToast('Data berhasil direset dan sesi admin ditutup.');
                 }
               }}
               className="inline-flex items-center px-3.5 py-2 rounded-xl text-xs font-bold text-slate-300 bg-slate-900/90 border border-slate-700 hover:bg-slate-800 transition-all cursor-pointer shadow-md"

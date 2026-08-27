@@ -35,8 +35,6 @@ const AdminLogin = ({ onLoginSuccess }) => {
           });
         }
 
-        localStorage.setItem('explore_trawas_admin_auth', 'true');
-        localStorage.setItem('explore_trawas_admin_user', trimmedUser);
         setIsLoading(false);
 
         if (onLoginSuccess) {
