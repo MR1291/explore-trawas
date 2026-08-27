@@ -246,15 +246,19 @@ const DestinationDetail = () => {
               </div>
             </div>
 
-            {dest.contact && dest.contact !== '-' && (
-              <div className="flex items-start">
-                <Phone className="h-5 w-5 text-emerald-600 mr-3 shrink-0 mt-0.5" />
-                <div>
-                  <div className="text-xs text-slate-400 font-semibold uppercase">Kontak</div>
-                  <div className="text-sm text-slate-700 font-medium">{dest.contact}</div>
+            <div className="flex items-start">
+              <Phone className="h-5 w-5 text-emerald-600 mr-3 shrink-0 mt-0.5" />
+              <div>
+                <div className="text-xs text-slate-400 font-semibold uppercase">Kontak / Layanan Informasi</div>
+                <div className="text-sm text-slate-800 font-bold mt-0.5">
+                  {dest.contact && dest.contact !== '-' ? (
+                    <span>{dest.contact}</span>
+                  ) : (
+                    <span>Kantor Informasi / BUMDes Desa {village ? village.name : 'Trawas'}</span>
+                  )}
                 </div>
               </div>
-            )}
+            </div>
           </div>
 
           {/* Direct Google Maps Action Buttons */}
