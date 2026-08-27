@@ -5,10 +5,12 @@ import {
   Heart, MapPin, Star, MessageSquare, LogOut, CheckCircle2,
   Compass, Eye, Trash2, Calendar, ShieldCheck, User
 } from 'lucide-react';
+import LogoutModal from '../components/LogoutModal';
 
 const UserProfile = () => {
   const { currentUser, logoutUser, favorites, visitedDestinations, reviews, destinations, toggleFavorite, toggleVisited, deleteReview } = useContext(AppContext);
   const [activeTab, setActiveTab] = useState('favorites'); // 'favorites' | 'visited' | 'reviews'
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const navigate = useNavigate();
 
   if (!currentUser) {
@@ -37,7 +39,8 @@ const UserProfile = () => {
   const visitedPlaces = destinations.filter(d => visitedDestinations.includes(d.id));
   const userReviews = reviews.filter(r => r.userId === currentUser.id || r.userEmail === currentUser.email);
 
-  const handleLogout = () => {
+  const handleConfirmLogout = () => {
+    setShowLogoutModal(false);
     logoutUser();
     navigate('/');
   };
@@ -77,7 +80,7 @@ const UserProfile = () => {
           </div>
 
           <button
-            onClick={handleLogout}
+            onClick={() => setShowLogoutModal(true)}
             className="inline-flex items-center px-4 py-2.5 rounded-xl text-xs font-bold text-rose-300 hover:text-white bg-white/10 hover:bg-rose-600/80 border border-white/10 transition-all cursor-pointer shadow-sm shrink-0"
           >
             <LogOut className="w-3.5 h-3.5 mr-1.5" />
@@ -371,6 +374,14 @@ const UserProfile = () => {
           )}
         </div>
       )}
+
+      {/* Confirmation Modal for Logout */}
+      <LogoutModal
+        isOpen={showLogoutModal}
+        userName={currentUser?.name}
+        onClose={() => setShowLogoutModal(false)}
+        onConfirm={handleConfirmLogout}
+      />
     </div>
   );
 };

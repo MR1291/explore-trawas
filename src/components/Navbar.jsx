@@ -2,13 +2,22 @@ import React, { useState, useContext, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { Mountain, Menu, X, Heart, Compass, User, LogOut, ChevronDown, CheckCircle2 } from 'lucide-react';
+import LogoutModal from './LogoutModal';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const userMenuRef = useRef(null);
   const { favorites, currentUser, logoutUser } = useContext(AppContext);
   const location = useLocation();
+
+  const handleConfirmLogout = () => {
+    logoutUser();
+    setShowLogoutModal(false);
+    setShowUserMenu(false);
+    setIsOpen(false);
+  };
 
   const navLinks = [
     { name: 'Beranda', path: '/' },
@@ -111,8 +120,8 @@ const Navbar = () => {
                     <div className="border-t border-slate-100 pt-1">
                       <button
                         onClick={() => {
-                          logoutUser();
                           setShowUserMenu(false);
+                          setShowLogoutModal(true);
                         }}
                         className="w-full flex items-center px-4 py-2 text-xs font-medium text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
                       >
@@ -248,12 +257,12 @@ const Navbar = () => {
               <div className="pt-2 border-t border-slate-100">
                 <button
                   onClick={() => {
-                    logoutUser();
                     setIsOpen(false);
+                    setShowLogoutModal(true);
                   }}
-                  className="w-full text-left px-3 py-2 text-sm font-semibold text-rose-600 hover:bg-rose-50 rounded-xl"
+                  className="w-full text-left px-3 py-2 text-sm font-semibold text-rose-600 hover:bg-rose-50 rounded-xl cursor-pointer"
                 >
-                  Keluar Akun Google
+                  Keluar Akun
                 </button>
               </div>
             ) : (
@@ -281,6 +290,14 @@ const Navbar = () => {
           </div>
         </div>
       )}
+
+      {/* Confirmation Modal for Logout */}
+      <LogoutModal
+        isOpen={showLogoutModal}
+        userName={currentUser?.name}
+        onClose={() => setShowLogoutModal(false)}
+        onConfirm={handleConfirmLogout}
+      />
     </nav>
   );
 };
