@@ -59,23 +59,52 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Details */}
+          {/* Destination Contacts & Info */}
           <div>
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Hubungi Kami</h3>
+            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Kontak Destinasi Wisata</h3>
             <ul className="space-y-3 text-sm text-slate-400">
               <li className="flex items-start">
-                <MapPin className="h-5 w-5 mr-2 text-emerald-400 shrink-0" />
-                <span>Kecamatan Trawas, Mojokerto, Jawa Timur, Indonesia</span>
-              </li>
-              <li className="flex items-center">
-                <Phone className="h-5 w-5 mr-2 text-emerald-400 shrink-0" />
-                <span>+62 812-3456-7890</span>
-              </li>
-              <li className="flex items-center">
-                <Mail className="h-5 w-5 mr-2 text-emerald-400 shrink-0" />
-                <span>info@exploretrawas.id</span>
+                <MapPin className="h-5 w-5 mr-2 text-emerald-400 shrink-0 mt-0.5" />
+                <span>Kecamatan Trawas, Kabupaten Mojokerto, Jawa Timur</span>
               </li>
             </ul>
+            <p className="text-slate-400 text-xs leading-relaxed mt-3 mb-2.5">
+              Setiap destinasi memiliki kontak pengelola, telepon/WhatsApp, dan alamat lokasi pada detail halaman:
+            </p>
+            <ul className="space-y-1.5 text-xs text-slate-300">
+              <li>
+                <Link to="/destinasi/air-terjun-dlundung-trawas" className="hover:text-emerald-400 transition-colors inline-flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2"></span>
+                  Air Terjun Dlundung & Camping
+                </Link>
+              </li>
+              <li>
+                <Link to="/destinasi/sumber-gempong" className="hover:text-emerald-400 transition-colors inline-flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2"></span>
+                  Wisata Sawah Sumber Gempong
+                </Link>
+              </li>
+              <li>
+                <Link to="/destinasi/rustic-market-trawas" className="hover:text-emerald-400 transition-colors inline-flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2"></span>
+                  Rustic Market & UTC Tamiajeng
+                </Link>
+              </li>
+              <li>
+                <Link to="/destinasi/basecamp-pendakian-via-tamiajeng" className="hover:text-emerald-400 transition-colors inline-flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2"></span>
+                  Pos Pendakian Penanggungan
+                </Link>
+              </li>
+            </ul>
+            <div className="pt-3">
+              <Link
+                to="/destinasi"
+                className="inline-flex items-center text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
+              >
+                Lihat Kontak Seluruh Destinasi &rarr;
+              </Link>
+            </div>
           </div>
         </div>
 

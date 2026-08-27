@@ -741,7 +741,7 @@ export const initialDestinations = [
     longitude: 112.624792,
     opening_hours: "07:30 - 16:00 WIB (Area camping 24 Jam)",
     price: 15000,
-    contact: "0812-3456-7890",
+    contact: "0857-3000-8890 (Pengelola BUMDes Ketapanrame)",
     image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
     images: [
       "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
