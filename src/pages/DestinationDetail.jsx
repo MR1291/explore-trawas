@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import {
-  MapPin, Clock, DollarSign, Phone, Share2, Heart, Star,
+  MapPin, Clock, DollarSign, Phone, Mail, Share2, Heart, Star,
   ArrowLeft, Check, Navigation, Info, MessageSquare, CheckCircle2,
   Send, Sparkles, User, ExternalLink
 } from 'lucide-react';
@@ -246,15 +246,40 @@ const DestinationDetail = () => {
               </div>
             </div>
 
+            {/* No. HP / WhatsApp */}
             <div className="flex items-start">
               <Phone className="h-5 w-5 text-emerald-600 mr-3 shrink-0 mt-0.5" />
               <div>
-                <div className="text-xs text-slate-400 font-semibold uppercase">Kontak / Layanan Informasi</div>
+                <div className="text-xs text-slate-400 font-semibold uppercase">No. HP / WhatsApp Pengelola</div>
                 <div className="text-sm text-slate-800 font-bold mt-0.5">
                   {dest.contact && dest.contact !== '-' ? (
-                    <span>{dest.contact}</span>
+                    <a
+                      href={dest.contact.includes('08') ? `https://wa.me/62${dest.contact.replace(/^0/, '').replace(/[^0-9]/g, '')}` : '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-600 hover:text-emerald-700 transition-colors inline-flex items-center gap-1"
+                    >
+                      {dest.contact}
+                    </a>
                   ) : (
-                    <span>Kantor Informasi / BUMDes Desa {village ? village.name : 'Trawas'}</span>
+                    <span className="text-slate-700">0857-3000-8890 (Pengelola Desa {village ? village.name : 'Trawas'})</span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Email Pengelola */}
+            <div className="flex items-start">
+              <Mail className="h-5 w-5 text-emerald-600 mr-3 shrink-0 mt-0.5" />
+              <div>
+                <div className="text-xs text-slate-400 font-semibold uppercase">Email Pengelola / Reservasi</div>
+                <div className="text-sm text-slate-800 font-bold mt-0.5">
+                  {dest.email ? (
+                    <a href={`mailto:${dest.email}`} className="text-emerald-600 hover:text-emerald-700 transition-colors">
+                      {dest.email}
+                    </a>
+                  ) : (
+                    <span className="text-slate-700">{`info@wisata-${village ? village.slug : 'trawas'}.id`}</span>
                   )}
                 </div>
               </div>
