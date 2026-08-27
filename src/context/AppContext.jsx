@@ -13,7 +13,7 @@ import {
 
 export const AppContext = createContext();
 
-const DATA_VERSION = '2.4.0_trawas_real_users_live';
+const DATA_VERSION = '2.5.0_trawas_clean_nostack';
 
 // Device and Browser detection helper
 export const getDeviceInfo = () => {
@@ -108,7 +108,7 @@ export const AppProvider = ({ children }) => {
     return [];
   });
 
-  // Real login audit logs only (empty initially, recorded on actual login attempts)
+  // Real login audit logs only (empty initially, updated cleanly without duplicate stacking)
   const [loginLogs, setLoginLogs] = useState(() => {
     const savedVersion = localStorage.getItem('explore_trawas_data_version');
     const saved = localStorage.getItem('explore_trawas_login_history');
@@ -194,24 +194,48 @@ export const AppProvider = ({ children }) => {
   });
 
   // ----------------------------------------------------
-  // RECORD LOGIN LOG & AUDIT FUNCTION (REAL ATTEMPTS)
+  // RECORD LOGIN LOG & AUDIT FUNCTION (ANTI-STACKING)
   // ----------------------------------------------------
   const recordLoginLog = (entry) => {
     const dev = getDeviceInfo();
+    const timestamp = entry.timestamp || new Date().toISOString();
+    const email = (entry.userEmail || '').trim().toLowerCase();
+    const type = entry.type || 'user_web';
+    const status = entry.status || 'success';
+
     const newLog = {
       id: `log-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
-      type: entry.type || 'user_web', // 'admin_portal' | 'user_web'
-      role: entry.role || (entry.type === 'admin_portal' ? 'Super Administrator' : 'Pengunjung Web'),
+      type: type, // 'admin_portal' | 'user_web'
+      role: entry.role || (type === 'admin_portal' ? 'Super Administrator' : 'Pengunjung Web'),
       userName: entry.userName || 'Pengguna',
       userEmail: entry.userEmail || 'user@exploretrawas.id',
-      status: entry.status || 'success', // 'success' | 'failed'
-      reason: entry.reason || (entry.status === 'failed' ? 'Gagal autentikasi' : 'Berhasil masuk sistem'),
+      status: status, // 'success' | 'failed'
+      reason: entry.reason || (status === 'failed' ? 'Gagal autentikasi' : 'Berhasil masuk sistem'),
       device: entry.device || dev.summary,
       ip: entry.ip || (typeof window !== 'undefined' ? `${window.location.hostname} (Lokal/Web)` : 'Web Client'),
-      timestamp: entry.timestamp || new Date().toISOString()
+      timestamp: timestamp
     };
 
-    setLoginLogs(prev => [newLog, ...prev]);
+    setLoginLogs(prev => {
+      // Anti-stacking: Update existing session if already logged in previously
+      const existingIdx = prev.findIndex(item => 
+        (item.userEmail && item.userEmail.toLowerCase() === email) && item.type === type
+      );
+
+      if (existingIdx !== -1) {
+        const updated = [...prev];
+        updated[existingIdx] = {
+          ...updated[existingIdx],
+          ...newLog,
+          id: updated[existingIdx].id
+        };
+        // Move latest updated session to the top
+        const [item] = updated.splice(existingIdx, 1);
+        return [item, ...updated];
+      }
+
+      return [newLog, ...prev];
+    });
 
     // Also sync to Firestore if configured
     if (isFirebaseConfigured && db) {
