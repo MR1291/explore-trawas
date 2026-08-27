@@ -248,7 +248,7 @@ const DestinationDetail = () => {
 
             {/* Direct Action Contacts: WhatsApp & Gmail */}
             {(() => {
-              const displayPhone = dest.contact && dest.contact !== '-' ? dest.contact : '0857-3000-8890';
+              const displayPhone = dest.contact && dest.contact !== '-' ? dest.contact : '0857-0734-3617';
               const cleanPhoneDigits = displayPhone.replace(/^0/, '').replace(/[^0-9]/g, '');
               const waUrl = `https://wa.me/62${cleanPhoneDigits}?text=${encodeURIComponent(`Halo Pengelola ${dest.name}, saya ingin bertanya informasi wisata dan reservasi.`)}`;
 
