@@ -1,112 +1,103 @@
 // Data Desa di Kecamatan Trawas, Kabupaten Mojokerto
 export const initialVillages = [
   {
-    id: 1,
-    name: "Ketapanrame",
-    slug: "ketapanrame",
-    description: "Desa Wisata Terbaik Nasional yang memadukan keindahan alam lereng Gunung Welirang dan Penanggungan, wisata sawah Sumber Gempong yang viral, Air Terjun Dlundung, serta hiburan keluarga Taman Ghanjaran.",
-    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
-    location: "Kecamatan Trawas, Kabupaten Mojokerto",
-    access_notes: "Akses jalan sangat baik, beraspal mulus dan dapat dilalui sepeda motor, mobil pribadi, hingga bus pariwisata."
+    "id": 1,
+    "name": "Ketapanrame",
+    "slug": "ketapanrame",
+    "description": "Desa Wisata Terbaik Nasional yang memadukan keindahan alam lereng Gunung Welirang dan Penanggungan, wisata sawah Sumber Gempong yang viral, Air Terjun Dlundung, serta hiburan keluarga Taman Ghanjaran.",
+    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+    "location": "Kecamatan Trawas, Kabupaten Mojokerto",
+    "access_notes": "Akses jalan sangat baik, beraspal mulus dan dapat dilalui sepeda motor, mobil pribadi, hingga bus pariwisata."
   },
   {
-    id: 2,
-    name: "Tamiajeng",
-    slug: "tamiajeng",
-    description: "Gerbang utama dan jalur pendakian terpopuler menuju Puncak Pawitra Gunung Penanggungan. Tamiajeng juga menjadi pusat kafe-kafe estetik bernuansa Eropa (Rustic Market), roastery kopi lokal, serta fasilitas terpadu Ubaya Training Center (UTC).",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
-    location: "Kecamatan Trawas, Kabupaten Mojokerto",
-    access_notes: "Akses jalan beraspal halus. Motor, mobil, dan bus rombongan (ke UTC) dapat melintas dengan mudah."
+    "id": 2,
+    "name": "Tamiajeng",
+    "slug": "tamiajeng",
+    "description": "Gerbang utama dan jalur pendakian terpopuler menuju Puncak Pawitra Gunung Penanggungan. Tamiajeng juga menjadi pusat kafe-kafe estetik bernuansa Eropa (Rustic Market), roastery kopi lokal, serta fasilitas terpadu Ubaya Training Center (UTC).",
+    "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+    "location": "Kecamatan Trawas, Kabupaten Mojokerto",
+    "access_notes": "Akses jalan beraspal halus. Motor, mobil, dan bus rombongan (ke UTC) dapat melintas dengan mudah."
   },
   {
-    id: 3,
-    name: "Kedungudi",
-    slug: "kedungudi",
-    description: "Desa asri di lereng Gunung Penanggungan yang memiliki jalur pendakian bersejarah melewati kompleks candi peninggalan Majapahit (Candi Carik, Lurah, Siwa, Luruh), camping ground Bukit Metet & Jambe, serta kafe panorama sawah Sky Park Hill.",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-    location: "Kecamatan Trawas, Kabupaten Mojokerto",
-    access_notes: "Jalan desa sudah beraspal dan beton dengan tanjakan khas perbukitan; sangat ramah untuk motor dan mobil pribadi, tidak cocok untuk bus besar."
+    "id": 4,
+    "name": "Jatijejer",
+    "slug": "jatijejer",
+    "description": "Kawasan sejuk dengan hutan pinus yang rindang, air terjun tersembunyi Coban Cebol, wisata spiritual Goa Putih (Goa Anoman), pusat pelatihan LDKS Sasana Krida (SKJJ), Obis Camp, serta deretan resto keluarga dan kafe modern.",
+    "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+    "location": "Kecamatan Trawas, Kabupaten Mojokerto",
+    "access_notes": "Terletak di jalur utama Trawas-Mojosari. Akses sangat mulus untuk roda dua, mobil pribadi, hingga bus instansi/rombongan besar."
   },
   {
-    id: 4,
-    name: "Jatijejer",
-    slug: "jatijejer",
-    description: "Kawasan sejuk dengan hutan pinus yang rindang, air terjun tersembunyi Coban Cebol, wisata spiritual Goa Putih (Goa Anoman), pusat pelatihan LDKS Sasana Krida (SKJJ), Obis Camp, serta deretan resto keluarga dan kafe modern.",
-    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
-    location: "Kecamatan Trawas, Kabupaten Mojokerto",
-    access_notes: "Terletak di jalur utama Trawas-Mojosari. Akses sangat mulus untuk roda dua, mobil pribadi, hingga bus instansi/rombongan besar."
+    "id": 5,
+    "name": "Seloliman",
+    "slug": "seloliman",
+    "description": "Pusat cagar budaya dan ekowisata Trawas dengan situs bersejarah Petirtaan Candi Jolotundo yang memiliki mata air tersuci dan terbersih dunia, wisata sungai jernih Dam Londo & Sumber Bagong, serta restoran organik PPLH Seloliman.",
+    "image": "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+    "location": "Kecamatan Trawas, Kabupaten Mojokerto",
+    "access_notes": "Jalan beraspal mulus dapat dilalui motor dan mobil pribadi sampai ke area parkir candi dan pusat edukasi PPLH."
   },
   {
-    id: 5,
-    name: "Seloliman",
-    slug: "seloliman",
-    description: "Pusat cagar budaya dan ekowisata Trawas dengan situs bersejarah Petirtaan Candi Jolotundo yang memiliki mata air tersuci dan terbersih dunia, wisata sungai jernih Dam Londo & Sumber Bagong, serta restoran organik PPLH Seloliman.",
-    image: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
-    location: "Kecamatan Trawas, Kabupaten Mojokerto",
-    access_notes: "Jalan beraspal mulus dapat dilalui motor dan mobil pribadi sampai ke area parkir candi dan pusat edukasi PPLH."
+    "id": 6,
+    "name": "Sugeng",
+    "slug": "sugeng",
+    "description": "Desa dengan kekayaan aliran sungai pegunungan yang jernih dan asri berbatu. Menjadi destinasi favorit keluarga untuk kulineran pedesaan di tepi sungai, bermain air, dan menikmati ketenangan pemandangan dua gunung megah.",
+    "image": "https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=800&q=80",
+    "location": "Kecamatan Trawas, Kabupaten Mojokerto",
+    "access_notes": "Jalur aspal mulus di tepi jalan utama Ngoro-Trawas. Sangat lancar untuk motor, mobil pribadi, dan minibus (Elf/HiAce)."
   },
   {
-    id: 6,
-    name: "Sugeng",
-    slug: "sugeng",
-    description: "Desa dengan kekayaan aliran sungai pegunungan yang jernih dan asri berbatu. Menjadi destinasi favorit keluarga untuk kulineran pedesaan di tepi sungai, bermain air, dan menikmati ketenangan pemandangan dua gunung megah.",
-    image: "https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=800&q=80",
-    location: "Kecamatan Trawas, Kabupaten Mojokerto",
-    access_notes: "Jalur aspal mulus di tepi jalan utama Ngoro-Trawas. Sangat lancar untuk motor, mobil pribadi, dan minibus (Elf/HiAce)."
+    "id": 7,
+    "name": "Sukosari",
+    "slug": "sukosari",
+    "description": "Pusat perkemahan dan wisata alam keluarga terbesar seperti Alas Veenuz di lahan pinus 10,4 hektare, taman bunga Poetoek Soeko Rainbow Garden, resto pancingan Bu Rajab, hingga kafe rooftop senja Katarina's Kitchen.",
+    "image": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
+    "location": "Kecamatan Trawas, Kabupaten Mojokerto",
+    "access_notes": "Berada persis di tepi jalan raya utama Trawas-Mojosari, sangat mudah dijangkau semua tipe kendaraan."
   },
   {
-    id: 7,
-    name: "Sukosari",
-    slug: "sukosari",
-    description: "Pusat perkemahan dan wisata alam keluarga terbesar seperti Alas Veenuz di lahan pinus 10,4 hektare, taman bunga Poetoek Soeko Rainbow Garden, resto pancingan Bu Rajab, hingga kafe rooftop senja Katarina's Kitchen.",
-    image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80",
-    location: "Kecamatan Trawas, Kabupaten Mojokerto",
-    access_notes: "Berada persis di tepi jalan raya utama Trawas-Mojosari, sangat mudah dijangkau semua tipe kendaraan."
+    "id": 8,
+    "name": "Trawas",
+    "slug": "trawas",
+    "description": "Pusat denyut pariwisata kecamatan Trawas yang menghadirkan Aone Trawas di perbukitan pinus, situs sejarah Reco Lanang, Paseban Agung, serta aneka kedai kopi kekinian dan kuliner khas sate kelinci.",
+    "image": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80",
+    "location": "Kecamatan Trawas, Kabupaten Mojokerto",
+    "access_notes": "Pusat kota kecamatan dengan akses jalan utama beraspal lebar, dekat berbagai fasilitas publik dan akomodasi penginapan."
   },
   {
-    id: 8,
-    name: "Trawas",
-    slug: "trawas",
-    description: "Pusat denyut pariwisata kecamatan Trawas yang menghadirkan Aone Trawas di perbukitan pinus, situs sejarah Reco Lanang, Paseban Agung, serta aneka kedai kopi kekinian dan kuliner khas sate kelinci.",
-    image: "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80",
-    location: "Kecamatan Trawas, Kabupaten Mojokerto",
-    access_notes: "Pusat kota kecamatan dengan akses jalan utama beraspal lebar, dekat berbagai fasilitas publik dan akomodasi penginapan."
+    "id": 9,
+    "name": "Selotapak",
+    "slug": "selotapak",
+    "description": "Surga panorama sawah terasering berundak ala Ubud dengan latar spektakuler Gunung Penanggungan, wahana Kendhi Pitoe Park, Gurtenhutte, dan deretan kafe estetik berlatar pemandangan hijau.",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "location": "Kecamatan Trawas, Kabupaten Mojokerto",
+    "access_notes": "Akses jalan aspal pedesaan yang baik, dapat dilalui sepeda motor dan mobil pribadi sampai ke area parkir kafe/wisata."
   },
   {
-    id: 9,
-    name: "Selotapak",
-    slug: "selotapak",
-    description: "Surga panorama sawah terasering berundak ala Ubud dengan latar spektakuler Gunung Penanggungan, wahana Kendhi Pitoe Park, Gurtenhutte, dan deretan kafe estetik berlatar pemandangan hijau.",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
-    location: "Kecamatan Trawas, Kabupaten Mojokerto",
-    access_notes: "Akses jalan aspal pedesaan yang baik, dapat dilalui sepeda motor dan mobil pribadi sampai ke area parkir kafe/wisata."
+    "id": 10,
+    "name": "Kesiman",
+    "slug": "kesiman",
+    "description": "Desa Wisata Rintisan yang dikelola BUMDes Mitra Warga Kesiman, memadukan pesona pemandangan pegunungan, kafe santai LorOmah, Rumah Bambu tradisional, serta kerajinan kaos Trawas, pelana kuda, dan jamu empon-empon.",
+    "image": "https://images.unsplash.com/photo-1533240332313-0db49b459655?auto=format&fit=crop&w=800&q=80",
+    "location": "Kecamatan Trawas, Kabupaten Mojokerto",
+    "access_notes": "Akses jalan desa beraspal menuju Jl. Airlangga No. 1, mudah dijangkau kendaraan roda dua dan roda empat."
   },
   {
-    id: 10,
-    name: "Kesiman",
-    slug: "kesiman",
-    description: "Desa Wisata Rintisan yang dikelola BUMDes Mitra Warga Kesiman, memadukan pesona pemandangan pegunungan, kafe santai LorOmah, Rumah Bambu tradisional, serta kerajinan kaos Trawas, pelana kuda, dan jamu empon-empon.",
-    image: "https://images.unsplash.com/photo-1533240332313-0db49b459655?auto=format&fit=crop&w=800&q=80",
-    location: "Kecamatan Trawas, Kabupaten Mojokerto",
-    access_notes: "Akses jalan desa beraspal menuju Jl. Airlangga No. 1, mudah dijangkau kendaraan roda dua dan roda empat."
+    "id": 11,
+    "name": "Belik",
+    "slug": "belik",
+    "description": "Sentra wisata hutan bambu yang teduh dan asri. Memiliki Petung Park dan Pring Petoeng yang menyajikan wisata kuliner keluarga di dalam rimbunnya hutan bambu, lengkap dengan gazebo dan kolam renang anak.",
+    "image": "https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&w=800&q=80",
+    "location": "Kecamatan Trawas, Kabupaten Mojokerto",
+    "access_notes": "Berlokasi di kawasan Dusun Jibru Desa Belik, dapat dijangkau menggunakan sepeda motor dan mobil keluarga."
   },
   {
-    id: 11,
-    name: "Belik",
-    slug: "belik",
-    description: "Sentra wisata hutan bambu yang teduh dan asri. Memiliki Petung Park dan Pring Petoeng yang menyajikan wisata kuliner keluarga di dalam rimbunnya hutan bambu, lengkap dengan gazebo dan kolam renang anak.",
-    image: "https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&w=800&q=80",
-    location: "Kecamatan Trawas, Kabupaten Mojokerto",
-    access_notes: "Berlokasi di kawasan Dusun Jibru Desa Belik, dapat dijangkau menggunakan sepeda motor dan mobil keluarga."
-  },
-  {
-    id: 12,
-    name: "Duyung",
-    slug: "duyung",
-    description: "Sentra perkebunan durian Trawas yang manis legit, memiliki resor wisata terpadu Duyung Trawas Hill (DTH), Fresh Garden, serta beragam potensi alam & sejarah seperti Sawah Lumpang, Situs Watu Dakon, dan Air Terjun Sumber Lumpang.",
-    image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
-    location: "Kecamatan Trawas, Kabupaten Mojokerto",
-    access_notes: "Akses jalan menuju kaki Gunung Penanggungan sudah memadai untuk kendaraan motor, mobil, hingga minibus."
+    "id": 12,
+    "name": "Duyung",
+    "slug": "duyung",
+    "description": "Sentra perkebunan durian Trawas yang manis legit, memiliki resor wisata terpadu Duyung Trawas Hill (DTH), Fresh Garden, serta beragam potensi alam & sejarah seperti Sawah Lumpang, Situs Watu Dakon, dan Air Terjun Sumber Lumpang.",
+    "image": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
+    "location": "Kecamatan Trawas, Kabupaten Mojokerto",
+    "access_notes": "Akses jalan menuju kaki Gunung Penanggungan sudah memadai untuk kendaraan motor, mobil, hingga minibus."
   }
 ];
 
@@ -592,166 +583,6 @@ export const initialDestinations = [
     ],
     "rating": 4.8,
     "email": "utc_trawas@yahoo.com"
-  },
-  {
-    "id": 101,
-    "village_id": 3,
-    "name": "Kedungudi Sky Park Hill",
-    "slug": "kedungudi-sky-park-hill",
-    "category": "wisata",
-    "subcategory": "Spot Foto & Kafe Bukit",
-    "description": "Kedungudi Sky Park Hill menyajikan pesona panorama alam persawahan terasering yang hijau dengan latar gagah Gunung Penanggungan. Dilengkapi kafe terbuka yang nyaman untuk bersantai menikmati udara sejuk pegunungan dan panorama matahari terbenam (sunset) yang memukau.",
-    "address": "Dusun Brenjang, Desa Kedungudi / Penanggungan, Kec. Trawas, Kabupaten Mojokerto",
-    "latitude": -7.6621,
-    "longitude": 112.6184,
-    "opening_hours": "08:30 - 19:00 WIB (Weekend hingga malam)",
-    "price": 10000,
-    "contact": "0812-3112-9988",
-    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80"
-    ],
-    "facilities": [
-      "Spot Foto Sunset",
-      "Kafe & Resto Terbuka",
-      "Area Duduk Santai",
-      "Tempat Parkir Motor & Mobil",
-      "Toilet"
-    ],
-    "tags": [
-      "Wisata Alam",
-      "Spot Foto",
-      "Kafe View Sawah",
-      "Sunset"
-    ],
-    "suitable_for": [
-      "Keluarga",
-      "Teman",
-      "Pasangan",
-      "Fotografi"
-    ],
-    "rating": 4.6,
-    "email": "disparpora.mr@gmail.com"
-  },
-  {
-    "id": 102,
-    "village_id": 3,
-    "name": "Basecamp Pendakian via Kedungudi (Puncak Sarah Klopo & Pawitra)",
-    "slug": "basecamp-pendakian-via-kedungudi",
-    "category": "wisata",
-    "subcategory": "Jalur Pendakian & Candi Majapahit",
-    "description": "Jalur pendakian Gunung Penanggungan via Kedungudi menawarkan pengalaman mendaki yang unik dan sarat sejarah. Melewati kompleks candi-candi peninggalan era Kerajaan Majapahit seperti Candi Carik, Candi Lurah, Candi Siwa, dan Candi Luruh. Waktu tempuh sekitar 2–2,5 jam menuju Puncak Sarah Klopo atau 3 jam menuju Puncak Pawitra (1.653 mdpl). Pendaftaran wajib online via aplikasi 'Tiket Pendakian'.",
-    "address": "Pos Perizinan Desa Kedungudi, Kec. Trawas, Kabupaten Mojokerto",
-    "latitude": -7.6582,
-    "longitude": 112.6153,
-    "opening_hours": "24 Jam",
-    "price": 15000,
-    "contact": "0857-4567-8901",
-    "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1486873249359-2731bd6dafc7?auto=format&fit=crop&w=800&q=80"
-    ],
-    "facilities": [
-      "Pos Registrasi 24 Jam",
-      "Peta Jalur & Arahan Ranger",
-      "Air Minum Gratis Sepuasnya",
-      "Kantong Sampah Gratis",
-      "Penyewaan Alat Mendaki",
-      "Parkir Motor (Rp10.000) & Mobil"
-    ],
-    "tags": [
-      "Pendakian",
-      "Situs Majapahit",
-      "Wisata Sejarah",
-      "Camping"
-    ],
-    "suitable_for": [
-      "Pecinta Alam",
-      "Pendaki Pemula & Pro",
-      "Fotografi"
-    ],
-    "rating": 4.8,
-    "email": "disparpora.mr@gmail.com"
-  },
-  {
-    "id": 103,
-    "village_id": 3,
-    "name": "Camping Ground Bukit Metet & Bukit Jambe",
-    "slug": "camping-ground-bukit-metet-bukit-jambe",
-    "category": "wisata",
-    "subcategory": "Camping Ground Ramah Pemula",
-    "description": "Destinasi camping ground yang dikembangkan oleh BUMDes Adhinata Mandiri Kedungudi. Memiliki trek pendakian yang singkat dan landai sehingga sangat ideal bagi pendaki pemula dan keluarga yang ingin menikmati sensasi bermalam di alam terbuka berlatar pemandangan gunung dan gemerlap lampu kota di malam hari.",
-    "address": "Desa Kedungudi, Kec. Trawas, Kabupaten Mojokerto",
-    "latitude": -7.6605,
-    "longitude": 112.6171,
-    "opening_hours": "24 Jam",
-    "price": 15000,
-    "contact": "0857-0734-3617",
-    "image": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80"
-    ],
-    "facilities": [
-      "Area Camping Luas",
-      "Akses Jalan Kaki Singkat",
-      "Spot Sunrise",
-      "Parkir Motor Dekat Titik Awal Jalur"
-    ],
-    "tags": [
-      "Camping Ground",
-      "Ramah Pemula",
-      "Wisata Alam",
-      "Sunrise"
-    ],
-    "suitable_for": [
-      "Keluarga",
-      "Teman",
-      "Pecinta Alam"
-    ],
-    "rating": 4.5,
-    "email": "disparpora.mr@gmail.com"
-  },
-  {
-    "id": 104,
-    "village_id": 3,
-    "name": "Cafe Tjingkir Songo",
-    "slug": "cafe-tjingkir-songo",
-    "category": "kafe",
-    "subcategory": "Kafe Nuansa Tradisional Jawa & Pinus",
-    "description": "Kafe berkonsep hutan pinus dengan arsitektur kayu tradisional Jawa yang hangat dan homey. Berada di perbukitan Dusun Tjingkir Songo yang sejuk dan asri. Menyajikan aneka jus, teh tamarind, mie goreng Jawa, bola ubi, ayam goreng/bakar, angkringan, hingga kopi espresso, cold brew, dan pastry croissant.",
-    "address": "Dusun Tjingkir Songo, Desa Kedungudi, Kec. Trawas, Kabupaten Mojokerto",
-    "latitude": -7.6612,
-    "longitude": 112.619,
-    "opening_hours": "Sen-Jum 09:00 - 21:00 WIB, Sab-Min 08:00 - 21:00 WIB",
-    "price": 15000,
-    "contact": "0812-3088-7766",
-    "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80"
-    ],
-    "facilities": [
-      "Area Parkir Pribadi",
-      "Interior Kayu Tradisional",
-      "Pemandangan Hutan Asri",
-      "Toilet & Mushola",
-      "Spot Nongkrong Nyaman"
-    ],
-    "tags": [
-      "Kafe Tradisional",
-      "Hutan Pinus",
-      "Kopi & Pastry",
-      "Nongkrong Santai"
-    ],
-    "suitable_for": [
-      "Keluarga",
-      "Teman",
-      "Pasangan"
-    ],
-    "rating": 4.7,
-    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 301,
@@ -2195,14 +2026,6 @@ export const travelEstimatesData = {
     }
   ],
   villageSpecificEstimates: {
-    kedungudi: {
-      Surabaya: "±1,5 – 2 jam (Keluar tol Pandaan → Prigen → Kedungudi)",
-      Sidoarjo: "±1,5 – 2 jam (Via tol Sidoarjo–Mojosari)",
-      "Mojokerto Kota": "±45 menit – 1 jam (Langsung via Mojosari–Trawas)",
-      "Malang / Batu": "±3 – 4 jam (Via tol atau via Cangar-Pacet)",
-      Pasuruan: "±1 – 1,5 jam (Via Prigen menuju Trawas)",
-      accessType: "Motor & Mobil Pribadi lancar. Tidak disarankan Bus Besar karena jalan desa sempit berbukit."
-    },
     tamiajeng: {
       Surabaya: "±1,2 – 2 jam (Via tol keluar Pandaan → Trawas)",
       Sidoarjo: "±1,5 jam (Via tol Sidoarjo → Pandaan → Trawas)",
@@ -2233,7 +2056,7 @@ export const travelEstimatesData = {
       "Mojokerto Kota": "35 – 45 menit (Jalur Mojosari → Pungging → Trawas)",
       "Malang / Batu": "1,5 – 3 jam (Tol Mapan → Pandaan atau Jalur Cangar)",
       Pasuruan: "±1 jam (Jalur Gempol → Ngoro → Trawas)",
-      accessType: "Jalur aspal mulus di tepi jalan utama Ngoro-Trawas. Favorit bikers motor, mobil, dan Elf/HiAce."
+      accessType: "Jalur aspal mulus di tepi main road Ngoro-Trawas. Favorit motor, mobil, dan Elf/HiAce."
     },
     sukosari: {
       Surabaya: "±1 jam 33 menit (±61,5 km via Tol Pandaan → Prigen)",

@@ -133,7 +133,7 @@ const Home = () => {
               Kecamatan Trawas terletak di Kabupaten Mojokerto pada ketinggian rata-rata 700 mdpl di antara dua gunung agung Jawa Timur: Gunung Penanggungan (Pawitra) dan Gunung Welirang. Trawas menjadi magnet wisata favorit berkat hawanya yang sejuk, pemandangan sawah terasering berundak, air terjun alami, dan peninggalan situs sejarah era Kerajaan Majapahit.
             </p>
             <p className="text-slate-600 leading-relaxed text-sm">
-              Kini seluruh 12 desa di Trawas telah berkembang dengan keunikan masing-masing — mulai dari desa wisata percontohan nasional (Ketapanrame), cagar budaya mata air Jolotundo (Seloliman), pesona kincir angin Eropa &amp; roastery lokal (Tamiajeng), jalur candi lereng gunung (Kedungudi), glamping pinus 10,4 Ha (Sukosari), kuliner hutan bambu (Belik), hingga sentra durian legit (Duyung).
+              Kini seluruh desa di Trawas telah berkembang dengan keunikan masing-masing — mulai dari desa wisata percontohan nasional (Ketapanrame), cagar budaya mata air Jolotundo (Seloliman), pesona kafe kincir angin &amp; roastery lokal (Tamiajeng), panorama sawah terasering (Selotapak), glamping pinus 10,4 Ha (Sukosari), kuliner hutan bambu (Belik), hingga sentra durian legit (Duyung).
             </p>
           </PopIn>
 
