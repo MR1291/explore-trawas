@@ -113,164 +113,209 @@ export const initialVillages = [
 // Data Lengkap Destinasi Wisata, Rekreasi, Kafe, dan Kuliner di Seluruh Desa Trawas
 export const initialDestinations = [
   {
-    "id": 101,
-    "village_id": 3,
-    "name": "Kedungudi Sky Park Hill",
-    "slug": "kedungudi-sky-park-hill",
+    "id": 701,
+    "village_id": 1,
+    "name": "Wisata Sawah Sumber Gempong",
+    "slug": "wisata-sawah-sumber-gempong",
     "category": "wisata",
-    "subcategory": "Spot Foto & Kafe Bukit",
-    "description": "Kedungudi Sky Park Hill menyajikan pesona panorama alam persawahan terasering yang hijau dengan latar gagah Gunung Penanggungan. Dilengkapi kafe terbuka yang nyaman untuk bersantai menikmati udara sejuk pegunungan dan panorama matahari terbenam (sunset) yang memukau.",
-    "address": "Dusun Brenjang, Desa Kedungudi / Penanggungan, Kec. Trawas, Kabupaten Mojokerto",
-    "latitude": -7.6621,
-    "longitude": 112.6184,
-    "opening_hours": "08:30 - 19:00 WIB (Weekend hingga malam)",
-    "price": 10000,
-    "contact": "0812-3112-9988",
-    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    "subcategory": "Wisata Sawah Ikonik & Wahana",
+    "description": "Ikon wisata desa terpopuler di Ketapanrame yang menyajikan hamparan sawah hijau membentang luas berlatar megah Gunung Penanggungan. Dilengkapi aneka wahana seru seperti kereta sawah, ATV, ayunan jantra, bebek air, kolam pemandian mata air alami, dan spot foto yang viral.",
+    "address": "Dusun Sukorame, Desa Ketapanrame, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6725,
+    "longitude": 112.6351,
+    "opening_hours": "Senin 07:00-17:00 WIB, Selasa-Minggu 07:00-22:00 WIB",
+    "price": 5000,
+    "contact": "0819-3697-6732",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
     "images": [
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
     ],
     "facilities": [
-      "Spot Foto Sunset",
-      "Kafe & Resto Terbuka",
-      "Area Duduk Santai",
-      "Tempat Parkir Motor & Mobil",
-      "Toilet"
+      "Kereta Mini Sawah & ATV",
+      "Ayunan Jantra & Bebek Air",
+      "Kolam Mata Air Alami",
+      "Pujasera Kuliner Sawah",
+      "Gazebo & Parkir Lapang"
     ],
     "tags": [
-      "Wisata Alam",
-      "Spot Foto",
-      "Kafe View Sawah",
-      "Sunset"
+      "Wisata Sawah",
+      "Wahana Bermain",
+      "Sumber Gempong",
+      "Viral"
     ],
     "suitable_for": [
       "Keluarga",
-      "Teman",
-      "Pasangan",
-      "Fotografi"
-    ],
-    "rating": 4.6,
-    "email": "skypark.kedungudi@gmail.com"
-  },
-  {
-    "id": 102,
-    "village_id": 3,
-    "name": "Basecamp Pendakian via Kedungudi (Puncak Sarah Klopo & Pawitra)",
-    "slug": "basecamp-pendakian-via-kedungudi",
-    "category": "wisata",
-    "subcategory": "Jalur Pendakian & Candi Majapahit",
-    "description": "Jalur pendakian Gunung Penanggungan via Kedungudi menawarkan pengalaman mendaki yang unik dan sarat sejarah. Melewati kompleks candi-candi peninggalan era Kerajaan Majapahit seperti Candi Carik, Candi Lurah, Candi Siwa, dan Candi Luruh. Waktu tempuh sekitar 2–2,5 jam menuju Puncak Sarah Klopo atau 3 jam menuju Puncak Pawitra (1.653 mdpl). Pendaftaran wajib online via aplikasi 'Tiket Pendakian'.",
-    "address": "Pos Perizinan Desa Kedungudi, Kec. Trawas, Kabupaten Mojokerto",
-    "latitude": -7.6582,
-    "longitude": 112.6153,
-    "opening_hours": "24 Jam",
-    "price": 15000,
-    "contact": "0857-4567-8901",
-    "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1486873249359-2731bd6dafc7?auto=format&fit=crop&w=800&q=80"
-    ],
-    "facilities": [
-      "Pos Registrasi 24 Jam",
-      "Peta Jalur & Arahan Ranger",
-      "Air Minum Gratis Sepuasnya",
-      "Kantong Sampah Gratis",
-      "Penyewaan Alat Mendaki",
-      "Parkir Motor (Rp10.000) & Mobil"
-    ],
-    "tags": [
-      "Pendakian",
-      "Situs Majapahit",
-      "Wisata Sejarah",
-      "Camping"
-    ],
-    "suitable_for": [
-      "Pecinta Alam",
-      "Pendaki Pemula & Pro",
+      "Anak-anak",
       "Fotografi"
     ],
     "rating": 4.8,
-    "email": "pendakian.kedungudi@gmail.com"
+    "email": "bumdesaketapanrame@gmail.com"
   },
   {
-    "id": 103,
-    "village_id": 3,
-    "name": "Camping Ground Bukit Metet & Bukit Jambe",
-    "slug": "camping-ground-bukit-metet-bukit-jambe",
+    "id": 702,
+    "village_id": 1,
+    "name": "Air Terjun Dlundung",
+    "slug": "air-terjun-dlundung-trawas",
     "category": "wisata",
-    "subcategory": "Camping Ground Ramah Pemula",
-    "description": "Destinasi camping ground yang dikembangkan oleh BUMDes Adhinata Mandiri Kedungudi. Memiliki trek pendakian yang singkat dan landai sehingga sangat ideal bagi pendaki pemula dan keluarga yang ingin menikmati sensasi bermalam di alam terbuka berlatar pemandangan gunung dan gemerlap lampu kota di malam hari.",
-    "address": "Desa Kedungudi, Kec. Trawas, Kabupaten Mojokerto",
-    "latitude": -7.6605,
-    "longitude": 112.6171,
-    "opening_hours": "24 Jam",
+    "subcategory": "Air Terjun Legendaris & Camping Lereng Welirang",
+    "description": "Air Terjun Dlundung adalah ikon wisata alam paling legendaris di Trawas yang terletak di lereng Gunung Welirang. Memiliki ketinggian sekitar 50-60 meter dengan udara yang sangat sejuk, taman asri yang tertata rapi, dan area perkemahan pinus yang menjadi favorit wisatawan dari berbagai kota.",
+    "address": "Kawasan Hutan, Desa Ketapanrame, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.684128,
+    "longitude": 112.624792,
+    "opening_hours": "07:30 - 16:00 WIB (Area camping 24 Jam)",
     "price": 15000,
-    "contact": "0857-0734-3617",
-    "image": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80",
+    "contact": "0812-6778-1114",
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
     "images": [
-      "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80"
     ],
     "facilities": [
-      "Area Camping Luas",
-      "Akses Jalan Kaki Singkat",
-      "Spot Sunrise",
-      "Parkir Motor Dekat Titik Awal Jalur"
+      "Area Parkir Luas",
+      "Toilet & Kamar Mandi",
+      "Mushola",
+      "Warung Makanan & Minuman",
+      "Camping Ground Pinus",
+      "Gazebo Santai"
     ],
     "tags": [
-      "Camping Ground",
-      "Ramah Pemula",
+      "Air Terjun",
       "Wisata Alam",
-      "Sunrise"
+      "Camping Ground",
+      "Ikonik"
     ],
     "suitable_for": [
       "Keluarga",
-      "Teman",
-      "Pecinta Alam"
+      "Pecinta Alam",
+      "Teman"
     ],
-    "rating": 4.5,
-    "email": "bumdes.kedungudi@gmail.com"
+    "rating": 4.7,
+    "email": "disparpora.mr@gmail.com"
   },
   {
-    "id": 104,
-    "village_id": 3,
-    "name": "Cafe Tjingkir Songo",
-    "slug": "cafe-tjingkir-songo",
-    "category": "kafe",
-    "subcategory": "Kafe Nuansa Tradisional Jawa & Pinus",
-    "description": "Kafe berkonsep hutan pinus dengan arsitektur kayu tradisional Jawa yang hangat dan homey. Berada di perbukitan Dusun Tjingkir Songo yang sejuk dan asri. Menyajikan aneka jus, teh tamarind, mie goreng Jawa, bola ubi, ayam goreng/bakar, angkringan, hingga kopi espresso, cold brew, dan pastry croissant.",
-    "address": "Dusun Tjingkir Songo, Desa Kedungudi, Kec. Trawas, Kabupaten Mojokerto",
-    "latitude": -7.6612,
-    "longitude": 112.619,
-    "opening_hours": "Sen-Jum 09:00 - 21:00 WIB, Sab-Min 08:00 - 21:00 WIB",
-    "price": 15000,
-    "contact": "0812-3088-7766",
-    "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
+    "id": 703,
+    "village_id": 1,
+    "name": "Taman Ghanjaran",
+    "slug": "taman-ghanjaran-trawas",
+    "category": "wisata",
+    "subcategory": "Taman Hiburan Keluarga & Bianglala",
+    "description": "Pusat rekreasi keluarga terlengkap di Trawas yang dikelola BUMDes Ketapanrame. Menampilkan bianglala raksasa dengan pemandangan Gunung Penanggungan, komidi putar, kolam renang, perahu bebek, cinema VR, dan pujasera jajanan lengkap saat siang maupun malam hari.",
+    "address": "Jl. Raya Tretes-Trawas No. 88, Sukorame, Desa Ketapanrame, Kec. Trawas",
+    "latitude": -7.674903,
+    "longitude": 112.631899,
+    "opening_hours": "08:00 - 22:00 WIB",
+    "price": 5000,
+    "contact": "0821-5155-5010",
+    "image": "https://images.unsplash.com/photo-1513885041147-92adf7f46f34?auto=format&fit=crop&w=800&q=80",
     "images": [
-      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1513885041147-92adf7f46f34?auto=format&fit=crop&w=800&q=80"
     ],
     "facilities": [
-      "Area Parkir Pribadi",
-      "Interior Kayu Tradisional",
-      "Pemandangan Hutan Asri",
-      "Toilet & Mushola",
-      "Spot Nongkrong Nyaman"
+      "Bianglala Raksasa",
+      "Kolam Renang Anak & Dewasa",
+      "Wahana Bermain Lengkap",
+      "Pujasera Food Court",
+      "Spot Foto Lampu Malam",
+      "Parkir Mobil & Bus"
     ],
     "tags": [
-      "Kafe Tradisional",
-      "Hutan Pinus",
-      "Kopi & Pastry",
-      "Nongkrong Santai"
+      "Taman Hiburan",
+      "Bianglala",
+      "Wisata Keluarga",
+      "Malam Hari"
     ],
     "suitable_for": [
-      "Keluarga",
+      "Keluarga dengan Anak",
       "Teman",
       "Pasangan"
     ],
     "rating": 4.7,
-    "email": "tjingkirsongo.trawas@gmail.com"
+    "email": "bumdesaketapanrame@gmail.com"
+  },
+  {
+    "id": 704,
+    "village_id": 1,
+    "name": "Air Terjun Talang Ketapanrame",
+    "slug": "air-terjun-talang-ketapanrame",
+    "category": "wisata",
+    "subcategory": "Air Terjun Alami & Hutan Lindung",
+    "description": "Air Terjun Talang merupakan surga tersembunyi di Desa Ketapanrame yang menawarkan ketenangan di tengah rimbunnya hutan lereng Gunung Welirang. Aliran airnya yang sangat jernih dan segar menjadikannya destinasi favorit untuk healing dan melepas penat dari hiruk pikuk perkotaan.",
+    "address": "Kawasan Lereng Gunung Welirang, Desa Ketapanrame, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6792,
+    "longitude": 112.5841,
+    "opening_hours": "08:00 - 16:30 WIB",
+    "price": 10000,
+    "contact": "0857-0734-3617",
+    "image": "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Jalur Trekking Alami",
+      "Spot Foto Alami",
+      "Gazebo Istirahat",
+      "Area Parkir Motor & Mobil",
+      "Toilet"
+    ],
+    "tags": [
+      "Air Terjun",
+      "Wisata Alam",
+      "Trekking",
+      "Ketapanrame",
+      "Healing"
+    ],
+    "suitable_for": [
+      "Pecinta Alam",
+      "Keluarga",
+      "Teman",
+      "Fotografi"
+    ],
+    "rating": 4.7,
+    "email": "bumdesaketapanrame@gmail.com"
+  },
+  {
+    "id": 705,
+    "village_id": 1,
+    "name": "Taman Kelinci & Edukasi Kencana Ketapanrame",
+    "slug": "taman-kelinci-edukasi-kencana-ketapanrame",
+    "category": "wisata",
+    "subcategory": "Taman Rekreasi Edukasi & Agrowisata",
+    "description": "Destinasi wisata edukasi keluarga ramah anak yang menghadirkan interaksi langsung memberi makan kelinci, wisata petik jeruk Nagami, serta edukasi budidaya dan proses roasting kopi Arabika khas Ketapanrame yang telah memenangkan berbagai penghargaan desa wisata.",
+    "address": "Dusun Sukorame, Desa Ketapanrame, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6715,
+    "longitude": 112.5932,
+    "opening_hours": "08:30 - 17:00 WIB",
+    "price": 15000,
+    "contact": "0857-0734-3617",
+    "image": "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Area Interaksi Kelinci",
+      "Kebun Jeruk Nagami",
+      "Edukasi Pengolahan Kopi",
+      "Playground Anak",
+      "Kantin & Kios Oleh-oleh",
+      "Toilet & Musholla"
+    ],
+    "tags": [
+      "Taman Kelinci",
+      "Edukasi Kopi",
+      "Petik Jeruk",
+      "Wisata Anak",
+      "Keluarga"
+    ],
+    "suitable_for": [
+      "Anak-anak",
+      "Keluarga",
+      "Sekolah / Rombongan",
+      "Pecinta Kopi"
+    ],
+    "rating": 4.6,
+    "email": "bumdesaketapanrame@gmail.com"
   },
   {
     "id": 201,
@@ -309,7 +354,7 @@ export const initialDestinations = [
       "Fotografi"
     ],
     "rating": 4.8,
-    "email": "desawisata.tamiajeng@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 202,
@@ -324,7 +369,7 @@ export const initialDestinations = [
     "longitude": 112.6268,
     "opening_hours": "08:00 - 17:00 WIB",
     "price": 20000,
-    "contact": "0812-3215-2477",
+    "contact": "0888-0155-5912",
     "image": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80"
@@ -348,7 +393,7 @@ export const initialDestinations = [
       "Instansi / Sekolah"
     ],
     "rating": 4.7,
-    "email": "desawisata.tamiajeng@gmail.com"
+    "email": "utc_trawas@yahoo.com"
   },
   {
     "id": 203,
@@ -389,7 +434,7 @@ export const initialDestinations = [
       "Fotografi"
     ],
     "rating": 4.8,
-    "email": "rusticmarket.trawas@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 204,
@@ -404,7 +449,7 @@ export const initialDestinations = [
     "longitude": 112.6282,
     "opening_hours": "08:00 - 23:00 WIB",
     "price": 20000,
-    "contact": "0812-3215-2477",
+    "contact": "0812-2606-7760",
     "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
@@ -428,7 +473,7 @@ export const initialDestinations = [
       "Solo Working"
     ],
     "rating": 4.6,
-    "email": "desawisata.tamiajeng@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 205,
@@ -443,7 +488,7 @@ export const initialDestinations = [
     "longitude": 112.6221,
     "opening_hours": "10:00 - 20:00 WIB (Tutup setiap Kamis)",
     "price": 20000,
-    "contact": "0812-3215-2477",
+    "contact": "0878-5552-9842",
     "image": "https://images.unsplash.com/photo-1508873696983-2df5293cb32f?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1508873696983-2df5293cb32f?auto=format&fit=crop&w=800&q=80"
@@ -467,7 +512,7 @@ export const initialDestinations = [
       "Keluarga"
     ],
     "rating": 4.5,
-    "email": "desawisata.tamiajeng@gmail.com"
+    "email": "info.trawas@grandwhiz.com"
   },
   {
     "id": 206,
@@ -504,7 +549,209 @@ export const initialDestinations = [
       "Keluarga"
     ],
     "rating": 4.4,
-    "email": "desawisata.tamiajeng@gmail.com"
+    "email": "disparpora.mr@gmail.com"
+  },
+  {
+    "id": 207,
+    "village_id": 2,
+    "name": "Museum Pawitra & Ubaya IOC Archeology Center",
+    "slug": "museum-pawitra-ubaya-ioc",
+    "category": "wisata",
+    "subcategory": "Museum Arkeologi & Cagar Budaya Penanggungan",
+    "description": "Pusat informasi arkeologi dan kebudayaan Gunung Penanggungan yang berlokasi di dalam kompleks Ubaya Integrated Outdoor Campus (IOC) Tamiajeng. Menyimpan ratusan koleksi dokumentasi situs candi peninggalan era Majapahit, maket kawasan suci Pawitra, artefak kuno, dan pusat riset sejarah pegunungan Jawa Timur.",
+    "address": "Kompleks Ubaya Training Center (UTC), Desa Tamiajeng, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6688,
+    "longitude": 112.5992,
+    "opening_hours": "08:30 - 16:00 WIB (Reservasi / Hari Kerja & Weekend)",
+    "price": 15000,
+    "contact": "0888-0155-5912",
+    "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1486873249359-2731bd6dafc7?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Ruang Pamer Artefak & Maket Candi",
+      "Pemandu Edukasi Sejarah Arkeolog",
+      "Auditorium Pemutaran Film Dokumenter",
+      "Taman Konservasi Flora & Fauna UTC",
+      "Fasilitas Toilet & Parkir Luas"
+    ],
+    "tags": [
+      "Museum",
+      "Arkeologi",
+      "Candi Majapahit",
+      "Edukasi Sejarah",
+      "Pawitra"
+    ],
+    "suitable_for": [
+      "Pelajar & Mahasiswa",
+      "Pecinta Sejarah",
+      "Keluarga",
+      "Peneliti"
+    ],
+    "rating": 4.8,
+    "email": "utc_trawas@yahoo.com"
+  },
+  {
+    "id": 101,
+    "village_id": 3,
+    "name": "Kedungudi Sky Park Hill",
+    "slug": "kedungudi-sky-park-hill",
+    "category": "wisata",
+    "subcategory": "Spot Foto & Kafe Bukit",
+    "description": "Kedungudi Sky Park Hill menyajikan pesona panorama alam persawahan terasering yang hijau dengan latar gagah Gunung Penanggungan. Dilengkapi kafe terbuka yang nyaman untuk bersantai menikmati udara sejuk pegunungan dan panorama matahari terbenam (sunset) yang memukau.",
+    "address": "Dusun Brenjang, Desa Kedungudi / Penanggungan, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6621,
+    "longitude": 112.6184,
+    "opening_hours": "08:30 - 19:00 WIB (Weekend hingga malam)",
+    "price": 10000,
+    "contact": "0812-3112-9988",
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Spot Foto Sunset",
+      "Kafe & Resto Terbuka",
+      "Area Duduk Santai",
+      "Tempat Parkir Motor & Mobil",
+      "Toilet"
+    ],
+    "tags": [
+      "Wisata Alam",
+      "Spot Foto",
+      "Kafe View Sawah",
+      "Sunset"
+    ],
+    "suitable_for": [
+      "Keluarga",
+      "Teman",
+      "Pasangan",
+      "Fotografi"
+    ],
+    "rating": 4.6,
+    "email": "disparpora.mr@gmail.com"
+  },
+  {
+    "id": 102,
+    "village_id": 3,
+    "name": "Basecamp Pendakian via Kedungudi (Puncak Sarah Klopo & Pawitra)",
+    "slug": "basecamp-pendakian-via-kedungudi",
+    "category": "wisata",
+    "subcategory": "Jalur Pendakian & Candi Majapahit",
+    "description": "Jalur pendakian Gunung Penanggungan via Kedungudi menawarkan pengalaman mendaki yang unik dan sarat sejarah. Melewati kompleks candi-candi peninggalan era Kerajaan Majapahit seperti Candi Carik, Candi Lurah, Candi Siwa, dan Candi Luruh. Waktu tempuh sekitar 2–2,5 jam menuju Puncak Sarah Klopo atau 3 jam menuju Puncak Pawitra (1.653 mdpl). Pendaftaran wajib online via aplikasi 'Tiket Pendakian'.",
+    "address": "Pos Perizinan Desa Kedungudi, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6582,
+    "longitude": 112.6153,
+    "opening_hours": "24 Jam",
+    "price": 15000,
+    "contact": "0857-4567-8901",
+    "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1486873249359-2731bd6dafc7?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Pos Registrasi 24 Jam",
+      "Peta Jalur & Arahan Ranger",
+      "Air Minum Gratis Sepuasnya",
+      "Kantong Sampah Gratis",
+      "Penyewaan Alat Mendaki",
+      "Parkir Motor (Rp10.000) & Mobil"
+    ],
+    "tags": [
+      "Pendakian",
+      "Situs Majapahit",
+      "Wisata Sejarah",
+      "Camping"
+    ],
+    "suitable_for": [
+      "Pecinta Alam",
+      "Pendaki Pemula & Pro",
+      "Fotografi"
+    ],
+    "rating": 4.8,
+    "email": "disparpora.mr@gmail.com"
+  },
+  {
+    "id": 103,
+    "village_id": 3,
+    "name": "Camping Ground Bukit Metet & Bukit Jambe",
+    "slug": "camping-ground-bukit-metet-bukit-jambe",
+    "category": "wisata",
+    "subcategory": "Camping Ground Ramah Pemula",
+    "description": "Destinasi camping ground yang dikembangkan oleh BUMDes Adhinata Mandiri Kedungudi. Memiliki trek pendakian yang singkat dan landai sehingga sangat ideal bagi pendaki pemula dan keluarga yang ingin menikmati sensasi bermalam di alam terbuka berlatar pemandangan gunung dan gemerlap lampu kota di malam hari.",
+    "address": "Desa Kedungudi, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6605,
+    "longitude": 112.6171,
+    "opening_hours": "24 Jam",
+    "price": 15000,
+    "contact": "0857-0734-3617",
+    "image": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Area Camping Luas",
+      "Akses Jalan Kaki Singkat",
+      "Spot Sunrise",
+      "Parkir Motor Dekat Titik Awal Jalur"
+    ],
+    "tags": [
+      "Camping Ground",
+      "Ramah Pemula",
+      "Wisata Alam",
+      "Sunrise"
+    ],
+    "suitable_for": [
+      "Keluarga",
+      "Teman",
+      "Pecinta Alam"
+    ],
+    "rating": 4.5,
+    "email": "disparpora.mr@gmail.com"
+  },
+  {
+    "id": 104,
+    "village_id": 3,
+    "name": "Cafe Tjingkir Songo",
+    "slug": "cafe-tjingkir-songo",
+    "category": "kafe",
+    "subcategory": "Kafe Nuansa Tradisional Jawa & Pinus",
+    "description": "Kafe berkonsep hutan pinus dengan arsitektur kayu tradisional Jawa yang hangat dan homey. Berada di perbukitan Dusun Tjingkir Songo yang sejuk dan asri. Menyajikan aneka jus, teh tamarind, mie goreng Jawa, bola ubi, ayam goreng/bakar, angkringan, hingga kopi espresso, cold brew, dan pastry croissant.",
+    "address": "Dusun Tjingkir Songo, Desa Kedungudi, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6612,
+    "longitude": 112.619,
+    "opening_hours": "Sen-Jum 09:00 - 21:00 WIB, Sab-Min 08:00 - 21:00 WIB",
+    "price": 15000,
+    "contact": "0812-3088-7766",
+    "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Area Parkir Pribadi",
+      "Interior Kayu Tradisional",
+      "Pemandangan Hutan Asri",
+      "Toilet & Mushola",
+      "Spot Nongkrong Nyaman"
+    ],
+    "tags": [
+      "Kafe Tradisional",
+      "Hutan Pinus",
+      "Kopi & Pastry",
+      "Nongkrong Santai"
+    ],
+    "suitable_for": [
+      "Keluarga",
+      "Teman",
+      "Pasangan"
+    ],
+    "rating": 4.7,
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 301,
@@ -519,7 +766,7 @@ export const initialDestinations = [
     "longitude": 112.6372,
     "opening_hours": "08:00 - 16:00 WIB",
     "price": 5000,
-    "contact": "0812-3011-2233",
+    "contact": "0812-6778-1114",
     "image": "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80"
@@ -542,7 +789,7 @@ export const initialDestinations = [
       "Pecinta Alam"
     ],
     "rating": 4.5,
-    "email": "wisata.jatijejer@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 302,
@@ -557,7 +804,7 @@ export const initialDestinations = [
     "longitude": 112.6391,
     "opening_hours": "08:00 - 17:00 WIB",
     "price": 5000,
-    "contact": "0812-3011-2233",
+    "contact": "0812-6778-1114",
     "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80"
@@ -579,7 +826,7 @@ export const initialDestinations = [
       "Spiritual Traveler"
     ],
     "rating": 4.4,
-    "email": "wisata.jatijejer@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 303,
@@ -594,7 +841,7 @@ export const initialDestinations = [
     "longitude": 112.6345,
     "opening_hours": "24 Jam",
     "price": 20000,
-    "contact": "0812-3011-2233",
+    "contact": "0813-5738-7345",
     "image": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80"
@@ -618,7 +865,7 @@ export const initialDestinations = [
       "Keluarga"
     ],
     "rating": 4.6,
-    "email": "wisata.jatijejer@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 304,
@@ -633,7 +880,7 @@ export const initialDestinations = [
     "longitude": 112.633,
     "opening_hours": "09:00 - 19:00 WIB",
     "price": 25000,
-    "contact": "0812-6850-666",
+    "contact": "0321-6850666",
     "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80"
@@ -657,7 +904,7 @@ export const initialDestinations = [
       "Teman"
     ],
     "rating": 4.6,
-    "email": "waroengdesa.trawas@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 305,
@@ -672,7 +919,7 @@ export const initialDestinations = [
     "longitude": 112.634,
     "opening_hours": "09:00 - 21:00 WIB",
     "price": 30000,
-    "contact": "0812-3011-2233",
+    "contact": "0821-1565-9116",
     "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
@@ -696,7 +943,7 @@ export const initialDestinations = [
       "Keluarga"
     ],
     "rating": 4.7,
-    "email": "wisata.jatijejer@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 401,
@@ -711,7 +958,7 @@ export const initialDestinations = [
     "longitude": 112.5891,
     "opening_hours": "24 Jam Setiap Hari",
     "price": 10000,
-    "contact": "0851-0022-1045",
+    "contact": "0812-6778-1114",
     "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80"
@@ -736,7 +983,7 @@ export const initialDestinations = [
       "Spiritual"
     ],
     "rating": 4.9,
-    "email": "jolotundo.seloliman@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 402,
@@ -774,7 +1021,7 @@ export const initialDestinations = [
       "Teman"
     ],
     "rating": 4.6,
-    "email": "pplh.seloliman@gmail.com"
+    "email": "pplh@indo.net.id"
   },
   {
     "id": 403,
@@ -813,7 +1060,7 @@ export const initialDestinations = [
       "Rombongan Sekolah"
     ],
     "rating": 4.8,
-    "email": "pplh.seloliman@gmail.com"
+    "email": "pplh@indo.net.id"
   },
   {
     "id": 404,
@@ -851,7 +1098,49 @@ export const initialDestinations = [
       "Rombongan"
     ],
     "rating": 4.6,
-    "email": "pplh.seloliman@gmail.com"
+    "email": "pplh@indo.net.id"
+  },
+  {
+    "id": 505,
+    "village_id": 5,
+    "name": "Candi Kendalisodo & Candi Putri Seloliman",
+    "slug": "candi-kendalisodo-candi-putri-seloliman",
+    "category": "wisata",
+    "subcategory": "Situs Pertapaan Candi Kuno Majapahit",
+    "description": "Kompleks candi pertapaan era Majapahit abad ke-15 yang bertengger di tebing lereng barat laut Gunung Penanggungan via Seloliman. Terkenal dengan relief pahatan cerita Panji, arsitektur altar punden bertingkat, dan panorama lembah hijau pegunungan yang sangat memukau.",
+    "address": "Lereng Gunung Penanggungan, Desa Seloliman, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6438,
+    "longitude": 112.5938,
+    "opening_hours": "07:00 - 17:00 WIB",
+    "price": 10000,
+    "contact": "0812-6778-1114",
+    "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Jalur Trekking Arkeologi Menantang",
+      "Papan Informasi Cagar Budaya",
+      "Pos Penjagaan Cagar Budaya",
+      "Spot Fotografi Sunrise & Tebing",
+      "Area Parkir di Pos Seloliman"
+    ],
+    "tags": [
+      "Candi Kuno",
+      "Majapahit",
+      "Pertapaan",
+      "Trekking",
+      "Wisata Sejarah"
+    ],
+    "suitable_for": [
+      "Pecinta Sejarah & Budaya",
+      "Pendaki",
+      "Fotografer Alam",
+      "Peneliti"
+    ],
+    "rating": 4.9,
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 501,
@@ -891,7 +1180,7 @@ export const initialDestinations = [
       "Piknik"
     ],
     "rating": 4.7,
-    "email": "wisata.sugeng@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 502,
@@ -928,7 +1217,49 @@ export const initialDestinations = [
       "Bikers / Teman"
     ],
     "rating": 4.6,
-    "email": "wisata.sugeng@gmail.com"
+    "email": "disparpora.mr@gmail.com"
+  },
+  {
+    "id": 605,
+    "village_id": 6,
+    "name": "Situs Bersejarah Goa Jorongan Sugeng",
+    "slug": "situs-bersejarah-goa-jorongan-sugeng",
+    "category": "wisata",
+    "subcategory": "Situs Sejarah & Wisata Alam Perbukitan",
+    "description": "Situs goa alami bernilai sejarah tinggi di Desa Sugeng yang menjadi saksi bisu perjuangan laskar Pangeran Diponegoro pada masa perlawanan terhadap penjajah Belanda. Menawarkan lorong goa batu alami, panorama perbukitan Trawas-Ngoro yang mempesona, dan suasana hening spiritual.",
+    "address": "Desa Sugeng, Kec. Trawas, Kabupaten Mojokerto (Jalur Trawas-Ngoro)",
+    "latitude": -7.6492,
+    "longitude": 112.6315,
+    "opening_hours": "08:00 - 17:00 WIB",
+    "price": 5000,
+    "contact": "0815-1566-0199",
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Akses Tangga Menuju Goa",
+      "Papan Informasi Sejarah Laskar Diponegoro",
+      "Spot Panorama Tebing",
+      "Area Parkir Motor & Mobil",
+      "Pos Jaga"
+    ],
+    "tags": [
+      "Wisata Sejarah",
+      "Goa Alami",
+      "Laskar Diponegoro",
+      "Sugeng",
+      "Edukasi"
+    ],
+    "suitable_for": [
+      "Pecinta Sejarah",
+      "Pecinta Alam",
+      "Pelajar / Peneliti",
+      "Fotografi"
+    ],
+    "rating": 4.5,
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 601,
@@ -1011,7 +1342,7 @@ export const initialDestinations = [
       "Fotografi"
     ],
     "rating": 4.6,
-    "email": "poetoeksoeko.sukosari@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 603,
@@ -1050,7 +1381,7 @@ export const initialDestinations = [
       "Keluarga"
     ],
     "rating": 4.7,
-    "email": "wisata.sukosari@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 604,
@@ -1065,7 +1396,7 @@ export const initialDestinations = [
     "longitude": 112.6381,
     "opening_hours": "Buka 24 Jam (Kedai Kenanga) / 09:00 - 20:00 WIB (Bu Rajab)",
     "price": 25000,
-    "contact": "0851-7248-3441",
+    "contact": "0812-6778-1114",
     "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80"
@@ -1088,127 +1419,50 @@ export const initialDestinations = [
       "Nongkrong Malam"
     ],
     "rating": 4.5,
-    "email": "wisata.sukosari@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
-    "id": 701,
-    "village_id": 1,
-    "name": "Wisata Sawah Sumber Gempong",
-    "slug": "wisata-sawah-sumber-gempong",
+    "id": 706,
+    "village_id": 7,
+    "name": "Kampung Organik Brenjonk & Wisata Sayur",
+    "slug": "kampung-organik-brenjonk-wisata-sayur",
     "category": "wisata",
-    "subcategory": "Wisata Sawah Ikonik & Wahana",
-    "description": "Ikon wisata desa terpopuler di Ketapanrame yang menyajikan hamparan sawah hijau membentang luas berlatar megah Gunung Penanggungan. Dilengkapi aneka wahana seru seperti kereta sawah, ATV, ayunan jantra, bebek air, kolam pemandian mata air alami, dan spot foto yang viral.",
-    "address": "Dusun Sukorame, Desa Ketapanrame, Kec. Trawas, Kabupaten Mojokerto",
-    "latitude": -7.6725,
-    "longitude": 112.6351,
-    "opening_hours": "Senin 07:00-17:00 WIB, Selasa-Minggu 07:00-22:00 WIB",
-    "price": 5000,
-    "contact": "0857-0734-3617",
-    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "subcategory": "Wisata Edukasi Pertanian Organik & Petik Sayur",
+    "description": "Pelopor desa pertanian organik nasional di lereng Gunung Penanggungan. Pengunjung dapat belajar teknik budidaya sayuran sehat tanpa pestisida kimia di Rumah Sayur Organik (RSO), memetik selada, kale, pakcoy, dan tomat segar langsung dari kebun, serta menikmati kuliner sehat pedesaan.",
+    "address": "Dusun Penanggungan / Brenjang, Sukosari - Penanggungan, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6608,
+    "longitude": 112.6142,
+    "opening_hours": "08:00 - 16:30 WIB",
+    "price": 10000,
+    "contact": "0812-1698-1058",
+    "image": "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80",
     "images": [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80"
     ],
     "facilities": [
-      "Kereta Mini Sawah & ATV",
-      "Ayunan Jantra & Bebek Air",
-      "Kolam Mata Air Alami",
-      "Pujasera Kuliner Sawah",
-      "Gazebo & Parkir Lapang"
+      "Rumah Sayur Organik (Greenhouse)",
+      "Paket Edukasi Tanam & Panen",
+      "Warung Makan Sehat Organik",
+      "Kios Sayur Segar Siap Bawa Pulang",
+      "Area Parkir Mobil & Motor",
+      "Toilet"
     ],
     "tags": [
-      "Wisata Sawah",
-      "Wahana Bermain",
-      "Sumber Gempong",
-      "Viral"
+      "Pertanian Organik",
+      "Petik Sayur",
+      "Wisata Edukasi",
+      "Keluarga",
+      "Kesehatan"
     ],
     "suitable_for": [
       "Keluarga",
-      "Anak-anak",
-      "Fotografi"
+      "Pelajar & Sekolah",
+      "Pecinta Hidup Sehat",
+      "Komunitas"
     ],
     "rating": 4.8,
-    "email": "desawisata.ketapanrame@gmail.com"
-  },
-  {
-    "id": 702,
-    "village_id": 1,
-    "name": "Air Terjun Dlundung",
-    "slug": "air-terjun-dlundung-trawas",
-    "category": "wisata",
-    "subcategory": "Air Terjun Legendaris & Camping Lereng Welirang",
-    "description": "Air Terjun Dlundung adalah ikon wisata alam paling legendaris di Trawas yang terletak di lereng Gunung Welirang. Memiliki ketinggian sekitar 50-60 meter dengan udara yang sangat sejuk, taman asri yang tertata rapi, dan area perkemahan pinus yang menjadi favorit wisatawan dari berbagai kota.",
-    "address": "Kawasan Hutan, Desa Ketapanrame, Kec. Trawas, Kabupaten Mojokerto",
-    "latitude": -7.684128,
-    "longitude": 112.624792,
-    "opening_hours": "07:30 - 16:00 WIB (Area camping 24 Jam)",
-    "price": 15000,
-    "contact": "0813-3510-5386",
-    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80"
-    ],
-    "facilities": [
-      "Area Parkir Luas",
-      "Toilet & Kamar Mandi",
-      "Mushola",
-      "Warung Makanan & Minuman",
-      "Camping Ground Pinus",
-      "Gazebo Santai"
-    ],
-    "tags": [
-      "Air Terjun",
-      "Wisata Alam",
-      "Camping Ground",
-      "Ikonik"
-    ],
-    "suitable_for": [
-      "Keluarga",
-      "Pecinta Alam",
-      "Teman"
-    ],
-    "rating": 4.7,
-    "email": "dlundung.ketapanrame@gmail.com"
-  },
-  {
-    "id": 703,
-    "village_id": 1,
-    "name": "Taman Ghanjaran",
-    "slug": "taman-ghanjaran-trawas",
-    "category": "wisata",
-    "subcategory": "Taman Hiburan Keluarga & Bianglala",
-    "description": "Pusat rekreasi keluarga terlengkap di Trawas yang dikelola BUMDes Ketapanrame. Menampilkan bianglala raksasa dengan pemandangan Gunung Penanggungan, komidi putar, kolam renang, perahu bebek, cinema VR, dan pujasera jajanan lengkap saat siang maupun malam hari.",
-    "address": "Jl. Raya Tretes-Trawas No. 88, Sukorame, Desa Ketapanrame, Kec. Trawas",
-    "latitude": -7.674903,
-    "longitude": 112.631899,
-    "opening_hours": "08:00 - 22:00 WIB",
-    "price": 5000,
-    "contact": "0821-5155-5010",
-    "image": "https://images.unsplash.com/photo-1513885041147-92adf7f46f34?auto=format&fit=crop&w=800&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1513885041147-92adf7f46f34?auto=format&fit=crop&w=800&q=80"
-    ],
-    "facilities": [
-      "Bianglala Raksasa",
-      "Kolam Renang Anak & Dewasa",
-      "Wahana Bermain Lengkap",
-      "Pujasera Food Court",
-      "Spot Foto Lampu Malam",
-      "Parkir Mobil & Bus"
-    ],
-    "tags": [
-      "Taman Hiburan",
-      "Bianglala",
-      "Wisata Keluarga",
-      "Malam Hari"
-    ],
-    "suitable_for": [
-      "Keluarga dengan Anak",
-      "Teman",
-      "Pasangan"
-    ],
-    "rating": 4.7,
-    "email": "tamanghanjaran.ketapanrame@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 801,
@@ -1247,7 +1501,7 @@ export const initialDestinations = [
       "Pasangan"
     ],
     "rating": 4.7,
-    "email": "aone.trawas@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 802,
@@ -1262,7 +1516,7 @@ export const initialDestinations = [
     "longitude": 112.6291,
     "opening_hours": "08:00 - 17:00 WIB",
     "price": 5000,
-    "contact": "0877-0009-8995",
+    "contact": "0812-6778-1114",
     "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80"
@@ -1284,7 +1538,7 @@ export const initialDestinations = [
       "Keluarga"
     ],
     "rating": 4.4,
-    "email": "wisata.trawas@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 803,
@@ -1322,7 +1576,50 @@ export const initialDestinations = [
       "Pasangan"
     ],
     "rating": 4.6,
-    "email": "wisata.trawas@gmail.com"
+    "email": "disparpora.mr@gmail.com"
+  },
+  {
+    "id": 804,
+    "village_id": 8,
+    "name": "Locafore Trawas & Pinus Resto",
+    "slug": "locafore-trawas-pinus-resto",
+    "category": "kafe",
+    "subcategory": "Kafe Hutan Pinus & Spot Nongkrong Sejuk",
+    "description": "Kafe berkonsep modern industrial kontemporer yang berpadu dengan keteduhan hutan pinus alami di jantung Kecamatan Trawas. Menyajikan aneka racikan kopi modern, pastry hangat, steak, pasta, dan aneka menu kuliner nusantara dengan live music akhir pekan dan area outdoor yang nyaman.",
+    "address": "Jl. Raya Trawas, Desa Trawas, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6702,
+    "longitude": 112.5975,
+    "opening_hours": "09:00 - 22:00 WIB",
+    "price": 25000,
+    "contact": "0877-0009-8995",
+    "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Area Duduk Outdoor Hutan Pinus",
+      "Ruang Indoor Ber-AC & Stopkontak",
+      "Live Music Acoustic (Sabtu-Minggu)",
+      "Wi-Fi Cepat untuk Nugas / Kerja",
+      "Parkir Luas Mobil & Motor",
+      "Musholla & Toilet"
+    ],
+    "tags": [
+      "Kafe Pinus",
+      "Nongkrong",
+      "Live Music",
+      "Kopi",
+      "Trawas Pusat"
+    ],
+    "suitable_for": [
+      "Anak Muda & Teman",
+      "Keluarga",
+      "Komunitas",
+      "Pasangan"
+    ],
+    "rating": 4.7,
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 901,
@@ -1337,7 +1634,7 @@ export const initialDestinations = [
     "longitude": 112.6085,
     "opening_hours": "07:00 - 16:00 WIB",
     "price": 5000,
-    "contact": "0856-4433-2211",
+    "contact": "0812-1779-4228",
     "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
@@ -1361,7 +1658,7 @@ export const initialDestinations = [
       "Teman"
     ],
     "rating": 4.6,
-    "email": "wisata.selotapak@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 902,
@@ -1376,7 +1673,7 @@ export const initialDestinations = [
     "longitude": 112.6078,
     "opening_hours": "08:00 - 20:00 WIB",
     "price": 20000,
-    "contact": "0856-4433-2211",
+    "contact": "0852-5733-5000",
     "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80"
@@ -1399,7 +1696,93 @@ export const initialDestinations = [
       "Teman"
     ],
     "rating": 4.5,
-    "email": "wisata.selotapak@gmail.com"
+    "email": "gartenhutte.id@gmail.com"
+  },
+  {
+    "id": 903,
+    "village_id": 9,
+    "name": "Independent Cafe & Village Club Selotapak",
+    "slug": "independent-cafe-village-club-selotapak",
+    "category": "kafe",
+    "subcategory": "Kafe Panorama Sawah & Lounge Modern",
+    "description": "Kafe dan resto berkonsep village club modern yang memadukan arsitektur terbuka bergaya tropis dengan pemandangan sawah terasering berundak Selotapak dan latar megah Gunung Penanggungan. Menyajikan aneka racikan kopi spesialti, mocktail segar, dan hidangan nusantara serta barat.",
+    "address": "Dusun Jaten, Desa Selotapak, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6741,
+    "longitude": 112.6072,
+    "opening_hours": "09:00 - 21:00 WIB (Sabtu-Minggu buka 08:00 WIB)",
+    "price": 25000,
+    "contact": "0812-1779-4228",
+    "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Area Lounge & Rooftop View Sawah",
+      "Family Suite & VIP Area",
+      "Live Acoustic (Weekend)",
+      "Wi-Fi Kecepatan Tinggi & Stopkontak",
+      "Area Parkir Mobil & Motor",
+      "Musholla & Toilet Bersih"
+    ],
+    "tags": [
+      "Kafe Sawah",
+      "View Gunung",
+      "Village Club",
+      "Sunset",
+      "Aesthetic"
+    ],
+    "suitable_for": [
+      "Teman & Komunitas",
+      "Keluarga",
+      "Pasangan",
+      "Work from Cafe"
+    ],
+    "rating": 4.7,
+    "email": "disparpora.mr@gmail.com"
+  },
+  {
+    "id": 904,
+    "village_id": 9,
+    "name": "Suidentcamp Trawas & Teras Tapak",
+    "slug": "suidentcamp-trawas-teras-tapak",
+    "category": "wisata",
+    "subcategory": "Glamping & Perkemahan Panorama Gunung",
+    "description": "Area berkemah dan glamping eksklusif di Desa Selotapak yang berada persis di puncak perbukitan sawah terasering. Pengunjung dapat menikmati sunrise spektakuler di balik siluet Gunung Penanggungan, udara sejuk berkabut, api unggun malam, dan gemerlap lampu pedesaan Trawas.",
+    "address": "Desa Selotapak, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6765,
+    "longitude": 112.6091,
+    "opening_hours": "24 Jam (Check-in Camping 14:00 WIB)",
+    "price": 35000,
+    "contact": "0812-1779-4228",
+    "image": "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Sewa Tenda & Matras Camping Lengkap",
+      "Paket Api Unggun & BBQ",
+      "Spot Foto Sunrise Gunung Penanggungan",
+      "Warung Kopi & Makanan Hangat 24 Jam",
+      "Kamar Mandi & Listrik Camp",
+      "Parkir Kendaraan Aman"
+    ],
+    "tags": [
+      "Camping",
+      "Glamping",
+      "Sunrise",
+      "Sawah Terasering",
+      "Penanggungan"
+    ],
+    "suitable_for": [
+      "Pecinta Alam",
+      "Teman & Komunitas",
+      "Keluarga",
+      "Fotografi Lanskap"
+    ],
+    "rating": 4.8,
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 1001,
@@ -1414,7 +1797,7 @@ export const initialDestinations = [
     "longitude": 112.6325,
     "opening_hours": "08:00 - 17:00 WIB",
     "price": 0,
-    "contact": "0857-3000-8890",
+    "contact": "0821-4317-7078",
     "image": "https://images.unsplash.com/photo-1533240332313-0db49b459655?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1533240332313-0db49b459655?auto=format&fit=crop&w=800&q=80"
@@ -1439,7 +1822,7 @@ export const initialDestinations = [
       "Pencari Oleh-oleh"
     ],
     "rating": 4.5,
-    "email": "bumdes.kesiman@gmail.com"
+    "email": "pemdes.kesiman@gmail.com"
   },
   {
     "id": 1002,
@@ -1454,7 +1837,7 @@ export const initialDestinations = [
     "longitude": 112.6312,
     "opening_hours": "09:00 - 21:00 WIB",
     "price": 15000,
-    "contact": "0857-3000-8890",
+    "contact": "0821-4317-7078",
     "image": "https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&w=800&q=80"
@@ -1477,7 +1860,7 @@ export const initialDestinations = [
       "Pasangan"
     ],
     "rating": 4.5,
-    "email": "bumdes.kesiman@gmail.com"
+    "email": "pemdes.kesiman@gmail.com"
   },
   {
     "id": 1101,
@@ -1492,7 +1875,7 @@ export const initialDestinations = [
     "longitude": 112.6452,
     "opening_hours": "08:00 - 18:00 WIB",
     "price": 15000,
-    "contact": "0813-5566-7788",
+    "contact": "0831-3281-9058",
     "image": "https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&w=800&q=80"
@@ -1517,7 +1900,7 @@ export const initialDestinations = [
       "Rombongan"
     ],
     "rating": 4.7,
-    "email": "wisata.belik@gmail.com"
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 1102,
@@ -1532,7 +1915,7 @@ export const initialDestinations = [
     "longitude": 112.6465,
     "opening_hours": "08:00 - 17:00 WIB",
     "price": 5000,
-    "contact": "0813-5566-7788",
+    "contact": "0831-3281-9058",
     "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80"
@@ -1553,7 +1936,49 @@ export const initialDestinations = [
       "Teman"
     ],
     "rating": 4.4,
-    "email": "wisata.belik@gmail.com"
+    "email": "disparpora.mr@gmail.com"
+  },
+  {
+    "id": 1103,
+    "village_id": 11,
+    "name": "Pasar Pring Sewu Belik",
+    "slug": "pasar-pring-sewu-belik",
+    "category": "kuliner",
+    "subcategory": "Pasar Kuliner Tradisional Hutan Bambu",
+    "description": "Pasar wisata kuliner tradisional unik yang digelar di bawah naungan rindangnya ribuan pohon bambu Petung Dusun Jibru Desa Belik. Menggunakan sistem pembayaran koin bambu tradisional, menyajikan aneka jajanan tempo doeloe seperti nasi tiwul, cenil, klepon, wedang uwuh, dan dawet gempol.",
+    "address": "Hutan Bambu Dusun Jibru, Desa Belik, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6711,
+    "longitude": 112.6025,
+    "opening_hours": "07:00 - 15:00 WIB (Buka Akhir Pekan & Pasaran Khusus)",
+    "price": 5000,
+    "contact": "0831-3281-9058",
+    "image": "https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Kios Kuliner Jajanan Tradisional",
+      "Loket Tukar Koin Bambu",
+      "Gazebo Bambu Alami",
+      "Pentas Seni Musik Lesung & Karawitan",
+      "Area Parkir & Toilet"
+    ],
+    "tags": [
+      "Pasar Tradisional",
+      "Kuliner Kuno",
+      "Hutan Bambu",
+      "Kearifan Lokal",
+      "Keluarga"
+    ],
+    "suitable_for": [
+      "Keluarga",
+      "Pecinta Kuliner",
+      "Lansia & Anak",
+      "Budayawan"
+    ],
+    "rating": 4.7,
+    "email": "disparpora.mr@gmail.com"
   },
   {
     "id": 1201,
@@ -1568,7 +1993,7 @@ export const initialDestinations = [
     "longitude": 112.6185,
     "opening_hours": "08:00 - 17:00 WIB",
     "price": 20000,
-    "contact": "0822-3296-9591",
+    "contact": "0822-3000-0960",
     "image": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80"
@@ -1595,7 +2020,7 @@ export const initialDestinations = [
       "Instansi"
     ],
     "rating": 4.7,
-    "email": "wisata.duyung@gmail.com"
+    "email": "duyungtrawashill@yahoo.co.id"
   },
   {
     "id": 1202,
@@ -1610,7 +2035,7 @@ export const initialDestinations = [
     "longitude": 112.6198,
     "opening_hours": "08:00 - 18:00 WIB",
     "price": 0,
-    "contact": "0822-3296-9591",
+    "contact": "0822-3000-0960",
     "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
     "images": [
       "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80"
@@ -1634,7 +2059,92 @@ export const initialDestinations = [
       "Pecinta Sejarah"
     ],
     "rating": 4.6,
-    "email": "wisata.duyung@gmail.com"
+    "email": "duyungtrawashill@yahoo.co.id"
+  },
+  {
+    "id": 1203,
+    "village_id": 12,
+    "name": "Fresh Green Trawas (Kampung Durian Mendem Duren)",
+    "slug": "fresh-green-trawas-kampung-durian",
+    "category": "kuliner",
+    "subcategory": "Agrowisata Durian & Outbound Keluarga",
+    "description": "Sentra agrowisata buah durian legendaris di Trawas yang berlokasi di Dusun Bantal Desa Duyung. Menawarkan sensasi mencicipi durian montong, durian ketan lokal, es krim durian, kolam renang anak, flying fox outbound, serta hotel penginapan Green View dengan nuansa arsitektur pewayangan Jawa.",
+    "address": "Dusun Bantal, Desa Duyung, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6842,
+    "longitude": 112.6178,
+    "opening_hours": "08:00 - 17:00 WIB",
+    "price": 0,
+    "contact": "0822-3000-0960",
+    "image": "https://images.unsplash.com/photo-1546548970-71785318a17b?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1546548970-71785318a17b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Kedai Olahan & Durian Utuh Bergaransi Manis",
+      "Kolam Renang Anak & Playground",
+      "Flying Fox & Arena Outbound",
+      "Green View Hotel & Cottage",
+      "Musholla & Toilet",
+      "Tempat Parkir Bus, Mobil & Motor"
+    ],
+    "tags": [
+      "Durian Trawas",
+      "Agrowisata",
+      "Kuliner",
+      "Outbound",
+      "Keluarga"
+    ],
+    "suitable_for": [
+      "Pecinta Durian",
+      "Keluarga Besar",
+      "Rombongan Wisata",
+      "Anak-anak"
+    ],
+    "rating": 4.6,
+    "email": "duyungtrawashill@yahoo.co.id"
+  },
+  {
+    "id": 1204,
+    "village_id": 12,
+    "name": "Air Terjun Sumber Lumpang Duyung",
+    "slug": "air-terjun-sumber-lumpang-duyung",
+    "category": "wisata",
+    "subcategory": "Air Terjun Alami & Konservasi Sumber Air",
+    "description": "Air terjun alami tersembunyi di Desa Duyung yang dikelilingi hutan bambu dan tebing batu purbakala. Mengalirkan air pegunungan yang sangat segar dan jernih, destinasi ini dikembangkan sebagai ekowisata konservasi alam yang ramah lingkungan dengan suasana yang tenang dan menyejukkan.",
+    "address": "Desa Duyung, Kec. Trawas, Kabupaten Mojokerto",
+    "latitude": -7.6883,
+    "longitude": 112.6212,
+    "opening_hours": "08:00 - 16:30 WIB",
+    "price": 5000,
+    "contact": "0822-3000-0960",
+    "image": "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80"
+    ],
+    "facilities": [
+      "Kolam Alami Air Terjun",
+      "Jalur Trekking Teduh",
+      "Papan Edukasi Konservasi Air",
+      "Gazebo Bambu",
+      "Area Parkir Motor & Mobil"
+    ],
+    "tags": [
+      "Air Terjun",
+      "Wisata Alam",
+      "Konservasi",
+      "Duyung",
+      "Trekking"
+    ],
+    "suitable_for": [
+      "Pecinta Alam",
+      "Keluarga",
+      "Teman",
+      "Fotografi"
+    ],
+    "rating": 4.5,
+    "email": "duyungtrawashill@yahoo.co.id"
   }
 ];
 
