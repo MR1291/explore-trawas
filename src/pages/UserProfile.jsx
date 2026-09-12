@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import {
   Heart, MapPin, Star, MessageSquare, LogOut, CheckCircle2,
-  Compass, Eye, Trash2, Calendar, ShieldCheck, User
+  Compass, Eye, Trash2, Calendar, ShieldCheck, User, Image as ImageIcon
 } from 'lucide-react';
 import LogoutModal from '../components/LogoutModal';
 
@@ -174,11 +174,18 @@ const UserProfile = () => {
                   className="group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
                 >
                   <div className="relative h-44 overflow-hidden bg-slate-100">
-                    <img
-                      src={dest.image}
-                      alt={dest.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+                    {dest.image ? (
+                      <img
+                        src={dest.image}
+                        alt={dest.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 text-slate-400">
+                        <ImageIcon className="w-8 h-8 opacity-30 stroke-[1.5] mb-1 text-slate-400" />
+                        <span className="text-[10px] font-medium text-slate-400">Foto belum tersedia</span>
+                      </div>
+                    )}
                     <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm flex items-center text-amber-500 text-xs font-bold">
                       <Star className="h-3 w-3 fill-amber-500 mr-1" />
                       <span>{dest.rating.toFixed(1)}</span>
@@ -246,11 +253,17 @@ const UserProfile = () => {
                   className="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm p-5 space-y-4 flex flex-col justify-between"
                 >
                   <div className="flex items-center space-x-3.5">
-                    <img
-                      src={dest.image}
-                      alt={dest.name}
-                      className="w-16 h-16 rounded-xl object-cover shrink-0"
-                    />
+                    {dest.image ? (
+                      <img
+                        src={dest.image}
+                        alt={dest.name}
+                        className="w-16 h-16 rounded-xl object-cover shrink-0"
+                      />
+                    ) : (
+                      <div className="w-16 h-16 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 shrink-0 border border-slate-200">
+                        <ImageIcon className="w-6 h-6 opacity-40" />
+                      </div>
+                    )}
                     <div>
                       <span className="inline-flex items-center text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full mb-1">
                         <CheckCircle2 className="w-3 h-3 mr-1" /> Pernah Dikunjungi

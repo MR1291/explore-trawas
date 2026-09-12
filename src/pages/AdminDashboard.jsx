@@ -58,6 +58,8 @@ const AdminDashboard = () => {
   const [destOpeningHours, setDestOpeningHours] = useState('');
   const [destPrice, setDestPrice] = useState('');
   const [destContact, setDestContact] = useState('');
+  const [destInstagram, setDestInstagram] = useState('');
+  const [destTikTok, setDestTikTok] = useState('');
   const [destImage, setDestImage] = useState('');
   const [destFacilities, setDestFacilities] = useState('');
   const [destTags, setDestTags] = useState('');
@@ -128,7 +130,7 @@ const AdminDashboard = () => {
       setVillageName('');
       setVillageLocation('Kecamatan Trawas, Kabupaten Mojokerto');
       setVillageDescription('');
-      setVillageImage('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');
+      setVillageImage('');
       setVillageAccess('Jalan beraspal mulus, dapat dijangkau sepeda motor dan mobil pribadi.');
     }
     setShowVillageForm(true);
@@ -172,7 +174,9 @@ const AdminDashboard = () => {
       setDestLongitude(d.longitude.toString());
       setDestOpeningHours(d.opening_hours);
       setDestPrice(d.price.toString());
-      setDestContact(d.contact || '-');
+      setDestContact(d.contact || '');
+      setDestInstagram(d.instagram || '');
+      setDestTikTok(d.tiktok || '');
       setDestImage(d.image);
       setDestFacilities(d.facilities ? d.facilities.join(', ') : '');
       setDestTags(d.tags ? d.tags.join(', ') : '');
@@ -189,8 +193,10 @@ const AdminDashboard = () => {
       setDestLongitude('112.6318');
       setDestOpeningHours('08:00 - 17:00 WIB');
       setDestPrice('10000');
-      setDestContact('-');
-      setDestImage('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80');
+      setDestContact('');
+      setDestInstagram('explore_trawas');
+      setDestTikTok('exploretrawas');
+      setDestImage('');
       setDestFacilities('Area Parkir, Toilet, Mushola');
       setDestTags('Wisata Alam, Instagramable');
       setDestSuitable('Keluarga, Teman');
@@ -216,8 +222,10 @@ const AdminDashboard = () => {
       opening_hours: destOpeningHours,
       price: parseFloat(destPrice) || 0,
       contact: destContact,
-      image: destImage,
-      images: [destImage],
+      instagram: destInstagram,
+      tiktok: destTikTok,
+      image: destImage || '',
+      images: destImage ? [destImage] : [],
       facilities: parseCommaString(destFacilities),
       tags: parseCommaString(destTags),
       suitable_for: parseCommaString(destSuitable)
@@ -1232,13 +1240,12 @@ const AdminDashboard = () => {
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-bold text-slate-300 uppercase">URL Gambar / Foto Desa</label>
+                <label className="font-bold text-slate-300 uppercase">URL Gambar / Foto Desa (Opsional)</label>
                 <input
-                  type="url"
-                  required
+                  type="text"
                   value={villageImage}
                   onChange={(e) => setVillageImage(e.target.value)}
-                  placeholder="https://images.unsplash.com/..."
+                  placeholder="Kosongkan jika belum ada foto, atau isi URL foto"
                   className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
@@ -1386,13 +1393,12 @@ const AdminDashboard = () => {
               </div>
 
               <div className="space-y-1.5 md:col-span-3">
-                <label className="font-bold text-slate-300 uppercase">URL Gambar / Foto</label>
+                <label className="font-bold text-slate-300 uppercase">URL Gambar / Foto (Opsional)</label>
                 <input
-                  type="url"
-                  required
+                  type="text"
                   value={destImage}
                   onChange={(e) => setDestImage(e.target.value)}
-                  placeholder="https://images.unsplash.com/..."
+                  placeholder="Kosongkan jika belum ada foto, atau isi URL foto"
                   className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
@@ -1426,6 +1432,39 @@ const AdminDashboard = () => {
                   value={destSuitable}
                   onChange={(e) => setDestSuitable(e.target.value)}
                   placeholder="Keluarga, Pasangan, Teman"
+                  className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="font-bold text-slate-300 uppercase">WhatsApp / No. Telepon (Opsional)</label>
+                <input
+                  type="text"
+                  value={destContact}
+                  onChange={(e) => setDestContact(e.target.value)}
+                  placeholder="Contoh: 0851-0011-7772"
+                  className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="font-bold text-slate-300 uppercase">Username Instagram (Opsional)</label>
+                <input
+                  type="text"
+                  value={destInstagram}
+                  onChange={(e) => setDestInstagram(e.target.value)}
+                  placeholder="Contoh: sumbergempong.id"
+                  className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="font-bold text-slate-300 uppercase">Username TikTok (Opsional)</label>
+                <input
+                  type="text"
+                  value={destTikTok}
+                  onChange={(e) => setDestTikTok(e.target.value)}
+                  placeholder="Contoh: alasveenuztrawas"
                   className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>

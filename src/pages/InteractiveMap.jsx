@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { Compass, Coffee, Utensils, Sparkles, Navigation, Star } from 'lucide-react';
+import { Compass, Coffee, Utensils, Sparkles, Navigation, Star, Image as ImageIcon } from 'lucide-react';
 import L from 'leaflet';
 
 const InteractiveMap = () => {
@@ -107,8 +107,15 @@ const InteractiveMap = () => {
             >
               <Popup className="custom-popup">
                 <div className="w-52 space-y-2 text-slate-800">
-                  <div className="h-24 w-full rounded-md overflow-hidden bg-slate-100">
-                    <img src={dest.image} alt={dest.name} className="w-full h-full object-cover" />
+                  <div className="h-24 w-full rounded-md overflow-hidden bg-slate-100 flex items-center justify-center">
+                    {dest.image ? (
+                      <img src={dest.image} alt={dest.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-slate-100 text-slate-400">
+                        <ImageIcon className="w-6 h-6 opacity-30 stroke-[1.5] mb-0.5" />
+                        <span className="text-[9px] font-medium text-slate-400">Foto belum ada</span>
+                      </div>
+                    )}
                   </div>
                   <div>
                     <div className="flex justify-between items-start">

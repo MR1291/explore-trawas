@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import { MapPin, Star, Compass, Coffee, Utensils, Sparkles, ArrowLeft, Eye, ShieldCheck } from 'lucide-react';
+import { MapPin, Star, Compass, Coffee, Utensils, Sparkles, ArrowLeft, Eye, ShieldCheck, Image as ImageIcon } from 'lucide-react';
 import TravelEstimatesCard from '../components/TravelEstimatesCard';
 import PopIn from '../components/PopIn';
 
@@ -45,11 +45,15 @@ const VillageDetail = () => {
     <div className="pb-16 space-y-12">
       {/* Village Hero Header */}
       <div className="relative h-96 bg-slate-900 flex items-end">
-        <img
-          src={village.image}
-          alt={village.name}
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
-        />
+        {village.image ? (
+          <img
+            src={village.image}
+            alt={village.name}
+            className="absolute inset-0 w-full h-full object-cover opacity-60"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950/40"></div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-8 space-y-3">
           <Link to="/" className="inline-flex items-center text-xs font-semibold text-emerald-300 hover:text-emerald-200 transition-colors mb-2">
@@ -172,11 +176,18 @@ const VillageDetail = () => {
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
-                  <img
-                    src={dest.image}
-                    alt={dest.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                  />
+                  {dest.image ? (
+                    <img
+                      src={dest.image}
+                      alt={dest.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 text-slate-400">
+                      <ImageIcon className="w-8 h-8 opacity-30 stroke-[1.5] mb-1 text-slate-400" />
+                      <span className="text-[10px] font-medium text-slate-400">Foto belum tersedia</span>
+                    </div>
+                  )}
                   <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full shadow-md flex items-center text-amber-500 text-xs font-bold">
                     <Star className="h-3 w-3 fill-amber-500 mr-1" />
                     <span>{dest.rating.toFixed(1)}</span>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import { Heart, MapPin, Star, Compass, Trash2, Eye } from 'lucide-react';
+import { Heart, MapPin, Star, Compass, Trash2, Eye, Image as ImageIcon } from 'lucide-react';
 
 const Favorites = () => {
   const { favorites, destinations, toggleFavorite } = useContext(AppContext);
@@ -28,11 +28,18 @@ const Favorites = () => {
             >
               {/* Image */}
               <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
-                <img
-                  src={dest.image}
-                  alt={dest.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+                {dest.image ? (
+                  <img
+                    src={dest.image}
+                    alt={dest.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 text-slate-400">
+                    <ImageIcon className="w-8 h-8 opacity-30 stroke-[1.5] mb-1 text-slate-400" />
+                    <span className="text-[10px] font-medium text-slate-400">Foto belum tersedia</span>
+                  </div>
+                )}
                 <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full shadow-sm flex items-center text-amber-500 text-xs font-bold">
                   <Star className="h-3 w-3 fill-amber-500 mr-1" />
                   <span>{dest.rating.toFixed(1)}</span>

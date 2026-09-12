@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import { Search, MapPin, Star, Filter, Coffee, Utensils, Compass, Sparkles, SlidersHorizontal, Check, ChevronDown } from 'lucide-react';
+import { Search, MapPin, Star, Filter, Coffee, Utensils, Compass, Sparkles, SlidersHorizontal, Check, ChevronDown, Image as ImageIcon } from 'lucide-react';
 import PopIn from '../components/PopIn';
 
 const AllDestinations = () => {
@@ -326,11 +326,18 @@ const AllDestinations = () => {
                   >
                     {/* Image */}
                     <div className="relative h-44 overflow-hidden bg-slate-100 shrink-0">
-                      <img
-                        src={dest.image}
-                        alt={dest.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                      />
+                      {dest.image ? (
+                        <img
+                          src={dest.image}
+                          alt={dest.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 text-slate-400">
+                          <ImageIcon className="w-8 h-8 opacity-30 stroke-[1.5] mb-1 text-slate-400" />
+                          <span className="text-[10px] font-medium text-slate-400">Foto belum tersedia</span>
+                        </div>
+                      )}
                       <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-2 py-0.5 rounded-full flex items-center text-amber-500 text-xs font-bold shadow-sm">
                         <Star className="h-3 w-3 fill-amber-500 mr-0.5" />
                         <span>{dest.rating.toFixed(1)}</span>

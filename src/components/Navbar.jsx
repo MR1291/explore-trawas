@@ -41,8 +41,26 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50">
+      {/* Top Competition Bar */}
+      <div className="bg-slate-950 text-white text-[11px] font-medium py-1.5 px-4 border-b border-slate-800/80 shadow-xs">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-2 truncate">
+            <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white text-[9px] font-black uppercase px-2 py-0.5 rounded-md tracking-wider shrink-0 shadow-xs">
+              Inovasi 2026
+            </span>
+            <span className="text-slate-300 truncate text-[11px]">
+              Jagoan Hosting Innovation Competition 2026 • Didukung oleh KOMDIGI, Ngalup.co &amp; Garuda Spark
+            </span>
+          </div>
+          <div className="hidden sm:flex items-center space-x-3 shrink-0 text-slate-400 text-[11px]">
+            <span className="hover:text-orange-400 transition-colors">#ExploreTrawas</span>
+          </div>
+        </div>
+      </div>
+
+      <nav className="bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm font-sans">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Brand Logo */}
           <div className="flex items-center">
@@ -298,7 +316,8 @@ const Navbar = () => {
         onClose={() => setShowLogoutModal(false)}
         onConfirm={handleConfirmLogout}
       />
-    </nav>
+      </nav>
+    </header>
   );
 };
 

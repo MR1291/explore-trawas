@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import { Search, MapPin, Compass, Utensils, Coffee, Leaf, ChevronRight, Activity, Navigation } from 'lucide-react';
+import { Search, MapPin, Compass, Utensils, Coffee, Leaf, ChevronRight, Activity, Navigation, Image as ImageIcon } from 'lucide-react';
 import TravelEstimatesCard from '../components/TravelEstimatesCard';
+import PartnersSection from '../components/PartnersSection';
 import PopIn from '../components/PopIn';
 import heroImg from '../assets/trawas-hero.jpg';
 
@@ -47,9 +48,14 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-8 animate-slideUp">
-          <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 backdrop-blur-md animate-float">
-            ⛰️ Portal Wisata Resmi 12 Desa Trawas, Mojokerto
-          </span>
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
+            <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 backdrop-blur-md animate-float">
+              ⛰️ Portal Wisata Resmi 12 Desa Trawas, Mojokerto
+            </span>
+            <span className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide bg-orange-500/25 text-orange-200 border border-orange-400/40 backdrop-blur-md shadow-sm">
+              🏆 Jagoan Hosting Innovation Competition 2026
+            </span>
+          </div>
           <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight drop-shadow-lg">
             Jelajahi Pesona Keindahan Trawas
           </h1>
@@ -183,16 +189,23 @@ const Home = () => {
             return (
               <PopIn key={village.id} delay={(i % 6) * 90} className="group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm fluid-card flex flex-col" as="div">
                 {/* Image */}
-                <div className="relative h-52 overflow-hidden bg-slate-100 shrink-0">
-                  <img
-                    src={village.image}
-                    alt={village.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                  />
+                <div className="relative h-52 overflow-hidden bg-slate-800 shrink-0">
+                  {village.image ? (
+                    <img
+                      src={village.image}
+                      alt={village.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-850 to-slate-900 text-slate-400">
+                      <ImageIcon className="w-10 h-10 opacity-30 stroke-[1.5] mb-1 text-slate-300" />
+                      <span className="text-[11px] font-medium text-slate-400">Foto belum tersedia</span>
+                    </div>
+                  )}
                   <div className="absolute top-4 right-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                     🏞️ {count} Destinasi
                   </div>
-                  <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                  <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
                   <div className="absolute bottom-3 left-4 text-white font-bold text-lg drop-shadow">
                     Desa {village.name}
                   </div>
@@ -228,6 +241,13 @@ const Home = () => {
       <div id="estimasi-rute" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <PopIn>
           <TravelEstimatesCard />
+        </PopIn>
+      </div>
+
+      {/* ── Official Partners & Competition Section ────────────────── */}
+      <div id="mitra-kolaborasi">
+        <PopIn>
+          <PartnersSection />
         </PopIn>
       </div>
     </div>

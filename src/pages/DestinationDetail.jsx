@@ -4,8 +4,28 @@ import { AppContext } from '../context/AppContext';
 import {
   MapPin, Clock, DollarSign, Phone, Mail, Share2, Heart, Star,
   ArrowLeft, Check, Navigation, Info, MessageSquare, CheckCircle2,
-  Send, Sparkles, User, ExternalLink
+  Send, Sparkles, User, ExternalLink, Image as ImageIcon
 } from 'lucide-react';
+
+const InstagramIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
+
+const TikTokIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.86.12V9.3a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.57a6.34 6.34 0 0 0 10.83 4.47V12.9a8.3 8.3 0 0 0 4.76 1.5v-3.7a4.85 4.85 0 0 1-3-1.01V6.69z" />
+  </svg>
+);
+
+const WhatsAppIcon = ({ className = "w-5 h-5" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.24-.75-.67-1.26-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29" />
+  </svg>
+);
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 
@@ -178,12 +198,20 @@ const DestinationDetail = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Gallery / Photos */}
         <div className="lg:col-span-2 space-y-4">
-          <div className="relative h-[300px] md:h-[450px] rounded-2xl overflow-hidden bg-slate-900 border border-slate-100 shadow-sm">
-            <img
-              src={dest.images && dest.images.length > 0 ? dest.images[activeImageIdx] : dest.image}
-              alt={dest.name}
-              className="w-full h-full object-cover transition-opacity duration-300"
-            />
+          <div className="relative h-[300px] md:h-[450px] rounded-2xl overflow-hidden bg-slate-900 border border-slate-100 shadow-sm flex items-center justify-center">
+            {Boolean((dest.images && dest.images.length > 0 && dest.images[activeImageIdx]) || dest.image) ? (
+              <img
+                src={dest.images && dest.images.length > 0 ? dest.images[activeImageIdx] : dest.image}
+                alt={dest.name}
+                className="w-full h-full object-cover transition-opacity duration-300"
+              />
+            ) : (
+              <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 to-slate-950 text-slate-400 p-6 text-center">
+                <ImageIcon className="w-16 h-16 opacity-30 stroke-[1.5] mb-2 text-slate-300" />
+                <span className="text-sm font-semibold text-slate-300">Foto belum tersedia</span>
+                <span className="text-xs text-slate-500 mt-1">Destinasi ini belum memiliki dokumentasi foto</span>
+              </div>
+            )}
             <div className="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm capitalize">
               {dest.category}
             </div>
@@ -246,92 +274,154 @@ const DestinationDetail = () => {
               </div>
             </div>
 
-            {/* Direct Action Contacts: WhatsApp & Gmail */}
-            {(() => {
-              const displayPhone = dest.contact && dest.contact !== '-' ? dest.contact : '0857-0734-3617';
-              const cleanPhoneDigits = displayPhone.replace(/^0/, '').replace(/[^0-9]/g, '');
-              const waUrl = `https://wa.me/62${cleanPhoneDigits}?text=${encodeURIComponent(`Halo Pengelola ${dest.name}, saya ingin bertanya informasi wisata dan reservasi.`)}`;
+            {/* Kontak & Media Sosial Resmi Pengelola */}
+            <div className="border-t pt-4 space-y-3.5">
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center justify-between">
+                <span>Kontak & Pengelola Resmi</span>
+                <span className="text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">Google Maps Verified</span>
+              </div>
 
-              const displayEmail = dest.email || `reservasi.${village ? village.slug : 'trawas'}@gmail.com`;
-              const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(displayEmail)}&su=${encodeURIComponent(`Tanya Informasi & Reservasi - ${dest.name}`)}`;
+              {/* Direct WhatsApp / Phone Action (Hanya jika ada nomor kontak resmi) */}
+              {(() => {
+                const contactNumber = (dest.contact || dest.whatsapp || '').trim();
+                if (!contactNumber) return null;
 
-              return (
-                <div className="border-t pt-4 space-y-3">
-                  <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Kontak & Reservasi Pengelola
+                const rawDigits = contactNumber.replace(/[^0-9]/g, '');
+                const isMobileOrWA = rawDigits.startsWith('08') || rawDigits.startsWith('628');
+                const cleanWaNumber = rawDigits.startsWith('0') ? '62' + rawDigits.slice(1) : rawDigits;
+                const actionUrl = isMobileOrWA
+                  ? `https://wa.me/${cleanWaNumber}?text=${encodeURIComponent(`Halo Pengelola ${dest.name}, saya ingin bertanya informasi kunjungan dan reservasi.`)}`
+                  : `tel:${rawDigits}`;
+
+                return (
+                  <a
+                    href={actionUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-md shadow-emerald-600/20 transition-all cursor-pointer group"
+                  >
+                    <div className="flex items-center space-x-3 min-w-0">
+                      <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0 shadow-inner">
+                        {isMobileOrWA ? (
+                          <WhatsAppIcon className="w-5 h-5 text-white" />
+                        ) : (
+                          <Phone className="w-5 h-5 text-white" />
+                        )}
+                      </div>
+                      <div className="text-left truncate">
+                        <div className="text-[10px] font-bold text-emerald-100 uppercase tracking-tight">
+                          {isMobileOrWA ? 'WhatsApp Resmi Pengelola' : 'Telepon Pengelola'}
+                        </div>
+                        <div className="text-xs font-black text-white truncate tracking-wide">
+                          {contactNumber}
+                        </div>
+                      </div>
+                    </div>
+                    <span className="text-[11px] font-bold bg-white text-emerald-800 px-3 py-1.5 rounded-xl shrink-0 group-hover:scale-105 transition-transform shadow-sm flex items-center">
+                      {isMobileOrWA ? 'Chat WA →' : 'Hubungi →'}
+                    </span>
+                  </a>
+                );
+              })()}
+
+              {/* Card Google Maps Information */}
+              <a
+                href={googleMapsSearchUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-between p-3 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50/70 hover:from-blue-100 hover:to-indigo-100 border border-blue-200/80 transition-all cursor-pointer group shadow-xs"
+              >
+                <div className="flex items-center space-x-3 min-w-0">
+                  <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                    <Navigation className="w-4.5 h-4.5" />
                   </div>
-
-                  {/* WhatsApp Direct Action Button */}
-                  <a
-                    href={waUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full flex items-center justify-between p-3 rounded-2xl bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-200/80 transition-all cursor-pointer group shadow-sm"
-                  >
-                    <div className="flex items-center space-x-3 min-w-0">
-                      <div className="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-sm">
-                        <Phone className="w-4.5 h-4.5" />
-                      </div>
-                      <div className="text-left truncate">
-                        <div className="text-[10px] font-bold text-emerald-700 uppercase tracking-tight">No. HP / WhatsApp</div>
-                        <div className="text-xs font-black text-emerald-950 truncate">
-                          {displayPhone}
-                        </div>
-                      </div>
+                  <div className="text-left truncate">
+                    <div className="text-[10px] font-bold text-blue-700 uppercase tracking-tight">Profil & Titik Lokasi Resmi</div>
+                    <div className="text-xs font-black text-slate-900 truncate">
+                      Cek Ulasan & Informasi di Google Maps
                     </div>
-                    <span className="text-[11px] font-bold bg-emerald-600 text-white px-3 py-1.5 rounded-xl shrink-0 group-hover:scale-105 transition-transform shadow-sm">
-                      Chat WA &rarr;
-                    </span>
-                  </a>
-
-                  {/* Gmail Direct Action Button */}
-                  <a
-                    href={gmailUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full flex items-center justify-between p-3 rounded-2xl bg-rose-50 hover:bg-rose-100/90 border border-rose-200/80 transition-all cursor-pointer group shadow-sm"
-                  >
-                    <div className="flex items-center space-x-3 min-w-0">
-                      <div className="w-9 h-9 rounded-xl bg-rose-500 text-white flex items-center justify-center shrink-0 shadow-sm">
-                        <Mail className="w-4.5 h-4.5" />
-                      </div>
-                      <div className="text-left truncate">
-                        <div className="text-[10px] font-bold text-rose-700 uppercase tracking-tight">Email Reservasi (Gmail)</div>
-                        <div className="text-xs font-black text-rose-950 truncate">
-                          {displayEmail}
-                        </div>
-                      </div>
-                    </div>
-                    <span className="text-[11px] font-bold bg-rose-500 text-white px-3 py-1.5 rounded-xl shrink-0 group-hover:scale-105 transition-transform shadow-sm">
-                      Kirim Email &rarr;
-                    </span>
-                  </a>
+                  </div>
                 </div>
-              );
-            })()}
-          </div>
+                <span className="text-[11px] font-bold bg-blue-600 text-white px-2.5 py-1.5 rounded-xl shrink-0 group-hover:scale-105 transition-transform shadow-xs flex items-center">
+                  Buka Maps &rarr;
+                </span>
+              </a>
 
-          {/* Direct Google Maps Action Buttons */}
-          <div className="space-y-2.5 pt-2">
-            <a
-              href={googleMapsSearchUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center px-4 py-3 rounded-2xl shadow-md text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all hover:scale-[1.02] cursor-pointer"
-            >
-              <Navigation className="h-4 w-4 mr-2" />
-              Buka Langsung di Google Maps
-            </a>
+              {/* Media Sosial Resmi: Hanya ditampilkan jika akun Instagram atau TikTok tersedia */}
+              {Boolean(dest.instagram || dest.tiktok) && (
+                <div className="space-y-2 pt-1">
+                  <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                    Media Sosial Resmi
+                  </div>
+                  <div className={`grid ${dest.instagram && dest.tiktok ? 'grid-cols-2' : 'grid-cols-1'} gap-2.5`}>
+                    {/* Instagram Button */}
+                    {dest.instagram && (
+                      <a
+                        href={`https://www.instagram.com/${dest.instagram.replace(/^@/, '')}/`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between p-2.5 rounded-2xl bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 border border-pink-200/80 hover:shadow-md transition-all group"
+                      >
+                        <div className="flex items-center space-x-2 min-w-0">
+                          <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                            <InstagramIcon className="w-4 h-4" />
+                          </div>
+                          <div className="text-left truncate">
+                            <div className="text-[9px] font-bold text-pink-700 uppercase tracking-tight">Instagram</div>
+                            <div className="text-xs font-bold text-slate-800 truncate">@{dest.instagram.replace(/^@/, '')}</div>
+                          </div>
+                        </div>
+                        <ExternalLink className="w-3.5 h-3.5 text-pink-500 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                      </a>
+                    )}
 
-            <a
-              href={googleMapsDirectionsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-2xl border border-slate-200 text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 transition-colors"
-            >
-              <ExternalLink className="h-3.5 w-3.5 mr-1.5 text-slate-500" />
-              Petunjuk Arah Rute Google Maps
-            </a>
+                    {/* TikTok Button */}
+                    {dest.tiktok && (
+                      <a
+                        href={`https://www.tiktok.com/@${dest.tiktok.replace(/^@/, '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between p-2.5 rounded-2xl bg-slate-900 hover:bg-black text-white border border-slate-800 hover:shadow-md transition-all group"
+                      >
+                        <div className="flex items-center space-x-2 min-w-0">
+                          <div className="w-7 h-7 rounded-lg bg-slate-800 text-teal-400 flex items-center justify-center shrink-0 shadow-xs">
+                            <TikTokIcon className="w-4 h-4 text-cyan-400" />
+                          </div>
+                          <div className="text-left truncate">
+                            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-tight">TikTok</div>
+                            <div className="text-xs font-bold text-white truncate">@{dest.tiktok.replace(/^@/, '')}</div>
+                          </div>
+                        </div>
+                        <ExternalLink className="w-3.5 h-3.5 text-cyan-400 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Direct Google Maps Navigation Buttons */}
+            <div className="space-y-2 pt-2">
+              <a
+                href={googleMapsSearchUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center px-4 py-3 rounded-2xl shadow-md text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all hover:scale-[1.02] cursor-pointer"
+              >
+                <Navigation className="h-4 w-4 mr-2" />
+                Lihat di Google Maps
+              </a>
+
+              <a
+                href={googleMapsDirectionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-2xl border border-slate-200 text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 transition-colors"
+              >
+                <ExternalLink className="h-3.5 w-3.5 mr-1.5 text-slate-500" />
+                Petunjuk Arah Rute Google Maps
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -586,11 +676,18 @@ const DestinationDetail = () => {
                 className="group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full"
               >
                 <div className="relative h-44 overflow-hidden bg-slate-100 shrink-0">
-                  <img
-                    src={rec.image}
-                    alt={rec.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                  {rec.image ? (
+                    <img
+                      src={rec.image}
+                      alt={rec.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 text-slate-400">
+                      <ImageIcon className="w-8 h-8 opacity-30 stroke-[1.5] mb-1 text-slate-400" />
+                      <span className="text-[10px] font-medium text-slate-400">Foto belum tersedia</span>
+                    </div>
+                  )}
                   <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-full flex items-center text-amber-500 text-xs font-bold shadow-sm">
                     <Star className="h-3 w-3 fill-amber-500 mr-0.5" />
                     <span>{rec.rating.toFixed(1)}</span>

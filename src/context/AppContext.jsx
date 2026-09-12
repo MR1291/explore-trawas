@@ -13,7 +13,7 @@ import {
 
 export const AppContext = createContext();
 
-const DATA_VERSION = '2.5.0_trawas_clean_nostack';
+const DATA_VERSION = '2.9.0_12_villages_all_empty_photos';
 
 // Device and Browser detection helper
 export const getDeviceInfo = () => {
